@@ -11,8 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+// 后台首页路由
+Route::get('admin/index/index','admin\Index@index');
+
+//后台分类路由
+Route::group(['prefix'=>'admin/cates'],function(){
+	Route::get('index','admin\Cates@index');
+	Route::get('create','admin\Cates@create');
+
 });
 
 //hash加密测试
