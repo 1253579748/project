@@ -52,10 +52,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html" class="active"><i class="fa fa-home nav_icon"></i>Dashboard</a>
+                            <a href="index.html" class="active"><i class="fa fa-home nav_icon"></i>用户管理</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-cogs nav_icon"></i>Components <span class="nav-badge">12</span> <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-cogs nav_icon"></i>分类管理 <span class="nav-badge">12</span> <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
                                     <a href="grids.html">Grid System</a>
@@ -67,7 +67,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <!-- /nav-second-level -->
                         </li>
                         <li class="">
-                            <a href="#"><i class="fa fa-book nav_icon"></i>UI Elements <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-book nav_icon"></i>商品管理 <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
                                     <a href="general.html">General<span class="nav-badge-btm">08</span></a>
@@ -79,10 +79,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <!-- /nav-second-level -->
                         </li>
                         <li>
-                            <a href="widgets.html"><i class="fa fa-th-large nav_icon"></i>Widgets <span class="nav-badge-btm">08</span></a>
+                            <a href="widgets.html"><i class="fa fa-th-large nav_icon"></i>订单管理 <span class="nav-badge-btm">08</span></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-envelope nav_icon"></i>Mailbox<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-envelope nav_icon"></i>活动管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
                                     <a href="inbox.html">Inbox <span class="nav-badge-btm">05</span></a>
@@ -94,22 +94,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <!-- //nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table nav_icon"></i>Tables <span class="nav-badge">05</span></a>
+                            <a href="tables.html"><i class="fa fa-table nav_icon"></i>轮播图管理 <span class="nav-badge">05</span></a>
                         </li>
+                        
                         <li>
-                            <a href="#"><i class="fa fa-check-square-o nav_icon"></i>Forms<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level collapse">
-                                <li>
-                                    <a href="forms.html">Basic Forms <span class="nav-badge-btm">07</span></a>
-                                </li>
-                                <li>
-                                    <a href="validation.html">Validation</a>
-                                </li>
-                            </ul>
-                            <!-- //nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-file-text-o nav_icon"></i>Pages<span class="nav-badge-btm">02</span><span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-file-text-o nav_icon"></i>权限管理<span class="nav-badge-btm">02</span><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
                                     <a href="login.html">Login</a>
@@ -124,8 +113,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <!-- //nav-second-level -->
                         </li>
                         <li>
-                            <a href="charts.html" class="chart-nav"><i class="fa fa-bar-chart nav_icon"></i>Charts <span class="nav-badge-btm pull-right">new</span></a>
+                            <a href="charts.html" class="chart-nav"><i class="fa fa-bar-chart nav_icon"></i>友情链接 <span class="nav-badge-btm pull-right">new</span></a>
                         </li>
+
+                       
                     </ul>
                     <!-- //sidebar-collapse -->
                 </nav>
