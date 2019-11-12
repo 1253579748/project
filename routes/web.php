@@ -11,6 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('admin/goods')->group(function () {
+
+    Route::get('add', 'admin\Goods@add');
+
+    Route::post('store', 'admin\Goods@store');
+
+});
+
+
+Route::prefix('api/type')->group(function () {
+
+    Route::get('get/{id}', 'api\Type@getType');
+
+    Route::get('getall', 'api\Type@getTypeAll');
+
+        
 });
