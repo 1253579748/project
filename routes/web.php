@@ -19,5 +19,8 @@ Route::get('admin/index/index','admin\Index@index');
 Route::group(['prefix'=>'admin/cates'],function(){
 	Route::get('index','admin\Cates@index');
 	Route::get('create','admin\Cates@create');
-
+	Route::post('store','admin\Cates@store');
+	Route::post('update','admin\Cates@update');
+	Route::get('delete','admin\Cates@delete');
 });
+

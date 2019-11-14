@@ -1,179 +1,108 @@
-<!DOCTYPE html>
-<html class="x-admin-sm">
-    
-    <head>
-        <meta charset="UTF-8">
-        <title>欢迎页面-X-admin2.2</title>
-        <meta name="renderer" content="webkit">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-        <link rel="stylesheet" href="/admin/css/font.css">
-        <link rel="stylesheet" href="/admin/css/xadmin.css">
-        <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-        <script src="/admin/lib/layui/layui.js" charset="utf-8"></script>
-        <script type="text/javascript" src="/admin/js/xadmin.js"></script>
-        <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-        <!--[if lt IE 9]>
-          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
+@extends("admin.index.index")
+@section("main")
+@include('admin.public.information')
+<div class="panel-body widget-shadow ">
+	<h4>分类列表</h4>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+			  <th>ID号</th>
+			  <th>分类名</th>
+			  <th>PID</th>
+			  <th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
 
-    <body>
-        <div class="x-nav">
-            <span class="layui-breadcrumb">
-                <a href="">首页</a>
-                <a href="">演示</a>
-                <a>
-                    <cite>导航元素</cite></a>
-            </span>
-            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
-                <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
-            </a>
-        </div>
-        <div class="layui-fluid">
-            <div class="layui-row layui-col-space15">
-                <div class="layui-col-md12">
-                    <div class="layui-card">
-                        <div class="layui-card-body ">
-                            <form  method="post"  class="layui-form layui-col-space5">
-                             
-                                <div class="layui-input-inline layui-show-xs-block">
-                                    <input class="layui-input" placeholder="分类名" name="name"></div>
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" >
-                                <div class="layui-input-inline layui-show-xs-block">
-                                    <button class="layui-btn" id="create"><i class="layui-icon"></i>增加</button>
-                                </div>
-                            </form>
-                            <hr>
-                            <blockquote class="layui-elem-quote">每个tr 上有两个属性 cate-id='1' 当前分类  id fid='0' 父级id ,顶级分类为 0，有子分类的前面加收缩图标<i class="layui-icon x-show" status='true'>&#xe623;</i></blockquote>
-                        </div>
+			@foreach($data as $k => $v)
+			
+			<tr data-id="{{$v->id}}" data-name="{{$v->name}}">
+			  <th scope="row">{{$v->id}}</th>
+			  <td>{{$v->name}}</td>
+			  <td>{{$v->pid}}</td>
+			  <td>
+				<a class="type-edit" >修改</a>
+				<a class="type-del">删除</a>
+			  </td>
+			</tr>
 
-                        <div class="layui-card-body ">
-                            <table class="layui-table layui-form">
-                              <thead>
-                                <tr>
-                                  <th width="20">
-                                    <input type="checkbox" name="" lay-skin="primary">
-                                  </th>
-                                  <th width="70">ID</th>
-                                  <th>栏目名</th>
-                                  <th width="50">pid</th>
-                                  <th width="80">状态</th>
-                                  <th width="250">操作</th>
-                              </thead>
-                              <tbody class="x-cate">
-                                @foreach($data as $k => $v)
-                                <tr cate-id='{{$v->id}}' fid='{{$v->pid}}' >
-                                  <td>
-                                    <input type="checkbox" name="" lay-skin="primary">
-                                  </td>
-                                  <td>{{$v->id}}</td>
-                                  <td>
-                                    <i class="layui-icon x-show" status='true'>&#xe623;</i>
-                                    {{$v->name}}
-                                  </td>
-                                  <td><input type="text" class="layui-input x-sort" name="order" value="{{$v->pid}}" disabled></td>
-                                  <td>
-                                    <input type="checkbox" name="switch"  lay-text="开启|停用"  checked="" lay-skin="switch">
-                                  </td>
-                                  <td class="td-manage">
-                                    <button class="layui-btn layui-btn layui-btn-xs"  onclick="xadmin.open('编辑','admin-edit.html')" ><i class="layui-icon">&#xe642;</i>编辑</button>
-                                    <button class="layui-btn layui-btn-warm layui-btn-xs"  onclick="xadmin.open('编辑','admin-edit.html')" ><i class="layui-icon">&#xe642;</i>添加子栏目</button>
-                                    <button class="layui-btn-danger layui-btn layui-btn-xs"  onclick="member_del(this,'要删除的id')" href="javascript:;" ><i class="layui-icon">&#xe640;</i>删除</button>
-                                  </td>
-                                </tr>
-                                @endforeach
-                              </tbody>
-                            </table>
-                        </div>
-                        <div class="layui-card-body ">
-                            <div class="page">
-                                <div>
-                                    <a class="prev" href="">&lt;&lt;</a>
-                                    <a class="num" href="">1</a>
-                                    <span class="current">2</span>
-                                    <a class="num" href="">3</a>
-                                    <a class="num" href="">489</a>
-                                    <a class="next" href="">&gt;&gt;</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+			@endforeach
+		</tbody>
+	<!--修改ajax JQ处理-->
+	<script type="text/javascript">
 
-        <script>
-                $('#create').click(function(){
-                      var name = $('input[name=name]').val();
-                      var csrf = $('input[name=_token]').val();
-                        $.ajax({
-                            url:'/admin/cates/create',
-                            method:'POST',
-                            data:{
-                              name:name,
-                            },
-                            headers:{
-                              'X-CSRF-TOKEN':csrf
-                            },
-                            success:function(res){
-                               alert('添加成功')->wi;
-                            }
+		$('.type-edit').click(function(){
+			//
+				
+			//获取他的源生 防止缓存 .get(0).dataset.name等效于data('name')
+			var name = $(this).parent().parent().get(0).dataset.name;
+			var id  = $(this).parent().parent().data('id');
+			//console.dir($(this).parent().parent()[0].dataset.name);
+			$(this).parent().prev().prev().replaceWith('<input type="text" data-id="' + id + '" name="name" value="'+ name +'">');
+			//自动聚焦
+			$('input[name=name]').focus();
+			$('input[name=name]').change(function(){
+				
+				var tname = $(this);
+				var tval = tname.val();
+				$.ajax({
+					url:'/admin/cates/update',
+					method:'post',
+					data:{
+						id:id,
+						name:tval,
+						_token:'{{ csrf_token() }}'
+					},
+					success:function(res){
+						if(res == 'ok'){
+							//更新tr标签的data-name 防止重复点击后没更新数据
+							tname.parent().attr('data-name',tval);
+							tname.replaceWith('<td>'+tval+'</td>');
 
-                        })
-                        return false;
-                });
+						}
+					},
+					error:function(){
 
-                
-        </script>
-        <script>
-          layui.use(['form'], function(){
-            form = layui.form;
-            
-          });
+					}
+				})
+			});
 
-           /*用户-删除*/
-          function member_del(obj,id){
-              layer.confirm('确认要删除吗？',function(index){
-                  //发异步删除数据
-                  $(obj).parents("tr").remove();
-                  layer.msg('已删除!',{icon:1,time:1000});
-              });
-          }
+			$('input[name=name]').blur(function(){
 
-          // 分类展开收起的分类的逻辑
-          // 
-          $(function(){
-            $("tbody.x-cate tr[fid!='0']").hide();
-            // 栏目多级显示效果
-            $('.x-show').click(function () {
-                if($(this).attr('status')=='true'){
-                    $(this).html('&#xe625;'); 
-                    $(this).attr('status','false');
-                    cateId = $(this).parents('tr').attr('cate-id');
-                    $("tbody tr[fid="+cateId+"]").show();
-               }else{
-                    cateIds = [];
-                    $(this).html('&#xe623;');
-                    $(this).attr('status','true');
-                    cateId = $(this).parents('tr').attr('cate-id');
-                    getCateId(cateId);
-                    for (var i in cateIds) {
-                        $("tbody tr[cate-id="+cateIds[i]+"]").hide().find('.x-show').html('&#xe623;').attr('status','true');
-                    }
-               }
-            })
-          })
+				var tname = $(this);
+				var tval = tname.val();
+				if(tval == name){
+					tname.replaceWith('<td>'+name+'</td>');
+				}
+			})
 
-          var cateIds = [];
-          function getCateId(cateId) {
-              $("tbody tr[fid="+cateId+"]").each(function(index, el) {
-                  id = $(el).attr('cate-id');
-                  cateIds.push(id);
-                  getCateId(id);
-              });
-          }
-   
-        </script>
-    </body>
-</html>
+		});
+	</script>
+	<!--删除ajax JQ处理-->
+	<script type="text/javascript">
+		
+		$('.type-del').click(function(){
+			var tdel = $(this);
+			var id  = $(this).parent().parent().data('id');
+			$.ajax({
+				url:'/admin/cates/delete',
+				method:'get',
+				data:{
+					id:id,
+				},
+				success:function(res){
+					if(res == 'ok'){
+						tdel.parent().parent().remove();
+					}
+				},
+				error:function(res){
+
+				}
+			})
+
+		})
+
+	</script>
+	</table>
+</div>
+@endsection

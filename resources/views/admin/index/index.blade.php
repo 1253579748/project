@@ -58,10 +58,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <a href="#"><i class="fa fa-cogs nav_icon"></i>分类管理 <span class="nav-badge">12</span> <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="grids.html">Grid System</a>
+                                    <a href="/admin/cates/create">添加分类</a>
                                 </li>
                                 <li>
-                                    <a href="media.html">Media Objects</a>
+                                    <a href="/admin/cates/index">分类列表</a>
                                 </li>
                             </ul>
                             <!-- /nav-second-level -->
@@ -115,7 +115,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li>
                             <a href="charts.html" class="chart-nav"><i class="fa fa-bar-chart nav_icon"></i>友情链接 <span class="nav-badge-btm pull-right">new</span></a>
                         </li>
-
+                        <li>
+                            <a href="#"><i class="fa fa-cogs nav_icon"></i>留言管理 <span class="nav-badge">12</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>
+                                    <a href="/admin/index/index">留言列表</a>
+                                </li>
+                            </ul>
+                            <!-- /nav-second-level -->
+                        </li>
                        
                     </ul>
                     <!-- //sidebar-collapse -->
