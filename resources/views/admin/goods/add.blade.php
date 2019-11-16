@@ -1,105 +1,11 @@
-<!DOCTYPE html>
-<html class="x-admin-sm">
-    
-    <head>
-        <meta charset="UTF-8">
-        <title>欢迎页面-X-admin2.2</title>
-        <meta name="renderer" content="webkit">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="   0  =device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-        <link rel="stylesheet" href="/admin/uploadImg/css/upload-img.css">
-        <link rel="stylesheet" href="/admin/css/font.css">
-        <link rel="stylesheet" href="/admin/css/xadmin.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script type="text/javascript" src="/admin/lib/layui/layui.js" charset="utf-8"></script>
-        <script type="text/javascript" src="/admin/js/xadmin.js"></script>
-        <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-        <!--[if lt IE 9]>
-            <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-            <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
-        <div class="layui-fluid">
-            <div class="layui-row">
-                <form class="layui-form">
-                  <div class="layui-form-item">
-                      <label for="username" class="layui-form-label">
-                          <span class="x-red">*</span>商品名称
-                      </label>
-                      <div class="layui-input-inline">
-                          <input type="text" id="username" name="name" required="" lay-verify="required"
-                          autocomplete="off" class="layui-input">
-                      </div>
-                      <div class="layui-form-mid layui-word-aux">
-                          <span class="x-red">*</span>将会展示的商品名
-                      </div>
-                  </div>
 
-                  <div class="layui-form-item" style>
-                      <div class="layui-input-inline layui-show-xs-block">
-                          <select name="contrller" id="s1">
-                              <option>---选择商品分类-</option>
-                            @foreach($type as $v)
-                              @if($v['pid'] === 0)
-                                <option style="display:none"  class="s1_type">{{ $v['name'] }}</option>
-                              @endif
-                            @endforeach
-                          </select>
-                      </ >
-                      <div class="layui-input-inline layui-show-xs-block">
-                          <select name="contrller" id="s2">
-                              <option>---选择商品分类-</option>
-                            @foreach($type as $v)
-                              @if(substr_count($v['path'], ',') === 2)
-                                <option class="s2_">{{ $v['name'] }}</option>
-                              @endif
-                            @endforeach
-                          </select>
-                      </div>
-                      <div class="layui-input-inline layui-show-xs-block">
-                          <select name="contrller"  id="s3">
-                              <option>---选择商品分类-</option>
-                            @foreach($type as $v)
-                              @if(substr_count($v['path'], ',') === 3)
-                                <option class="s3_type">{{ $v['name'] }}</option>
-                              @endif
-                            @endforeach
-                          </select>
-                      </div>
-                      <span class="x-red">*</span>
-                  </div>
+@extends('admin.index.index')
+@section('main')
 
+<!-- <meta charset="gbk"> -->
+<link rel="stylesheet" href="/admin/uploadImg/css/upload-img.css">
 
-
-                  <div class="layui-form-item">
-                      <label for="phone" class="layui-form-label">
-                          <span class="x-red"></span>商品简介
-                      </label>
-                      <div class="layui-input-inline">
-                          <input type="text" id="phone" name="phone" required="" lay-verify="phone"
-                          autocomplete="off" class="layui-input">
-                      </div>
-                      <div class="layui-form-mid layui-word-aux">
-                          <span class="x-red"></span>展示商品的描述信息
-                      </div>
-                  </div>
-
-                  <div class="layui-form-item">
-                      <label for="phone" class="layui-form-label">
-                          <span class="x-red">*</span> 售价
-                      </label>
-                      <div class="layui-input-inline">
-                          <input type="text" id="ph" name="phone" required="" lay-verify="phone"
-                          autocomplete="off" class="layui-input">
-                      </div>
-                      <div class="layui-form-mid layui-word-aux">
-                          <span class="x-red">*</span>
-                      </div>
-                  </div>
-
-
-<div id="app" style="width:500px;height:400px" v-cloak>
+<div id="app" style="width:300px;height:300px" v-cloak>
     <div class="uploading-data" v-if="isUploading"></div>
 
     <div class="upload-img-column">
@@ -125,106 +31,307 @@
         </div>
     </div>
 
-
-
     <!--  压缩图片用的  -->
     <canvas id="compressCanvas" style="position: fixed; z-index: -1; opacity: 0; top: -100%; left: -100%"></canvas>
 </div>
 
+<form id="fmsub">
+  <div class="form-group">
+    <label for="exampleInputEmail1">商品名称</label>
+    <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="商品名">
+  </div>
+
+    <select name="contrller"  class="form-control" id="s1">
+        <option>---选择商品分类-</option>
+        @foreach($type as $v)
+        @if(substr_count($v['path'], ',') === 1)
+        <option class="s2_" id="{{$v['id']}}">{{ $v['name'] }}</option>
+        @endif
+        @endforeach
+    </select>
+    <br>
+    <select name="contrller"  class="form-control" id="s2">
+        <option>---选择商品分类-</option>
+        @foreach($type as $v)
+        @if(substr_count($v['path'], ',') === 2)
+        <option class="s2_type s1_{{$v['pid']}}" id="{{$v['id']}}">{{ $v['name'] }}</option>
+        @endif
+        @endforeach
+    </select>
+    <br>
+    <select name="type_id" class="form-control" id="s3">
+        <option>---选择商品分类-</option>
+        @foreach($type as $v)
+        @if(substr_count($v['path'], ',') === 3)
+        <option value="{{ $v['id'] }}" class="s3_type s3_{{$v['pid']}}">{{ $v['name'] }}</option>
+        @endif
+        @endforeach
+    </select>
+  <hr>
+  商品简介
+  <textarea name="description" class="form-control" rows="3"></textarea>
+    
+  <div class="form-group">
+    <hr>
+    @php
+
+    @endphp
+    售价
+    <input type="text" name="price" class="form-control" id="exampleInputPassword1" placeholder="￥">
+  </div>
 
 
-                  <div class="layui-form-item">
-                      <label for="L_repass" class="layui-form-label">
-                      </label>
-                      <button onclick="app.onUploadImg()" class="layui-btn" lay-filter="add" lay-submit="">
-                          增加
-                      </button>
-                  </div>
-              </form>
-            </div>
-        </div>
-        <script>layui.use(['form', 'layer'],
-            function() {
-                $ = layui.jquery;
-                var form = layui.form,
-                layer = layui.layer;
+    <select name="model_id"  class="form-control" id="model">
+        <option>---选择商品模型-</option>
+        @foreach($model as $v)
+        <option class="" id="{{$v['id']}}">{{ $v['name'] }}</option>
+        @endforeach
+    </select>
 
-                //自定义验证规则
-                form.verify({
-                    nikename: function(value) {
-                        if (value.length < 5) {
-                            return '昵称至少得5个字符啊';
-                        }
-                    },
-                    pass: [/(.+){6,12}$/, '密码必须6到12位'],
-                    repass: function(value) {
-                        if ($('#L_pass').val() != $('#L_repass').val()) {
-                            return '两次密码不一致';
-                        }
-                    }
-                });
+<div class="container-fluid">
 
-                //监听提交
-                form.on('submit(add)',
-                function(data) {
-                    console.log(data);
-                    //发异步，把数据提交给php
-                    layer.alert("增加成功", {
-                        icon: 6
-                    },
-                    function() {
-                        //关闭当前frame
-                        xadmin.close();
+  <div style="" class="col-xs-8">
+    <div id="#spec">
+        <table class="table table-bordered" id="tab">
 
-                        // 可以对父窗口进行刷新 
-                        xadmin.father_reload();
-                    });
-                    return false;
-                });
+        </table>
+    </div>
 
-            });
+    <table class="table table-bordered" id="tabEach">
+
+    </table>
+  </div>
 
 
-          </script>
-<script type="text/javascript" src="/admin/js/jquery.min.js" charset="utf-8"></script> 
-<script>
+  <div style="" id="attr" class="col-xs-4">
+        
+  </div>
+</div>
 
 
+</form>
+<button name="btn" class="btn btn-default">Submit</button>
 
-
-$("#s1").change(function(){
-
-    $(".s2_type").hide();
-    $(".s3_type").hide();
-    var id = $(this).val();
-    $(".s1_"+id).show();
-    console.log(".s1_"+id)
-    console.log(555)
-});
-
-$("#s2").change(function(){
-    $(".s3_type").hide();
-    var id = $(this).val();
-    $(".s2_"+id).show();
-});
-
-</script>
-
-        <script>
-            var _hmt = _hmt || []; (function() {
-                var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();
-
-
-
-        </script>
 
 <script src="https://www.jq22.com/jquery/vue.min.js"></script>
 <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
 <script>
+
+$('button[name=btn]').on('click', function(){
+
+    if ($('input[name=name]').eq(0).val() == null) return false;
+    if (isNaN($('select[name=type_id]').val())) return false;
+    if (isNaN($('select[name=model_id]')[0].selectedOptions[0].id)) return false;
+    if ( isNaN($('input[name=price]').val()) ) return false;
+    console.dir('ddd')
+    app.onUploadImg();//上传图片
+
+    return false;
+})
+
+
+
+
+
+
+
+$('#model').change(function(){
+    var id = this.selectedOptions[0].id;
+    $.ajax({
+        type: 'get',
+        url: '/api/spec/get/' + id,
+        success: function(res) {
+
+            eachSpec(res);
+        }
+    })
+
+    $.ajax({
+        type: 'get',
+        url: '/api/attr/get/' + id,
+        success: function(res) {
+            $('#tabEach').html('');
+            $('#attr').html('');
+            $('#tab').html('');
+            attrAction(res);
+        }
+    })
+
+
+})
+
+function attrAction(data)
+{
+    for (let v in data){
+
+        $(`<select id="${data[v].id}" class="${v} form-control attr"><option value="">-${data[v].attr_name}---请选择--</option></select>`).appendTo('#attr');
+
+        for (let k in data[v]['attr_item']){
+
+            $(`<option value="${data[v]['attr_item'][k]}">${data[v]['attr_item'][k]}</option>`).appendTo($('.'+v))
+        }
+    }
+}
+
+
+
+var check = [];
+var ipts;
+var show = {};
+function eachSpec(res)
+{
+
+    for (let val in res[0]['spec']) {
+
+        $(`<tr class="a_${val}"><th>${res[0]['spec'][val].name}</th><tr>`).appendTo($('#tab'));
+        for (let v in res[0]['spec'][val]['spec_item']) {
+            // console.dir(res[0]['spec'][val]['spec_item'][v])
+
+            show[res[0]['spec'][val]['spec_item'][v].id] = res[0]['spec'][val]['spec_item'][v].item;
+
+            if (res[0]['spec'][val]['spec_item'][v]['item']) {
+
+                let ipt = `<input name="${res[0]['spec'][val]['spec_item'][v].item}" type_id="${res[0]['spec'][val].id}" class="specInput" type="checkbox" value="${res[0]['spec'][val]['spec_item'][v]['id']}">`;
+                $(`<td>${ipt}${res[0]['spec'][val]['spec_item'][v]['item']}</td>`).appendTo($('.a_' + val));
+            }
+        }
+
+    }
+
+    $('.specInput').on('change', function(){
+        check = [];
+        $('.specInput').each(function(){
+            if (this.checked == true) {
+                check.push(this.value);
+            }
+        })
+
+        ipts = document.getElementsByClassName('specInput');
+        var tmp = dataEach(res);
+        var a = actionData(tmp);
+        var specData = multiCartesian(a); 
+        showSpec(specData);
+
+    })
+    
+}
+
+function showSpec(specData)
+{
+    $('#tabEach').html('');
+
+    for (let k in specData){
+        tmp = '';
+        for (let i in specData[k]) {
+            tmp = tmp + '_' + show[specData[k][i]]; //处理keyname
+        }
+        tmp = tmp.trim('_', 'left');
+        $(`<tr id="${k}" key="${specData[k]}" keyname="${tmp}" class="k_${k} spec"></tr>`).appendTo('#tabEach');
+        debugger;
+        for (let key in specData[k]) {
+            $(`<td>${show[specData[k][key]]}</td>`).appendTo('.k_'+k);
+
+        }
+
+        $(`<td>价格<input type="text" name="spec_price"/></td>`).appendTo('.k_'+k);
+        $(`<td>库存<input type="text" name="spec_store"/></td>`).appendTo('.k_'+k);
+    }
+
+
+}
+
+
+function multiCartesian(specs) {
+    // 判断是否传递了参数，是否是空数组
+    if (!specs || specs.length == 0) {
+        return [];
+    } else {
+        return joinSpec([[]], specs, 0, specs.length - 1);
+    }
+
+    // prevProducts 和 specs 两个数组做笛卡尔积
+    // i 是索引，表示原始数组遍历的位数
+    // max 是原始数组最大的长度
+    function joinSpec(prevProducts, specs, i, max) {
+        var currentProducts = [], currentProduct, currentSpecs = specs[i];
+        if (i > max) {
+            return prevProducts;
+        }
+        // 前面的数组 和 紧跟着后面的数组 做笛卡尔积
+        prevProducts.forEach(function (prevProduct) {
+            currentSpecs.forEach(function (spec) {
+                currentProduct = prevProduct.slice(0);
+                currentProduct.push(spec);
+                currentProducts.push(currentProduct);
+            });
+        });
+        // 递归处理，前面笛卡尔积之后的结果作为前面的数组，然后循环往前推进1位
+        return joinSpec(currentProducts, specs, ++i, max);
+    }
+}
+
+
+function actionData(res)
+{
+    let tmp = [];
+    for (let k in res) {
+        tmp.push(res[k]);
+    }
+
+    return tmp;
+}
+
+
+function dataEach(res)
+{
+    var obj = {};
+    for (let val in ipts) {
+        if (isNaN(val)) continue;
+        obj[$(ipts[val]).attr('type_id')] = [];
+
+    }
+
+    for (let val in ipts) {
+        if (isNaN(val)) continue;
+        if (ipts[val].checked == true) {
+
+            obj[$(ipts[val]).attr('type_id')].push(ipts[val].value)
+
+
+        }
+    }
+
+    return obj;
+    
+}
+
+
+
+
+$(".s2_type").hide();
+$(".s3_type").hide();
+
+$("#s1").change(function(){
+    $(".s2_type").hide();
+    $(".s3_type").hide();
+    var id = this.selectedOptions[0].id;
+    $(".s1_"+id).show();
+
+});
+
+$("#s2").change(function(){
+    // console.dir(this.selectedOptions[0].id);
+    $(".s3_type").hide();
+    var id = this.selectedOptions[0].id;
+    $(".s3_"+id).show();
+});
+
+
+
+
+
+
+
     var app = new Vue({
         el: '#app',
         data: {
@@ -243,8 +350,8 @@ $("#s2").change(function(){
 
                 //判断图片数量是否已上限
                 var currentImgTempArray = that.imgTempList;
-                if (currentImgTempArray.length >= 5) {
-                    alert("最多上传5张图片");
+                if (currentImgTempArray.length >= 1) {
+                    alert("请填加商品后管理图片");
                     return false;
                 }
 
@@ -305,7 +412,7 @@ $("#s2").change(function(){
                 var imgTempList = that.imgTempList;
                 if (imgTempList.length > 0) {
 
-                    that.isUploading = true; //正在上传 显示遮罩层 防止连续点击
+                    // that.isUploading = true; //正在上传 显示遮罩层 防止连续点击
 
                     var countNum = 0; //计算数量用的 判断上传到第几张图片了
 
@@ -318,6 +425,47 @@ $("#s2").change(function(){
                         //append(key,value)在数据末尾追加数据。 这儿的key值需要和后台定义保持一致
                         formdata.append('img', files);
 
+
+                        var name = $('input[name=name]').eq(0).val();
+                        var type_id = $('select[name=type_id]').val();
+                        var model_id = $('select[name=model_id]')[0].selectedOptions[0].id;
+                        var price = $('input[name=price]').val();
+                        var description = $('textarea[name=description]').val();
+
+                        var attr = [];//处理属性数据
+                        $('.attr').each(function(k,v){
+                            if (this.id != '' && this.selectedOptions[0].value != '') {
+
+                                attr.push([this.id, this.selectedOptions[0].value]);   
+                            }
+                        })
+
+                        for (let k in attr) {
+                            if (isNaN(k)) break;
+                            formdata.append('attr[]', attr[k]);
+                        }
+
+
+
+                        formdata.append('name', name);
+                        formdata.append('type_id', type_id);
+                        formdata.append('model_id', model_id);
+                        formdata.append('price', price);
+                        formdata.append('description', description);
+                        var attr_tmp = $('.spec');
+                        for (let k in attr_tmp) {
+                            if (isNaN(k)) break;
+                            
+                            var key = attr_tmp[k].attributes.key.value
+                            var keyname = $(attr_tmp[k]).attr('keyname');
+                            var a = attr_tmp[k].lastElementChild.previousElementSibling.firstElementChild.value//价格
+                            var b = attr_tmp[k].lastElementChild.firstElementChild.value//库存
+                                
+
+                            if (a === '' || b === '') continue;
+                            formdata.append('spec[]', [key, a, b, keyname]);
+                        }
+                        console.dir(formdata);
                         //用axios上传，
                         axios({
                             method: "POST",
@@ -329,6 +477,7 @@ $("#s2").change(function(){
                                 "Content-Type": "multipart/form-data"
                             }
                         }).then(function (res) {
+                            location.href = '/admin/goods/list'
                             console.log(res);
                             countNum++;
                             console.log("第 " + countNum + " 张图片上传完成");
@@ -360,9 +509,10 @@ $("#s2").change(function(){
         }
     });
 
-
-
 </script>
-    </body>
+@endsection
 
-</html>
+
+
+
+
