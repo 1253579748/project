@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\GoodsImg;
+use DB;
 
 class Goods extends Model
 {
@@ -39,5 +40,9 @@ class Goods extends Model
             $goods->GoodsSpec()->delete();
         });
     }
+
+
+
+
 
 }
