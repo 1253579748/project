@@ -8,6 +8,7 @@ use App\Type;
 use App\ModelType;
 use App\Spec;
 use App\AttriBute;
+use App\GoodsSpec;
 use App\Goods as GoodsModel;
 use App\GoodsImg;
 use App\AttrItem;
@@ -105,9 +106,10 @@ class Goods extends Controller
         $echostr = $request->search;//不知道为什么没有也不会报错
 
         $goods = GoodsModel::where('name',$echostr)->orWhere('name','like','%'.$echostr.'%')->paginate(5)->appends($request->all());
-
+        $showStatus = [1=>'上市', 2=>'下架'];
         return view('admin.goods.list', [
-                'goods' => $goods
+                'goods' => $goods,
+                'showStatus' => $showStatus
             ]);
     }
 
@@ -141,16 +143,39 @@ class Goods extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'price' => 'required|numeric',
-            'id' => 'required|numeric'
+            'id' => 'required|numeric',
+            'status' => 'required',
+            'spec' => 'required',
+            'attr' => 'required'
         ]);
 
-        $goods = GoodsModel::
-                    update($request->all());
+        $goods = GoodsModel::find($request->id);
+        $goods->status = $request->status;
+        $goods->name = $request->name;
+        $goods->price = $request->price;
+        if ($request->description) $goods->description = $request->description;
+        $goods->save();
 
-        dump($goods);
+        //修改规格价格
+        foreach ($request->spec as $k=>$v) {
+            $goods_spec = GoodsSpec::find($v[0]);
+            $goods_spec->price = $v[1];
+            $goods_spec->store_count = $v[2];
+            $res = $goods_spec->save();
+        }
 
-        dump(GoodsModel::toSql(5));
 
+        //修改属性
+        foreach ($request->attr as $k=>$v) {
+            if ($v[1] == '' && $v[0] == '') continue;
+            $goods_attr = AttrItem::where('goods_id', $request->id)
+                ->where('attribute_id', $v[0])
+                ->first();
+
+            $goods_attr->value = $v[1] ?? '';
+            $res = $goods_attr->save();
+
+        }
 
     }
 
