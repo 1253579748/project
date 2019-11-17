@@ -12,4 +12,9 @@ class Index extends Controller
     {
         return view('home.index.index');
     }
+
+    public function index2()
+    {
+        return view('home.user.frame');
+    }
 }

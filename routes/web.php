@@ -189,5 +189,10 @@ Route::group(['prefix'=>'admin/banner'],function(){
 });
 
 
+
+/********************分割线*****************************/
+
 Route::get('home/index', 'home\Index@index');
+
+Route::get('home/user', 'home\Index@index2');//无用路由
 
