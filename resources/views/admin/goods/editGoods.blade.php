@@ -6,6 +6,10 @@
     <label for="exampleInputEmail1">商品名称</label>
     <input type="text" name="name" class="form-control" id="exampleInputEmail1" value="{{$goods['name']}}" placeholder="商品名">
   </div>
+    <select name="status" class="form-control">
+        <option {{$goods['status'] == 1 ? 'selected' : ''}} value="1">上市</option>
+        <option {{$goods['status'] == 2 ? 'selected' : ''}} value="2">下架</option>
+    </select>
 
   <hr>
   商品简介
@@ -13,9 +17,7 @@
 
   <div class="form-group">
     <hr>
-    @php
-        dump($goods);
-    @endphp
+
     售价
     <input type="text" value="{{$goods['price']}}" name="price" class="form-control" id="exampleInputPassword1" placeholder="￥">
   </div>
@@ -37,7 +39,6 @@
         
     </table>
   </div>
-
 
   <div style="" id="attr" class="col-xs-4">
         @foreach($goods['attr_item'] as $v)
@@ -69,6 +70,7 @@ $('.sub').on('click', function(){
     var name = $('input[name=name]').eq(0).val();
     var price = $('input[name=price]').val();
     var description = $('textarea[name=description]').val();
+    var status = $('select[name=status]')[0].selectedOptions[0].value;
 
     var spec = [];//接收规格信息
     $('.list-group-item').each(function(k, v){
@@ -93,6 +95,7 @@ $('.sub').on('click', function(){
         name: name,
         id: id,
         price: price,
+        status,
         description: description,
         spec: spec,
         attr: attr
@@ -108,7 +111,7 @@ $('.sub').on('click', function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(res) {
-            console.dir(res);
+            location.href = '/admin/goods/list';
 
         }
     })

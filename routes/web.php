@@ -197,3 +197,5 @@ Route::group(['prefix'=>'admin/banner'],function(){
 });
 
 
+Route::get('home/index', 'home\Index@index');
+

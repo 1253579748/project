@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class GoodsSpec extends Model
 {
@@ -12,6 +13,7 @@ class GoodsSpec extends Model
     public $timestamps = false;
 
     protected $fillable = ['good_id', 'key', 'price', 'store_count', 'key_name'];
+
 
 
 }

@@ -72,17 +72,17 @@
                 },
             success: function(res){
                 alert(res);
-                location.href="http://xxooo.cn/admin/ads/show";
+                location.href="/admin/ads/show";
                 }
             })
         }
         function edit(id) {
-            var url = "http://xxooo.cn/admin/ads/edit?id="+id;
+            var url = "/admin/ads/edit?id="+id;
             console.dir(url);
             location.href=url;
         }
         function list() {
-            location.href="http://xxooo.cn/admin/ads/show";
+            location.href="/admin/ads/show";
         }
     </script>
 @stop

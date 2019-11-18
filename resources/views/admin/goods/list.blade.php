@@ -4,9 +4,6 @@
 
 <div>
     <div class="input-group">
-      <div class="input-group-btn">
-        <!-- Button and dropdown menu -->
-      </div>
       <input type="text" name="find" value="{{$_GET['search']??''}}" class="">
         <button type="button" onclick="find()" class="btn btn-default">搜索</button>
     </div>
@@ -28,14 +25,14 @@
             <td>{{$v['buy_count']}}</td>
             <td>{{$v['price']}}</td>
             <td>{{$v['updated_at']}}</td>
-            <td>{{$v['status']}}</td>
+            <td>{{$showStatus[ $v['status'] ]}}</td>
             <td id="{{$v['id']}}">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">操作 <span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right">
                       <li><a href="/admin/goods/editImg/{{$v['id']}}">图片管理</a></li>
                       <li><a href="/admin/goods/editGoods/{{$v['id']}}">编辑商品</a></li>
-                      <li><a onclick="del({{$v['id']}})" href="javascript(void)">删除商品</a></li>
+                      <li><a onclick="del({{$v['id']}})" href="javascript:;">删除商品</a></li>
                     </ul>
                   </div><!-- /btn-group -->
                 </div><!-- /input-group -->
@@ -51,7 +48,10 @@ function del(id)
 {
     $.ajax({
         type: 'get',
-        url: '/admin/goods/delGoods/'+ id
+        url: '/admin/goods/delGoods/'+ id,
+        success: function(){
+            location.href = '/admin/goods/list';
+        }
     })
 }
 
