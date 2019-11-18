@@ -109,18 +109,27 @@ Route::group(['prefix' => '/admin', 'middleware' => ['user.login', 'user.power']
     //添加权限
     Route::get('/power/add', 'admin\Power@add');
     Route::post('/power/sub', 'admin\Power@sub');
+    //修改权限
+    Route::get('/power/update', 'admin\Power@update');
+    Route::post('/power/upda', 'admin\Power@upda');
 
     //管理员角色删除
     Route::post('/power/updel/{id}', 'admin\Power@updel');
     //管理员角色添加
     Route::get('/power/useradd', 'admin\Power@useradd');
     Route::post('/power/usersub', 'admin\Power@usersub');
+    //修改管理员角色
+    Route::get('/power/adupdate', 'admin\Power@adupdate');
+    Route::post('/power/adupda', 'admin\Power@adupda');
 
     //添加角色
     Route::get('/power/roleadd', 'admin\Power@roleadd');
     Route::post('/power/rolesub', 'admin\Power@rolesub');
     //删除角色
     Route::post('/power/roledel/{id}', 'admin\Power@roledel');
+    //修改角色
+    Route::get('/power/roleupdate', 'admin\Power@roleupdate');
+    Route::post('/power/roleupda', 'admin\Power@roleupda');
 });
 
 //后台操作->验证是否登录
