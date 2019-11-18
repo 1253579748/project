@@ -80,11 +80,18 @@ Route::get('/admin/login', 'admin\LoginController@show')->middleware('user.load'
 Route::post('/admin/login', 'admin\LoginController@login')->middleware('user.load');
 //后台退出
 Route::get('/admin/logout', 'admin\Index@logout');
-	Route::post('store','admin\Cates@store');
-	Route::post('update','admin\Cates@update');
-	Route::get('delete','admin\Cates@delete');
+
+
+//后台分类
+Route::group(['prefix'=>'admin/cates'],function(){
+    Route::get('index','admin\Cates@index');
+    Route::get('create','admin\Cates@create');
+    Route::post('store','admin\Cates@store');
+    Route::post('update','admin\Cates@update');
+    Route::get('delete','admin\Cates@delete');
 });
 
+//后台评论
 Route::group(['prefix'=>'admin/comments'],function(){
 	Route::get('index','admin\Comments@index');
 	Route::get('update','admin\Comments@update');
