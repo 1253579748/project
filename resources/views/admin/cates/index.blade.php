@@ -21,8 +21,8 @@
 			  <td>{{$v->name}}</td>
 			  <td>{{$v->pid}}</td>
 			  <td>
-				<a class="type-edit" >修改</a>
-				<a class="type-del">删除</a>
+				<a class="type-edit btn btn-primary"" >修改</a>
+				<a class="type-del " >删除</a>
 			  </td>
 			</tr>
 

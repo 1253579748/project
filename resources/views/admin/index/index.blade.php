@@ -119,7 +119,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <a href="#"><i class="fa fa-cogs nav_icon"></i>留言管理 <span class="nav-badge">12</span> <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="/admin/index/index">留言列表</a>
+                                    <a href="/admin/comments/index">留言列表</a>
                                 </li>
                             </ul>
                             <!-- /nav-second-level -->

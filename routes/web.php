@@ -24,3 +24,10 @@ Route::group(['prefix'=>'admin/cates'],function(){
 	Route::get('delete','admin\Cates@delete');
 });
 
+Route::group(['prefix'=>'admin/comments'],function(){
+	Route::get('index','admin\Comments@index');
+	Route::get('update','admin\Comments@update');
+	Route::post('store','admin\Comments@store');
+	Route::get('delete','admin\Comments@delete');
+});
+
