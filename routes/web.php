@@ -196,6 +196,9 @@ Route::group(['prefix'=>'admin/banner'],function(){
     Route::post('edit','admin\BannerController@editData');
 });
 
+
+
+/********************分割线*****************************/
 //前台首页
 Route::get('home/index', 'home\Index@index');
 
@@ -203,8 +206,6 @@ Route::get('home/index', 'home\Index@index');
 Route::get('home/login', 'home\Login@show');
 Route::post('home/login', 'home\Login@login');
 
-
-/********************分割线*****************************/
 
 Route::get('home/index', 'home\Index@index');
 

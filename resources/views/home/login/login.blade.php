@@ -2,7 +2,7 @@
 <html lang="zh-cmn-Hans">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="/home/ljc/favicon.ico">
+    <link rel="shortcut icon" href="/home/ljc/favicon.jpg">
     <link rel="stylesheet" href="/home/css/iconfont.css">
     <link rel="stylesheet" href="/home/css/global.css">
     <link rel="stylesheet" href="/home/css/bootstrap.min.css">
@@ -13,12 +13,11 @@
     <script src="/home/js/jquery.form.js" charset="UTF-8"></script>
     <script src="/home/js/global.js" charset="UTF-8"></script>
     <script src="/home/js/login.js" charset="UTF-8"></script>
-    <script src="/home/js/jquery.js" charset="UTF-8"></script>
     <title>星心光商城 -  登录 / 注册</title>
 </head>
 <body>
     <div class="public-head-layout container">
-        <a class="logo" href="/home/index"><img src="images/icons/logo.jpg" alt="星心光商城" class="cover"></a>
+        <a class="logo" href="/home/index"><img src="/home/ljc/favicon.jpg" alt="星心光商城" class="cover"></a>
     </div>
     <div style="background:url(images/login_bg.jpg) no-repeat center center; ">
         <div class="login-layout container">
