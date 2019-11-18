@@ -210,3 +210,9 @@ Route::post('home/login', 'home\Login@login');
 Route::get('home/index', 'home\Index@index');
 
 Route::get('home/user', 'home\Index@index2');//无用路由
+
+Route::group(['prefix'=>'goods'], function(){
+
+    Route::get('list', 'home\Goods@list');
+
+});

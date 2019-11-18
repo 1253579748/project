@@ -39,7 +39,7 @@
 	<div class="bgf5 clearfix">
 		<div class="top-user">
 			<div class="inner">
-				<a class="logo" href="index.html"><img src="images/icons/logo.jpg" alt="U袋网" class="cover"></a>
+				<a class="logo" href="index.html"><img src="/home/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
 				<div class="title">个人中心</div>
 			</div>
 		</div>
@@ -139,16 +139,16 @@
 		<div class="footer-tags">
 			<div class="tags-box inner">
 				<div class="tag-div">
-					<img src="images/icons/footer_1.gif" alt="厂家直供">
+					<img src="/home/images/icons/footer_1.gif" alt="厂家直供">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_2.gif" alt="一件代发">
+					<img src="/home/images/icons/footer_2.gif" alt="一件代发">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_3.gif" alt="美工活动支持">
+					<img src="/home/images/icons/footer_3.gif" alt="美工活动支持">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_4.gif" alt="信誉认证">
+					<img src="/home/images/icons/footer_4.gif" alt="信誉认证">
 				</div>
 			</div>
 		</div>

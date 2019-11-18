@@ -38,7 +38,7 @@
 	<!-- 搜索栏 -->
 	<div class="top-search">
 		<div class="inner">
-			<a class="logo" href="index.html"><img src="images/icons/logo.jpg" alt="U袋网" class="cover"></a>
+			<a class="logo" href="index.html"><img src="/home/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
 			<div class="search-box">
 				<form class="input-group">
 					<input placeholder="Ta们都在搜U袋网" type="text">
@@ -158,16 +158,16 @@
 		<div class="footer-tags">
 			<div class="tags-box inner">
 				<div class="tag-div">
-					<img src="images/icons/footer_1.gif" alt="厂家直供">
+					<img src="/home/images/icons/footer_1.gif" alt="厂家直供">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_2.gif" alt="一件代发">
+					<img src="/home/images/icons/footer_2.gif" alt="一件代发">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_3.gif" alt="美工活动支持">
+					<img src="/home/images/icons/footer_3.gif" alt="美工活动支持">
 				</div>
 				<div class="tag-div">
-					<img src="images/icons/footer_4.gif" alt="信誉认证">
+					<img src="/home/images/icons/footer_4.gif" alt="信誉认证">
 				</div>
 			</div>
 		</div>
