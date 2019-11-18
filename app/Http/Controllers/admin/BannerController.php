@@ -47,16 +47,18 @@ class BannerController extends Controller
         // 这条数据的 图片名称
         $img_add = $arr->img_add;
         // 获得图片的绝对路径
-        $url = public_path() . '/storage/admin/banner_img/' . $img_add;
+        $url = base_path() . '/storage/app/public/admin/banner_img/' . $img_add;
         if ($del){
-            // 删除图片
-            unlink($url);
-            //重新加载模板
-            return redirect('/admin/banner/show');
+            if (file_exists($url)){
+                unlink($url);
+                return redirect('/admin/banner/show');
+            }else{
+                return redirect('/admin/banner/show');
+            }
         }else{
-            echo "alert('操作失败')";
             return redirect('/admin/banner/show');
         }
+
     }
     public function edit(Request $request)
     {
@@ -85,10 +87,13 @@ class BannerController extends Controller
                 'img_add'=>$img_add
             ]);
 
-
         $url = public_path() . '/storage/admin/banner_img/' . $img_addd;
+        $url = base_path() . '/storage/app/public/admin/banner_img/' . $img_add;
+
         if ($edit){
-            unlink($url);
+            if (file_exists($url)) {
+                unlink($url);
+            }
             $zz= $request->img_add->storeAs('admin/banner_img', $img_add,'public');
             return redirect('/admin/banner/show');
         }else{
