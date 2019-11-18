@@ -114,10 +114,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <a href="#"><i class="fa fa-book nav_icon"></i>轮播图管理 <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="http://xxooo.cn/admin/banner/show">查看轮播图<span class="nav-badge-btm">08</span></a>
+                                    <a href="/admin/banner/show">查看轮播图<span class="nav-badge-btm">08</span></a>
                                 </li>
                                 <li>
-                                    <a href="http://xxooo.cn/admin/banner/add">添加轮播图</a>
+                                    <a href="/admin/banner/add">添加轮播图</a>
                                 </li>
                             </ul>
                             <!-- /nav-second-level -->
@@ -141,10 +141,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <a href="#"><i class="fa fa-book nav_icon"></i>友情链接 <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="http://xxooo.cn/admin/ads/show">查看友情链接<span class="nav-badge-btm">08</span></a>
+                                    <a href="/admin/ads/show">查看友情链接<span class="nav-badge-btm">08</span></a>
                                 </li>
                                 <li>
-                                    <a href="http://xxooo.cn/admin/ads/add">添加友情链接</a>
+                                    <a href="/admin/ads/add">添加友情链接</a>
                                 </li>
                             </ul>
                             <!-- /nav-second-level -->
