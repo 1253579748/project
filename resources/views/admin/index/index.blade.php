@@ -52,7 +52,21 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html" class="active"><i class="fa fa-home nav_icon"></i>用户管理</a>
+                            <a href="#"><i class="fa fa-home nav_icon"></i>用户管理<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>
+                                    <a href="/admin/adminList/index">管理员列表</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/adminList/add">添加管理员</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/userList/index">用户列表</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/userList/add">添加用户</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-cogs nav_icon"></i>分类管理 <span class="nav-badge">12</span> <span class="fa arrow"></span></a>
@@ -98,16 +112,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </li>
                         
                         <li>
-                            <a href="#"><i class="fa fa-file-text-o nav_icon"></i>权限管理<span class="nav-badge-btm">02</span><span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-file-text-o nav_icon"></i>权限管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="login.html">Login</a>
+                                    <a href="/admin/power/index">权限资源列表</a>
                                 </li>
                                 <li>
-                                    <a href="signup.html">SignUp</a>
+                                    <a href="/admin/power/role">角色管理</a>
                                 </li>
                                 <li>
-                                    <a href="blank-page.html">Blank Page</a>
+                                    <a href="/admin/power/user">管理员角色列表</a>
                                 </li>
                             </ul>
                             <!-- //nav-second-level -->
@@ -293,8 +307,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <div class="profile_img">   
                                     <span class="prfil-img"><img src="/admin/images/a.png" alt=""> </span> 
                                     <div class="user-name">
-                                        <p>Wikolia</p>
-                                        <span>Administrator</span>
+                                        <p>{{ session('userInfo.username') }}</p>
                                     </div>
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>
@@ -304,7 +317,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <ul class="dropdown-menu drp-mnu">
                                 <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
                                 <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
-                                <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <li> <a href="/admin/logout"><i class="fa fa-sign-out"></i>退出登录</a> </li>
                             </ul>
                         </li>
                     </ul>
@@ -361,5 +374,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!--//scrolling js-->
     <!-- Bootstrap Core JavaScript -->
    <script src="/admin/js/bootstrap.js"> </script>
+   @yield('script')
 </body>
 </html>

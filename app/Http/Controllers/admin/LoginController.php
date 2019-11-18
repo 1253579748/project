@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     public function show()
     {
-        return view('Admin.login');
+        return view('admin.login');
     }
 
     public function login(Request $request)
@@ -47,7 +47,7 @@ class LoginController extends Controller
                     ]
                 ]);
                 //跳转后台首页
-                return redirect('/Admin');
+                return redirect('/admin/index/index');
             }
         } else {
             return back()->withInput();

@@ -14,4 +14,12 @@ class Index extends Controller
 
     }
 
+    public function logout()
+    {
+        //退出登录，删除session
+        session()->forget('isLogin');
+        session()->forget('userInfo');
+        return redirect('/admin/login');
+    }
+
 }

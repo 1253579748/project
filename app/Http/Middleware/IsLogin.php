@@ -23,7 +23,7 @@ class IsLogin
             return $next($request);
         } else {
             //重定向到登录页
-            return redirect('/Admin/login');
+            return redirect('/admin/login');
         }
     }
 }

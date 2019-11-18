@@ -17,7 +17,7 @@ class IsLoad
     {
         //判断是否登录，若登录则直接显示首页
         if ($request->session()->has('isLogin')) {
-            return redirect('/Admin');
+            return redirect('/admin/index/index');
         }
 
         return $next($request);
