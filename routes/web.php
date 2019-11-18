@@ -202,3 +202,10 @@ Route::get('home/index', 'home\Index@index');
 //前台登录
 Route::get('home/login', 'home\Login@show');
 Route::post('home/login', 'home\Login@login');
+
+
+/********************分割线*****************************/
+
+Route::get('home/index', 'home\Index@index');
+
+Route::get('home/user', 'home\Index@index2');//无用路由
