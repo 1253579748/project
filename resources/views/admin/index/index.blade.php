@@ -16,7 +16,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href="/admin/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
  <!-- js-->
-<script src="/admin/js/jquery-1.11.1.min.js"></script>
+    @yield("cssjs")
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/core.js"></script>
+{{--<script src="/admin/js/jquery-1.11.1.min.js"></script>--}}
 <script src="/admin/js/modernizr.custom.js"></script>
 <!--webfonts-->
 <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -72,10 +74,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <a href="#"><i class="fa fa-cogs nav_icon"></i>分类管理 <span class="nav-badge">12</span> <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="grids.html">Grid System</a>
+                                    <a href="/admin/cates/create">添加分类</a>
                                 </li>
                                 <li>
-                                    <a href="media.html">Media Objects</a>
+                                    <a href="/admin/cates/index">分类列表</a>
                                 </li>
                             </ul>
                             <!-- /nav-second-level -->
@@ -107,10 +109,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </ul>
                             <!-- //nav-second-level -->
                         </li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-table nav_icon"></i>轮播图管理 <span class="nav-badge">05</span></a>
+                        <li class="">
+                            <a href="#"><i class="fa fa-book nav_icon"></i>轮播图管理 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>
+                                    <a href="http://xxooo.cn/admin/banner/show">查看轮播图<span class="nav-badge-btm">08</span></a>
+                                </li>
+                                <li>
+                                    <a href="http://xxooo.cn/admin/banner/add">添加轮播图</a>
+                                </li>
+                            </ul>
+                            <!-- /nav-second-level -->
                         </li>
-                        
                         <li>
                             <a href="#"><i class="fa fa-file-text-o nav_icon"></i>权限管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
@@ -126,10 +136,27 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </ul>
                             <!-- //nav-second-level -->
                         </li>
-                        <li>
-                            <a href="charts.html" class="chart-nav"><i class="fa fa-bar-chart nav_icon"></i>友情链接 <span class="nav-badge-btm pull-right">new</span></a>
+                        <li class="">
+                            <a href="#"><i class="fa fa-book nav_icon"></i>友情链接 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>
+                                    <a href="http://xxooo.cn/admin/ads/show">查看友情链接<span class="nav-badge-btm">08</span></a>
+                                </li>
+                                <li>
+                                    <a href="http://xxooo.cn/admin/ads/add">添加友情链接</a>
+                                </li>
+                            </ul>
+                            <!-- /nav-second-level -->
                         </li>
-
+                        <li>
+                            <a href="#"><i class="fa fa-cogs nav_icon"></i>留言管理 <span class="nav-badge">12</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>
+                                    <a href="/admin/comments/index">留言列表</a>
+                                </li>
+                            </ul>
+                            <!-- /nav-second-level -->
+                        </li>
                        
                     </ul>
                     <!-- //sidebar-collapse -->
@@ -335,7 +362,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <div class="row calender widget-shadow" style="display:none;">
                     <h4 class="title">Calender</h4>
                     <div class="cal1">
-                        
                     </div>
                 </div>
                 <div class="clearfix"> </div>
@@ -360,7 +386,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 classie.toggle( menuLeft, 'cbp-spmenu-open' );
                 disableOther( 'showLeftPush' );
             };
-            
 
             function disableOther( button ) {
                 if( button !== 'showLeftPush' ) {
@@ -375,5 +400,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- Bootstrap Core JavaScript -->
    <script src="/admin/js/bootstrap.js"> </script>
    @yield('script')
+    @yield("js")
 </body>
 </html>
