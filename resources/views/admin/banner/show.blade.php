@@ -50,13 +50,13 @@
 @section('js')
     <script>
         function del(id) {
-            var url = "http://xxooo.cn/admin/banner/del?id="+id;
+            var url = "/admin/banner/del?id="+id;
             console.dir(url);
             location.href=url;
 
         }
         function edit(id) {
-            var url = "http://xxooo.cn/admin/banner/edit?id="+id;
+            var url = "/admin/banner/edit?id="+id;
             console.dir(url);
             location.href=url;
         }
