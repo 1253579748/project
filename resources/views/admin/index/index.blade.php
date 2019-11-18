@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -17,8 +18,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- //font-awesome icons -->
  <!-- js-->
     @yield("cssjs")
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/core.js"></script>
-{{--<script src="/admin/js/jquery-1.11.1.min.js"></script>--}}
+<script src="/admin/js/jquery-1.11.1.min.js"></script>
+<!-- <script src="https://cdn.bootcss.com/jquery/3.4.1/core.js"></script> -->
 <script src="/admin/js/modernizr.custom.js"></script>
 <!--webfonts-->
 <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>

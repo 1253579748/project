@@ -1,5 +1,64 @@
 <?php
 
+//商品
+Route::prefix('admin/goods')->group(function () {
+
+    Route::get('add', 'admin\Goods@add');
+
+    Route::get('list', 'admin\Goods@list');
+
+    Route::get('editImg/{id}', 'admin\Goods@editImg');
+
+    Route::get('editGoods/{id}', 'admin\Goods@editGoods');
+
+    Route::post('edit', 'admin\Goods@editCheck');
+
+    Route::get('delGoods/{id}', 'admin\Goods@delGoods');
+
+    Route::post('store', 'admin\Goods@store');
+
+    Route::post('storeImg', 'admin\Goods@storeImg');
+
+    Route::post('delImg', 'admin\Goods@delImg');
+
+
+});
+
+//商品模型规格
+Route::group(['prefix'=>'admin/model'], function(){
+
+    Route::get('list', 'admin\Model@list');
+
+    Route::get('add', 'admin\Model@add');
+
+    Route::post('del', 'admin\Model@del');
+
+    Route::post('store', 'admin\Model@store');
+
+});
+
+Route::group(['prefix'=>'admin/order'], function(){
+
+    Route::get('add', 'admin\Order@add');
+});
+
+
+//api接口
+Route::prefix('api')->group(function () {
+
+    Route::get('type/get/{id}', 'api\Type@getType');
+
+    Route::get('type/getall', 'api\Type@getTypeAll');
+
+    Route::get('spec/get/{id}', 'api\Spec@getSpec');
+
+    Route::get('attr/get/{id}', 'api\Spec@getAttr');
+
+    Route::get('user/getId/{name}', 'api\User@getId');
+
+
+});
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +73,7 @@
 Route::get('/', function () {
     return view('前台首页');
 });
+
 
 // 后台首页路由
 Route::get('admin/index/index','admin\Index@index');
@@ -75,6 +135,13 @@ Route::group(['prefix' => '/admin', 'middleware' => ['user.login']], function(){
     Route::get('/power/role', 'admin\Power@role');
 });
 
+
+
+    Route::get('index','admin\Cates@index');
+    Route::post('create','admin\Cates@create');
+
+
+
 //后台登录
 Route::get('/admin/login', 'admin\LoginController@show')->middleware('user.load');
 Route::post('/admin/login', 'admin\LoginController@login')->middleware('user.load');
@@ -108,6 +175,8 @@ Route::group(['prefix'=>'admin/ads'],function(){
     Route::post('edit','admin\AdsController@editData');
 });
 
+
+
 //后台友情链接路由
 Route::group(['prefix'=>'admin/banner'],function(){
     Route::get('show','admin\BannerController@show');
@@ -117,3 +186,5 @@ Route::group(['prefix'=>'admin/banner'],function(){
     Route::get('edit','admin\BannerController@edit');
     Route::post('edit','admin\BannerController@editData');
 });
+
+
