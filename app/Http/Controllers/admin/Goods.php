@@ -188,6 +188,17 @@ class Goods extends Controller
         return back();
     }
 
+    public function push($id)
+    {
+        $goods = GoodsModel::where('id', $id)->first();
+        if ($goods->is_push) $status = 0;
+        if (!$goods->is_push) $status = 1;
+        $model = GoodsModel::find($id);
+        $model->is_push = $status;
+        $model->save();
+        return $status;
+    }
+
 
 
     public function storeImg(Request $request)

@@ -14,6 +14,7 @@
             <td>商品分类</td>
             <td>销量</td>
             <td>标准价格</td>
+            <td>推荐</td>
             <td>修改时间</td>
             <td>状态</td>
             <td>操作</td>
@@ -24,6 +25,7 @@
             <td>{{$v['type_id']}}</td>
             <td>{{$v['buy_count']}}</td>
             <td>{{$v['price']}}</td>
+            <td onclick="push({{$v['id']}})" id="{{$v['id']}}">{{($v['is_push']) ? '是':'否'}}</td>
             <td>{{$v['updated_at']}}</td>
             <td>{{$showStatus[ $v['status'] ]}}</td>
             <td id="{{$v['id']}}">
@@ -44,6 +46,7 @@
 </div>
 
 <script>
+//删除
 function del(id)
 {
     $.ajax({
@@ -55,10 +58,22 @@ function del(id)
     })
 }
 
+//推荐
+function push(id)
+{
+    $.ajax({
+        type: 'get',
+        url: '/admin/goods/push/'+ id,
+        success: function(res){
+            $('#' + id).html( parseInt(res) ? '是':'否' );
+        }
+    })
+}
+
+//查找
 function find()
 {
     var search = $('input[name=find]').val();
-    console.dir(search)
     location.href = '/admin/goods/list?search=' + search;
 }
 </script>
