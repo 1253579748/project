@@ -196,6 +196,9 @@ Route::group(['prefix'=>'admin/banner'],function(){
     Route::post('edit','admin\BannerController@editData');
 });
 
-
+//前台首页
 Route::get('home/index', 'home\Index@index');
 
+//前台登录
+Route::get('home/login', 'home\Login@show');
+Route::post('home/login', 'home\Login@login');
