@@ -80,6 +80,7 @@ Route::get('/admin/login', 'admin\LoginController@show')->middleware('user.load'
 Route::post('/admin/login', 'admin\LoginController@login')->middleware('user.load');
 //后台退出
 Route::get('/admin/logout', 'admin\Index@logout');
+
 	Route::post('store','admin\Cates@store');
 	Route::post('update','admin\Cates@update');
 	Route::get('delete','admin\Cates@delete');
