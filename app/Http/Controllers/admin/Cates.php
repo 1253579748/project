@@ -79,6 +79,16 @@ class Cates extends Controller
 
     public function delete(Request $request){
         $id = $request->input('id');
+        //如果该分类下面还有子类先删除子类
+        $tcon = DB::table('types')->where('pid','=',$id)->first();
+        if(!empty($tcon)){
+            return '0';
+        }
+        //查询该ID下面是否有商品
+        $con = DB::table('goods')->where('type_id','=',$id)->first();
+        if(!empty($con)){
+            return '1';
+        }
         $res = DB::table('types')->where('id','=',$id)->delete();
         if($res){
             return 'ok';

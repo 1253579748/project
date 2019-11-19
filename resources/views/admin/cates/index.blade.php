@@ -22,7 +22,7 @@
 			  <td>{{$v->pid}}</td>
 			  <td>
 				<a class="type-edit btn btn-primary"" >修改</a>
-				<a class="type-del " >删除</a>
+				<a class="type-del  btn btn-danger" >删除</a>
 			  </td>
 			</tr>
 
@@ -91,6 +91,14 @@
 					id:id,
 				},
 				success:function(res){
+					if(res == '0'){
+						$('.panel-body').before('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>该分类下面还有子类</strong></div>');
+					}
+					if(res == '1'){
+						$('.panel-body').before('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong> 该分类下还有商品</strong></div>');
+
+
+					}
 					if(res == 'ok'){
 						tdel.parent().parent().remove();
 					}
