@@ -3,7 +3,7 @@
 @section('main')
     <div class="inline-form widget-shadow">
         <div class="form-title">
-            <h4>修改友情链接:</h4>
+            <h4>修改轮播图:</h4>
         </div>
         <div class="form-body">
             <form data-toggle="validator" method="post" action="edit" enctype="multipart/form-data">
