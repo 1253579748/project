@@ -195,11 +195,9 @@
 		</div>
 		<div class="copy-box clearfix">
 			<ul class="copy-links">
-				<a href="agent_level.html"><li>网店代销</li></a>
-				<a href="class_room.html"><li>U袋学堂</li></a>
-				<a href="udai_about.html"><li>联系我们</li></a>
-				<a href="temp_article/udai_article10.html"><li>企业简介</li></a>
-				<a href="temp_article/udai_article5.html"><li>新手上路</li></a>
+{{--				@foreach($arr as $k=>$v)--}}
+{{--				<a href="{{$v->href}}"><li>{{$v->title}}</li></a>--}}
+{{--				@endforeach--}}
 			</ul>
 			<!-- 版权 -->
 			<p class="copyright">
