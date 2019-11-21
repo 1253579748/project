@@ -193,8 +193,10 @@ Route::group(['prefix'=>'admin/banner'],function(){
 /********************分割线*****************************/
 
 Route::get('home/index', 'home\Index@index');
-
-Route::get('home/user', 'home\Index@index2');//无用路由
+//个人中心首页路由
+Route::get('home/personal/show', 'home\Index@index2');
+//个人中心订单路由
+Route::get('home/order/list','home\Index@order');
 
 Route::group(['prefix'=>'goods'], function(){
 

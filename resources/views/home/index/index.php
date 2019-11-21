@@ -9,13 +9,12 @@
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="css/swiper.min.css">
 	<link rel="stylesheet" href="css/styles.css">
-	@yield('css')
 	<script src="js/jquery.1.12.4.min.js" charset="UTF-8"></script>
 	<script src="js/bootstrap.min.js" charset="UTF-8"></script>
 	<script src="js/swiper.min.js" charset="UTF-8"></script>
 	<script src="js/global.js" charset="UTF-8"></script>
 	<script src="js/jquery.DJMask.2.1.1.js" charset="UTF-8"></script>
-	<title>星心光商城 - @yield('title')</title>
+	<title>U袋网</title>
 </head>
 <body>
 	<!-- 顶部tab -->
@@ -27,9 +26,9 @@
 				<a href="temp_article/udai_article4.html">帮助中心</a>
 			</div>
 			<div class="pull-right">
-				<a href="login.html"><span class="cr">登录</span></a>	
+				<a href="login.html"><span class="cr">登录</span></a>
 				<a href="login.html?p=register">注册</a>
-				<a href="/home/personal/show">我的U袋</a>
+				<a href="udai_welcome.html">我的U袋</a>
 				<a href="udai_order.html">我的订单</a>
 				<a href="udai_integral.html">积分平台</a>
 			</div>
@@ -65,57 +64,247 @@
 			</div>
 		</div>
 	</div>
-	
 	<!-- 首页导航栏 -->
 	<div class="top-nav bg3">
 		<div class="nav-box inner">
-			@section('cates')
 			<div class="all-cat">
 				<div class="title"><i class="iconfont icon-menu"></i> 全部分类</div>
 				<div class="cat-list__box">
-					@foreach($data as $k => $v)
 					<div class="cat-box">
-						
 						<div class="title">
-							<i class="iconfont icon-skirt ce"></i>
-								<a href="/goods/list/{{$v->id}}" style="color:#999;">{{$v->name}}</a>
+							<i class="iconfont icon-skirt ce"></i> 女装
 						</div>
-						
-						
 						<ul class="cat-list clearfix">
-							@foreach($v->getType2($v->id) as $k => $v2)
-							<li><a href="/goods/list/{{$v2['id']}}" style="color:#999;">{{$v2['name']}}</a></li>
-							@endforeach
+							<li>下装</li>
+							<li>上装</li>
+							<li>裙装</li>
+							<li>内衣</li>
 						</ul>
-
 						<div class="cat-list__deploy">
 							<div class="deploy-box">
-								@foreach($v->getType2($v->id) as $k => $v2)
 								<div class="genre-box clearfix">
-									<span class="title">{{$v2['name']}}：</span>
-
+									<span class="title">下装：</span>
 									<div class="genre-list">
-										@foreach($v->getType2($v2['id']) as $k => $v3)
-										<a href="/goods/list/{{$v3['id']}}" style="color:#999;">{{$v3['name']}}</a>
-										@endforeach
-										
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
 									</div>
 								</div>
-								@endforeach
+								<div class="genre-box clearfix">
+									<span class="title">上装：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
+								<div class="genre-box clearfix">
+									<span class="title">裙装：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
+								<div class="genre-box clearfix">
+									<span class="title">内衣：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					@endforeach
-
+					<div class="cat-box">
+						<div class="title">
+							<i class="iconfont icon-fushi ce"></i> 男装
+						</div>
+						<ul class="cat-list clearfix">
+							<li>下装</li>
+							<li>上装</li>
+							<li>套装</li>
+						</ul>
+						<div class="cat-list__deploy">
+							<div class="deploy-box">
+								<div class="genre-box clearfix">
+									<span class="title">下装：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
+								<div class="genre-box clearfix">
+									<span class="title">上装：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
+								<div class="genre-box clearfix">
+									<span class="title">套装：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cat-box">
+						<div class="title">
+							<i class="iconfont icon-bao ce"></i> 包包
+						</div>
+						<ul class="cat-list clearfix">
+							<li>女士包包</li>
+							<li>男士包包</li>
+						</ul>
+						<div class="cat-list__deploy">
+							<div class="deploy-box">
+								<div class="genre-box clearfix">
+									<span class="title">女士包包：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
+								<div class="genre-box clearfix">
+									<span class="title">男士包包：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cat-box">
+						<div class="title">
+							<i class="iconfont icon-kid ce"></i> 童装
+						</div>
+						<ul class="cat-list clearfix">
+							<li>女童</li>
+							<li>男童</li>
+							<li>男女童鞋</li>
+						</ul>
+						<div class="cat-list__deploy">
+							<div class="deploy-box">
+								<div class="genre-box clearfix">
+									<span class="title">女童：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
+								<div class="genre-box clearfix">
+									<span class="title">男童：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
+								<div class="genre-box clearfix">
+									<span class="title">男女童鞋：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cat-box">
+						<div class="title">
+							<i class="iconfont icon-shoes ce"></i> 鞋靴
+						</div>
+						<ul class="cat-list clearfix">
+							<li>男鞋</li>
+							<li>女鞋</li>
+							<li>儿童鞋</li>
+						</ul>
+						<div class="cat-list__deploy">
+							<div class="deploy-box">
+								<div class="genre-box clearfix">
+									<span class="title">男鞋：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
+								<div class="genre-box clearfix">
+									<span class="title">女鞋：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
+								<div class="genre-box clearfix">
+									<span class="title">儿童鞋：</span>
+									<div class="genre-list">
+										<a href="">牛仔裤</a>
+										<a href="">短裤</a>
+										<a href="">休闲裤</a>
+										<a href="">打底裤</a>
+										<a href="">丝袜</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			@show
 			<ul class="nva-list">
-				<a href="/home/index"><li class="active">首页</li></a>
-				@foreach($data as $k => $v)
-				<a href="/goods/list/{{$v->id}}"><li>{{$v->name}}</li></a>
-				@endforeach
-
+				<a href="index.html"><li class="active">首页</li></a>
+				<a href="temp_article/udai_article10.html"><li>企业简介</li></a>
+				<a href="temp_article/udai_article5.html"><li>新手上路</li></a>
+				<a href="class_room.html"><li>U袋学堂</li></a>
+				<a href="enterprise_id.html"><li>企业账号</li></a>
+				<a href="udai_contract.html"><li>诚信合约</li></a>
+				<a href="item_remove.html"><li>实时下架</li></a>
 			</ul>
 			<div class="user-info__box">
 				<div class="login-box">
@@ -178,17 +367,26 @@
 			</div>
 		</div>
 	</div>
-	@section('main')
 	<!-- 顶部轮播 -->
     <div class="swiper-container banner-box">
         <div class="swiper-wrapper">
-            @foreach($banner as $k=>$v)
-	            <div class="swiper-slide"><a href="{{$v->img_url}}"><img src="/storage/admin/banner_img/{{$v->img_add}}" title= "{{$v->img_describe}}"  class="cover"></a>
-	            </div>
-	        @endforeach
+            <div class="swiper-slide"><a href="item_show.html"><img src="images/temp/banner_1.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_show.html"><img src="images/temp/banner_2.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_category.html"><img src="images/temp/banner_3.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_show.html"><img src="images/temp/banner_4.jpg" class="cover"></a></div>
+            <div class="swiper-slide"><a href="item_sale_page.html"><img src="images/temp/banner_5.jpg" class="cover"></a></div>
         </div>
         <div class="swiper-pagination"></div>
     </div>
+    <!-- 首页楼层导航 -->
+	<nav class="floor-nav visible-lg-block">
+		<span class="scroll-nav active">爆款推荐</span>
+		<span class="scroll-nav">女装</span>
+		<span class="scroll-nav">男装</span>
+		<span class="scroll-nav">活力童装</span>
+		<span class="scroll-nav">时尚包包</span>
+		<span class="scroll-nav">鞋靴</span>
+	</nav>
 	<!-- 楼层内容 -->
 	<div class="content inner" style="margin-bottom: 40px;">
 		<section class="scroll-floor floor-1 clearfix">
@@ -821,9 +1019,7 @@
 				</div>
 			</div>
 		</section>
-
 	</div>
-	@show
 	<script>
 		$(document).ready(function(){ 
 			// 顶部banner轮播
@@ -831,7 +1027,7 @@
 				autoplayDisableOnInteraction : false,
 				pagination: '.banner-box .swiper-pagination',
 				paginationClickable: true,
-				autoplay : 3000,
+				autoplay : 5000,
 			});
 			// 新闻列表滚动
 			var notice_swiper = new Swiper('.notice-box .swiper-container', {
@@ -942,6 +1138,5 @@
 			</p>
 		</div>
 	</div>
-	@yield('script')
 </body>
 </html>
