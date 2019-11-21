@@ -16,16 +16,32 @@ class Goods extends Model
         return $this->hasMany('App\GoodsImg', 'goods_id', 'id');
     }
 
+    //取一张图片
+    public function GoodsImgOne()
+    {
+        return $this->hasOne('App\GoodsImg', 'goods_id', 'id');
+    }
+
     //关联商品规格
     public function GoodsSpec()
     {
         return $this->hasMany('App\GoodsSpec', 'goods_id', 'id');
     }
 
+    public function ModelType()
+    {
+        return $this->hasOne('App\ModelType', 'id', 'model_id');
+    }
+
     //关联商品属性
     public function AttrItem()
     {
         return $this->hasMany('App\AttrItem', 'goods_id', 'id');
+    }
+
+    public function Comment()
+    {
+        return $this->hasMany('App\Comment', 'gid', 'id');
     }
 
 

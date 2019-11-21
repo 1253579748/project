@@ -14,6 +14,9 @@ class GoodsSpec extends Model
 
     protected $fillable = ['good_id', 'key', 'price', 'store_count', 'key_name'];
 
-
+    public function Goods()
+    {
+        return $this->hasOne('App\Goods', 'id', 'goods_id');
+    }
 
 }

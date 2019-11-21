@@ -143,6 +143,7 @@ $('#model').change(function(){
         success: function(res) {
 
             eachSpec(res);
+            debugger;
         }
     })
 
@@ -150,10 +151,11 @@ $('#model').change(function(){
         type: 'get',
         url: '/api/attr/get/' + id,
         success: function(res) {
-            $('#tabEach').html('');
+            // $('#tabEach').html('');
             $('#attr').html('');
-            $('#tab').html('');
+            // $('#tab').html('');
             attrAction(res);
+            debugger;
         }
     })
 
@@ -180,7 +182,7 @@ var ipts;
 var show = {};
 function eachSpec(res)
 {
-
+    $('#tab').html('');
     for (let val in res[0]['spec']) {
 
         $(`<tr class="a_${val}"><th>${res[0]['spec'][val].name}</th><tr>`).appendTo($('#tab'));
@@ -211,7 +213,6 @@ function eachSpec(res)
         var a = actionData(tmp);
         var specData = multiCartesian(a); 
         showSpec(specData);
-
     })
     
 }
@@ -227,7 +228,7 @@ function showSpec(specData)
         }
         tmp = tmp.trim('_', 'left');
         $(`<tr id="${k}" key="${specData[k]}" keyname="${tmp}" class="k_${k} spec"></tr>`).appendTo('#tabEach');
-        debugger;
+        
         for (let key in specData[k]) {
             $(`<td>${show[specData[k][key]]}</td>`).appendTo('.k_'+k);
 
@@ -236,6 +237,8 @@ function showSpec(specData)
         $(`<td>价格<input type="text" name="spec_price"/></td>`).appendTo('.k_'+k);
         $(`<td>库存<input type="text" name="spec_store"/></td>`).appendTo('.k_'+k);
     }
+
+    debugger;
 
 
 }
