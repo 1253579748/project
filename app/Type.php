@@ -10,6 +10,12 @@ class Type extends Model
     //
     public $timestamps = false;
 
+    public function Goods()
+    {
+        $this->hasMany('App\Goods', 'type_id', 'id');
+    }
+
+    
     public function getTypeByPid($id = '')
     {
         return self::where('pid', '=', $id)

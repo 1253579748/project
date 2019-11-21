@@ -15,6 +15,8 @@ Route::prefix('admin/goods')->group(function () {
 
     Route::get('delGoods/{id}', 'admin\Goods@delGoods');
 
+    Route::get('push/{id}', 'admin\Goods@push');//商品推荐
+
     Route::post('store', 'admin\Goods@store');
 
     Route::post('storeImg', 'admin\Goods@storeImg');
@@ -37,6 +39,7 @@ Route::group(['prefix'=>'admin/model'], function(){
 
 });
 
+//订单
 Route::group(['prefix'=>'admin/order'], function(){
 
     Route::get('add', 'admin\Order@add');
@@ -200,7 +203,11 @@ Route::get('home/order/list','home\Index@order');
 
 Route::group(['prefix'=>'goods'], function(){
 
-    Route::get('list', 'home\Goods@list');
+    Route::get('list/{id}', 'home\Goods@list');
+
+    Route::get('detail/{id}', 'home\Goods@detail');
+
+    Route::post('addShopCar', 'home\Goods@addShopCar');
 
 });
 
