@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class Type extends Model
 {
@@ -35,4 +36,18 @@ class Type extends Model
 
         return $arr;
     }
+    public function getType2($id){
+        
+        // if(Cache::has('type'.$id)){
+        //     $ca = Cache::get('type'.$id);
+        //     $array = json_decode($ca,true);
+        //     return $array;
+        // }
+        //$this相当于调用的foreach循环里面的$v
+        $arr = $this->where('pid',$id)->get()->toArray();
+        $s = json_encode($arr);
+        $c = Cache::add('type'.$id,$s,10);
+        return $arr;
+    }
 }
+
