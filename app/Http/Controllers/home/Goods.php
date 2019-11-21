@@ -14,7 +14,15 @@ class Goods extends Controller
     //
     public function list(Request $request, $id)
     {
+        if (!is_numeric($id)) {
+            return redirect('/');
+        } 
+
         $type = Type::where('id', $id)->first();//查出传过来的分类
+
+        if (!$type) { //没查到数据跳转首页
+            return redirect('/');
+        }
 
         $typeSon = Type::where('pid', $id)->first();
 
@@ -113,7 +121,7 @@ class Goods extends Controller
     public function detail($id)
     {
         $goods = GoodsModel::where('id', $id)
-            ->with(['GoodsSpec', 'AttrItem', 'AttrItem.AttriBute', 'GoodsImg', 'Comment', 'ModelType', 'ModelType.Spec', 'ModelType.Spec.SpecItem', 'ModelType.AttriBute'])
+            ->with(['GoodsSpec', 'AttrItem', 'AttrItem.AttriBute', 'GoodsImg', 'Comment', 'ModelType', 'ModelType.Spec', 'ModelType.Spec.SpecItem', 'ModelType.AttriBute', 'GoodsDetail'])
             ->first()
             ->toArray();
 

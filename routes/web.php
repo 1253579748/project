@@ -11,13 +11,21 @@ Route::prefix('admin/goods')->group(function () {
 
     Route::get('editGoods/{id}', 'admin\Goods@editGoods');
 
+    Route::post('store', 'admin\Goods@store'); //保存商品
+
     Route::post('edit', 'admin\Goods@editCheck');
 
     Route::get('delGoods/{id}', 'admin\Goods@delGoods');
 
     Route::get('push/{id}', 'admin\Goods@push');//商品推荐
 
-    Route::post('store', 'admin\Goods@store');
+    Route::get('editDetail/{id}', 'admin\Goods@editDetail');//商品详情
+
+    Route::post('updateDetail', 'admin\Goods@updateDetail');//编辑详情属性
+
+    Route::post('delDetail', 'admin\Goods@delDetail');
+
+    Route::post('storeDetail', 'admin\Goods@storeDetail');
 
     Route::post('storeImg', 'admin\Goods@storeImg');
 
@@ -42,7 +50,10 @@ Route::group(['prefix'=>'admin/model'], function(){
 //订单
 Route::group(['prefix'=>'admin/order'], function(){
 
-    Route::get('add', 'admin\Order@add');
+    // Route::get('add', 'admin\Order@add');//添加订单，未完成功能
+    
+    Route::get('list', 'admin\Order@list');
+    
 });
 
 
@@ -199,6 +210,8 @@ Route::get('home/index', 'home\Index@index');
 
 Route::get('home/user', 'home\Index@index2');//无用路由
 
+
+//前台商品路由
 Route::group(['prefix'=>'goods'], function(){
 
     Route::get('list/{id}', 'home\Goods@list');

@@ -10,32 +10,32 @@
 
     <table class="table table-bordered">
         <tr>
-            <td>商品名</td>
-            <td>商品分类</td>
-            <td>销量</td>
-            <td>标准价格</td>
-            <td>推荐</td>
-            <td>修改时间</td>
-            <td>状态</td>
+            <td>订单编号</td>
+            <td>会员名称</td>
+            <td>收货信息</td>
+            <td>总金额</td>
+            <td>订单状态</td>
+            <td>下单时间</td>
+            <td>操作时间</td>
             <td>操作</td>
         </tr>
-        @foreach($goods->toArray()['data'] as $v)
+        @foreach($order->toArray() as $v)
         <tr>
-            <td>{{$v['name']}}</td>
-            <td>{{$v['type_id']}}</td>
-            <td>{{$v['buy_count']}}</td>
-            <td>{{$v['price']}}</td>
-            <td onclick="push({{$v['id']}})" id="{{$v['id']}}">{{($v['is_push']) ? '是':'否'}}</td>
+            <td>{{$v['id']}}</td>
+            <td>{{$v['user_id']}}</td>
+            <td>{{$v['getman']}}:{{$v['phone']}}</td>
+            <td>{{$v['total']}}</td>
+            <td onclick="push({{$v['id']}})" id="{{$v['id']}}">{{$v['id']}}</td>
             <td>{{$v['updated_at']}}</td>
-            <td>{{$showStatus[ $v['status'] ]}}</td>
+            <td>{{$v['status']}}</td>
             <td id="{{$v['id']}}">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">操作 <span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right">
-                      <li><a href="/admin/goods/editImg/{{$v['id']}}">商品图片</a></li>
-                      <li><a href="/admin/goods/editGoods/{{$v['id']}}">编辑商品</a></li>
+                      <li><a href="/admin/order/editImg/{{$v['id']}}">商品图片</a></li>
+                      <li><a href="/admin/order/editorder/{{$v['id']}}">编辑商品</a></li>
                       <li><a onclick="del({{$v['id']}})" href="javascript:;">删除商品</a></li>
-                      <li><a href="/admin/goods/editDetail/{{$v['id']}}">详情管理</a></li>
+                      <li><a href="/admin/order/editDetail/{{$v['id']}}">详情管理</a></li>
                     </ul>
                   </div><!-- /btn-group -->
                 </div><!-- /input-group -->
@@ -43,7 +43,7 @@
         </tr>
         @endforeach
     </table>
-    {{ $goods->links() }}
+
 </div>
 
 <script>
@@ -52,9 +52,9 @@ function del(id)
 {
     $.ajax({
         type: 'get',
-        url: '/admin/goods/delGoods/'+ id,
+        url: '/admin/order/delorder/'+ id,
         success: function(){
-            location.href = '/admin/goods/list';
+            location.href = '/admin/order/list';
         }
     })
 }
@@ -64,7 +64,7 @@ function push(id)
 {
     $.ajax({
         type: 'get',
-        url: '/admin/goods/push/'+ id,
+        url: '/admin/order/push/'+ id,
         success: function(res){
             $('#' + id).html( parseInt(res) ? '是':'否' );
         }
@@ -75,7 +75,7 @@ function push(id)
 function find()
 {
     var search = $('input[name=find]').val();
-    location.href = '/admin/goods/list?search=' + search;
+    location.href = '/admin/order/list?search=' + search;
 }
 </script>
 

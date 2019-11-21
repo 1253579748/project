@@ -16,6 +16,11 @@ class Goods extends Model
         return $this->hasMany('App\GoodsImg', 'goods_id', 'id');
     }
 
+    public function GoodsDetail()
+    {
+        return $this->hasMany('App\GoodsDetail', 'goods_id', 'id');
+    }
+
     //取一张图片
     public function GoodsImgOne()
     {
