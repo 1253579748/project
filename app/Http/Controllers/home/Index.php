@@ -24,4 +24,12 @@ class Index extends Controller
     {
         return view('home.user.frame');
     }
+
+    public function logout()
+    {
+        //退出登录，删除session
+        session()->forget('homeisLogin');
+        session()->forget('homeuserInfo');
+        return redirect('/home/login');
+    }
 }

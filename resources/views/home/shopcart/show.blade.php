@@ -26,7 +26,7 @@
                             <th scope="row">
                                 <label class="checked-label">
                                     <input class="fxk" type="checkbox" name="id[]" qwe = {{$v->checkbox}} value="{{$v->id}}" ><i></i>
-                                    <div class="img"><img style="height: 100px" src="/storage/goods/{{$v->img}}" alt="" class="cover"></div>
+                                    <div class="img"><img style="height: 100px" src="/storage/{{$v->img}}" alt="" class="cover"></div>
                                 </label>
                             </th>
                             <td>
