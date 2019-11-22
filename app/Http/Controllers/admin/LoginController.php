@@ -48,6 +48,8 @@ class LoginController extends Controller
                 ]);
                 //跳转后台首页
                 return redirect('/admin/index/index');
+            } else {
+                echo("<script>alert('密码错误');location='/admin/login'</script>");
             }
         } else {
             return back()->withInput();

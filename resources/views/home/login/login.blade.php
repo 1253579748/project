@@ -2,7 +2,7 @@
 <html lang="zh-cmn-Hans">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="/home/ljc/favicon.jpg">
+    <link rel="shortcut icon" href="/home/images/favicon.jpg">
     <link rel="stylesheet" href="/home/css/iconfont.css">
     <link rel="stylesheet" href="/home/css/global.css">
     <link rel="stylesheet" href="/home/css/bootstrap.min.css">
@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="public-head-layout container">
-        <a class="logo" href="/home/index"><img src="/home/ljc/favicon.jpg" alt="星心光商城" class="cover"></a>
+        <a class="logo" href="/home/index"><img src="images/favicon.jpg" alt="星心光商城" class="cover" style="width:100px;"></a>
     </div>
     <div style="background:url(images/login_bg.jpg) no-repeat center center; ">
         <div class="login-layout container">
@@ -26,20 +26,21 @@
                     <h2>欢迎登录星心光官网平台</h2>
                 </div>
                 <div class="tabs_container">
-                    <form class="tabs_form" action="" method="post" id="login_form">
+                    <form class="tabs_form" id="login_form" method="post">
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
                                 </div>
-                                <input class="form-control phone" name="phone" id="login_phone" required placeholder="手机号" maxlength="11" autocomplete="off" type="text">
+                                <input class="form-control phone" id="telphone" name="telphone" required placeholder="手机号" maxlength="11" autocomplete="off" type="text" value="{{ old('telphone') }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input class="form-control" name="smscode" id="login_sms" placeholder="输入验证码" type="text">
+                                <input class="form-control" name="checkcode" placeholder="输入验证码" type="text">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-primary getsms" type="button">发送短信验证码</button>
+                                    <input class="btn btn-primary" id="getCodeBtn" type="button" value="免费获取手机验证码">
                                 </span>
                             </div>
                         </div>
@@ -49,7 +50,6 @@
                                     <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
                                 </div>
                                 <input class="form-control password" name="password" id="login_pwd" placeholder="请输入密码" autocomplete="off" type="password">
-                                <div class="input-group-addon pwd-toggle" title="显示密码"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></div>
                             </div>
                         </div>
                         <div class="checkbox">
@@ -60,35 +60,19 @@
                         </div>
                         <!-- 错误信息 -->
                         <div class="form-group">
-                            <div class="error_msg" id="login_error">
-                                <!-- 错误信息 范例html
-                                <div class="alert alert-warning alert-dismissible fade in" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <strong>密码错误</strong> 请重新输入密码
-                                </div>
-                                 -->
+                            <div style="color:red;text-align:center">
+                              @if(count($errors) > 0)
+                              <ul>
+                                @foreach($errors->all() as $err)
+                                <li>{{ $err }}</li>
+                                @endforeach
+                              </ul>
+                              @endif
                             </div>
                         </div>
-                        <button class="btn btn-large btn-primary btn-lg btn-block submit" id="login_submit" type="button">登录</button><br>
+                        <input class="btn btn-large btn-primary btn-lg btn-block submit" value="登录" type="submit"><br>
                         <p class="text-center">没有账号？<a href="javascript:;" id="register">免费注册</a></p>
                     </form>
-                    <div class="tabs_div">
-                        <div class="success-box">
-                            <div class="success-msg">
-                                <i class="success-icon"></i>
-                                <p class="success-text">登录成功</p>
-                            </div>
-                        </div>
-                        <div class="option-box">
-                            <div class="buts-title">
-                                现在您可以
-                            </div>
-                            <div class="buts-box">
-                                <a role="button" href="index.html" class="btn btn-block btn-lg btn-default">继续访问商城</a>
-                                <a role="button" href="udai_welcome.html" class="btn btn-block btn-lg btn-info">登录会员中心</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="form-box register">
@@ -96,20 +80,21 @@
                     <h2>欢迎注册<a href="javascript:;" class="pull-right fz16" id="reglogin">返回登录</a></h2>
                 </div>
                 <div class="tabs_container">
-                    <form class="tabs_form" action="index.html" method="post" id="register_form">
+                    <form class="tabs_form" method="post" id="register_form">
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
                                 </div>
-                                <input class="form-control phone" name="phone" id="register_phone" required placeholder="手机号" maxlength="11" autocomplete="off" type="text">
+                                <input class="form-control phone" name="phone" id="phone" required placeholder="手机号" maxlength="11" autocomplete="off" type="text" value="{{ old('phone') }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <input class="form-control" name="smscode" id="register_sms" placeholder="输入验证码" type="text">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-primary getsms" type="button">发送短信验证码</button>
+                                    <input class="btn btn-primary" type="button" id="geCodeBtn" value="免费获取手机验证码">
                                 </span>
                             </div>
                         </div>
@@ -118,8 +103,7 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
                                 </div>
-                                <input class="form-control password" name="password" id="register_pwd" placeholder="请输入密码" autocomplete="off" type="password">
-                                <div class="input-group-addon pwd-toggle" title="显示密码"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></div>
+                                <input class="form-control password" name="pwd" id="register_pwd" placeholder="输入由字母或数字组成的6~12位密码" autocomplete="off" type="password">
                             </div>
                         </div>
                         <div class="checkbox">
@@ -129,27 +113,12 @@
                         </div>
                         <!-- 错误信息 -->
                         <div class="form-group">
-                            <div class="error_msg" id="register_error"></div>
+                            <div class="alert alert-danger" id="errors" style="display:none;" role="alert">
+
+                            </div>
                         </div>
-                        <button class="btn btn-large btn-primary btn-lg btn-block submit" id="register_submit" type="button">注册</button>
+                        <input class="btn btn-large btn-primary btn-lg btn-block submit" value="注册" type="button" id="regi">
                     </form>
-                    <div class="tabs_div">
-                        <div class="success-box">
-                            <div class="success-msg">
-                                <i class="success-icon"></i>
-                                <p class="success-text">注册成功</p>
-                            </div>
-                        </div>
-                        <div class="option-box">
-                            <div class="buts-title">
-                                现在您可以
-                            </div>
-                            <div class="buts-box">
-                                <a role="button" href="index.html" class="btn btn-block btn-lg btn-default">继续访问商城</a>
-                                <a role="button" href="udai_welcome.html" class="btn btn-block btn-lg btn-info">登录会员中心</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="form-box resetpwd">
@@ -157,20 +126,20 @@
                     <h2>找回密码<a href="javascript:;" class="pull-right fz16" id="pwdlogin">返回登录</a></h2>
                 </div>
                 <div class="tabs_container">
-                    <form class="tabs_form" action="https://rpg.blue/member.php?mod=logging&action=login" method="post" id="resetpwd_form">
+                    <form class="tabs_form" method="post" id="resetpwd_form">
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
                                 </div>
-                                <input class="form-control phone" name="phone" id="resetpwd_phone" required placeholder="手机号" maxlength="11" autocomplete="off" type="text">
+                                <input class="form-control phone" name="phon" id="phon" required placeholder="手机号" maxlength="11" autocomplete="off" type="text" value="{{ old('phon') }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input class="form-control" name="sms" id="resetpwd_sms" placeholder="输入验证码" type="text">
+                                <input class="form-control" name="sms" id="sms" placeholder="输入验证码" type="text">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-primary getsms" type="button">发送短信验证码</button>
+                                    <input class="btn btn-primary" type="button" id="gCodeBtn" value="免费获取手机验证码">
                                 </span>
                             </div>
                         </div>
@@ -179,35 +148,223 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
                                 </div>
-                                <input class="form-control password" name="password" id="resetpwd_pwd" placeholder="新的密码" autocomplete="off" type="password">
-                                <div class="input-group-addon pwd-toggle" title="显示密码"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></div>
+                                <input class="form-control password" name="pass" id="pass" placeholder="设置字母或数字组成的6~12位新密码" autocomplete="off" type="password">
                             </div>
                         </div>
                         <!-- 错误信息 -->
                         <div class="form-group">
-                            <div class="error_msg" id="resetpwd_error"></div>
+                            <div class="alert alert-danger" id="error" style="display:none;" role="alert">
+
+                            </div>
                         </div>
-                        <button class="btn btn-large btn-primary btn-lg btn-block submit" id="resetpwd_submit" type="button">重置密码</button>
+                        <button class="btn btn-large btn-primary btn-lg btn-block submit" id="rese" type="button">重置密码</button>
                     </form>
-                    <div class="tabs_div">
-                        <div class="success-box">
-                            <div class="success-msg">
-                                <i class="success-icon"></i>
-                                <p class="success-text">密码重置成功</p>
-                            </div>
-                        </div>
-                        <div class="option-box">
-                            <div class="buts-title">
-                                现在您可以
-                            </div>
-                            <div class="buts-box">
-                                <a role="button" href="index.html" class="btn btn-block btn-lg btn-default">继续访问商城</a>
-                                <a role="button" href="login.html" class="btn btn-block btn-lg btn-info">返回登陆</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
+            <script>
+                var itime = 59; //定义一个变量，倒计时初始化，从59秒开始
+                function getTime() {
+                    if (itime >= 0) {
+                        if (itime == 0) {
+                            //倒计时变成0时，要清除计时器
+                            clearTimeout(act);
+                            //设置按钮为初始状态
+                            $("#getCodeBtn").val('免费获取手机验证码').attr('disabled', false);
+                            itime = 59;
+                        } else {
+                            //延迟一秒中执行该函数。
+                            var act = setTimeout('getTime()', 1000);
+                            //把倒计时的秒显示到按钮中
+                            $("#getCodeBtn").val('还剩' + itime + '秒');
+                            itime = itime - 1;
+                        }
+                    }
+                }
+                $(function() {
+                    //登录
+                    $("#getCodeBtn").click(function() {
+                        //获取输入的手机号码
+                        var telphone = $("#telphone").val();
+                        //ajax请求文件，调用短信发送的接口
+                        $.ajax({
+                            type: 'post',
+                            url: '/home/yan?telphone=' + telphone,
+                            data: {
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function(res) {
+                                //调用接口已经成功
+                                // alert('短信验证码已经发送成功');
+                                $("#getCodeBtn").attr('disabled', true); //要禁用该按钮
+                                //调用一个函数，完成倒计时效果。
+                                getTime();
+                            }
+                        });
+                    });
+
+                    //注册
+                    $('#regi').click(function() {
+                        var pwd = $('input[name=pwd]').val();
+                        var phone = $('input[name=phone]').val();
+                        var smscode = $('input[name=smscode]').val();
+
+                        var fd = new FormData();
+                        fd.append('pwd', pwd);
+                        fd.append('phone', phone);
+                        fd.append('smscode', smscode);
+                        fd.append('_token', '{{ csrf_token() }}');
+
+                        $.ajax({
+                            type: 'post',
+                            url: '/home/login/register',
+                            processData: false,
+                            contentType: false,
+                            data: fd,
+                            success: function(res) {
+                                if (res.code == 0) {
+                                    alert(res.msg);
+                                    location.href = '/home/login';
+                                }
+                            },
+                            error: function(err) {
+                                if (err.responseJSON.code == 2) {
+                                    alert(err.responseJSON.msg);
+                                }
+                                if (err.responseJSON.errors != undefined) {
+                                    $('#errors').css('display', 'block').html();
+                                    let errs = err.responseJSON.errors
+                                    for (err in errs) {
+                                        $('<p>'+errs[err][0]+'</p>').appendTo('#errors');
+                                    }
+                                }
+                            }
+                        });
+                    });
+
+                    // 修改密码
+                    $('#rese').click(function() {
+                        var pass = $('input[name=pass]').val();
+                        var phon = $('input[name=phon]').val();
+                        var sms = $('input[name=sms]').val();
+
+                        var fdd = new FormData();
+                        fdd.append('pass', pass);
+                        fdd.append('phon', phon);
+                        fdd.append('sms', sms);
+                        fdd.append('_token', '{{ csrf_token() }}');
+
+                        $.ajax({
+                            type: 'post',
+                            url: '/home/login/resetpwd',
+                            processData: false,
+                            contentType: false,
+                            data: fdd,
+                            success: function(res) {
+                                if (res.code == 0) {
+                                    alert(res.msg);
+                                    location.href = '/home/login';
+                                }
+                            },
+                            error: function(err) {
+                                if (err.responseJSON.code == 2) {
+                                    alert(err.responseJSON.msg);
+                                }
+                                if (err.responseJSON.errors != undefined) {
+                                    $('#error').css('display', 'block').html();
+                                    let errs = err.responseJSON.errors
+                                    for (err in errs) {
+                                        $('<p>'+errs[err][0]+'</p>').appendTo('#error');
+                                    }
+                                }
+                            }
+                        });
+                    });
+                });
+
+                //注册验证码
+                var itme = 59; //定义一个变量，倒计时初始化，从59秒开始
+                function geTime() {
+                    if (itme >= 0) {
+                        if (itme == 0) {
+                            //倒计时变成0时，要清除计时器
+                            clearTimeout(act);
+                            //设置按钮为初始状态
+                            $("#geCodeBtn").val('免费获取手机验证码').attr('disabled', false);
+                            itme = 59;
+                        } else {
+                            //延迟一秒中执行该函数。
+                            var act = setTimeout('geTime()', 1000);
+                            //把倒计时的秒显示到按钮中
+                            $("#geCodeBtn").val('还剩' + itme + '秒');
+                            itme = itme - 1;
+                        }
+                    }
+                }
+                $(function() {
+                    //定义一个函数,用于完成倒计时效果
+                    $("#geCodeBtn").click(function() {
+                        //获取输入的手机号码
+                        var phone = $("#phone").val();
+                        //ajax请求文件，调用短信发送的接口
+                        $.ajax({
+                            type: 'post',
+                            url: '/home/yanre?phone=' + phone,
+                            data: {
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function(res) {
+                                //调用接口已经成功
+                                // alert('短信验证码已经发送成功');
+                                $("#geCodeBtn").attr('disabled', true); //要禁用该按钮
+                                //调用一个函数，完成倒计时效果。
+                                geTime();
+                            }
+                        });
+                    });
+                });
+
+                //修改密码验证码
+                var tme = 59; //定义一个变量，倒计时初始化，从59秒开始
+                function gTime() {
+                    if (tme >= 0) {
+                        if (tme == 0) {
+                            //倒计时变成0时，要清除计时器
+                            clearTimeout(act);
+                            //设置按钮为初始状态
+                            $("#gCodeBtn").val('免费获取手机验证码').attr('disabled', false);
+                            tme = 59;
+                        } else {
+                            //延迟一秒中执行该函数。
+                            var act = setTimeout('gTime()', 1000);
+                            //把倒计时的秒显示到按钮中
+                            $("#gCodeBtn").val('还剩' + tme + '秒');
+                            tme = tme - 1;
+                        }
+                    }
+                }
+                $(function() {
+                    //定义一个函数,用于完成倒计时效果
+                    $("#gCodeBtn").click(function() {
+                        //获取输入的手机号码
+                        var phon = $("#phon").val();
+                        //ajax请求文件，调用短信发送的接口
+                        $.ajax({
+                            type: 'post',
+                            url: '/home/yanup?phone=' + phon,
+                            data: {
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function(res) {
+                                //调用接口已经成功
+                                // alert('短信验证码已经发送成功');
+                                $("#gCodeBtn").attr('disabled', true); //要禁用该按钮
+                                //调用一个函数，完成倒计时效果。
+                                gTime();
+                            }
+                        });
+                    });
+                });
+            </script>
             <script>
                 $(document).ready(function() {
                     // 判断直接进入哪个页面 例如 login.php?p=register
@@ -216,54 +373,6 @@
                         case 'resetpwd': $('.resetpwd').show(); break;
                         default: $('.login').show();
                     };
-                    // 发送验证码事件
-                    $('.getsms').click(function() {
-                        var phone = $(this).parents('form').find('input.phone');
-                        var error = $(this).parents('form').find('.error_msg');
-                        switch(phone.validatemobile()) {
-                            case 0:
-                                // 短信验证码的php请求
-                                error.html(msgtemp('验证码 <strong>已发送</strong>','alert-success'));
-                                $(this).rewire(60);
-                            break;
-                            case 1: error.html(msgtemp('<strong>手机号码为空</strong> 请输入手机号码',    'alert-warning')); break;
-                            case 2: error.html(msgtemp('<strong>手机号码错误</strong> 请输入11位数的号码','alert-warning')); break;
-                            case 3: error.html(msgtemp('<strong>手机号码错误</strong> 请输入正确的号码',  'alert-warning')); break;
-                        }
-                    });
-                    // 以下确定按钮仅供参考
-                    $('.submit').click(function() {
-                        var form = $(this).parents('form')
-                        var phone = form.find('input.phone');
-                        var pwd = form.find('input.password');
-                        var error = form.find('.error_msg');
-                        var success = form.siblings('.tabs_div');
-                        var options = {
-                            beforeSubmit: function () {
-                                console.log('喵喵喵')
-                            },
-                            success: function (data) {
-                                console.log(data)
-                            }
-                        }
-                        // 验证手机号参考这个
-                        switch(phone.validatemobile()) {
-                            case 1: error.html(msgtemp('<strong>手机号码为空</strong> 请输入手机号码',    'alert-warning')); return; break;
-                            case 2: error.html(msgtemp('<strong>手机号码错误</strong> 请输入11位数的号码','alert-warning')); return; break;
-                            case 3: error.html(msgtemp('<strong>手机号码错误</strong> 请输入正确的号码',  'alert-warning')); return; break;
-                        }
-                        // 验证密码复杂度参考这个
-                        switch(pwd.validatepwd()) {
-                            case 1: error.html(msgtemp('<strong>密码不能为空</strong> 请输入密码',    'alert-warning')); return; break;
-                            case 2: error.html(msgtemp('<strong>密码过短</strong> 请输入6位以上的密码','alert-warning')); return; break;
-                            case 3: error.html(msgtemp('<strong>密码过于简单</strong><br>密码需为字母、数字或特殊字符组合',  'alert-warning')); return; break;
-                        }
-                        form.ajaxForm(options);
-                        // 请求成功执行类似这样的事件
-                        // form.fadeOut(150,function() {
-                        //  success.fadeIn(150);
-                        // });
-                    })
                 });
             </script>
         </div>
