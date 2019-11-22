@@ -55,8 +55,7 @@
               </div>
               <div class="order-main">
                 <div class="order-list">
-                  <!--交易成功-->
-                  <foreach name="od" item="v">
+                  <!--交易成功--> 
                   <div class="order-status5">
                     <div class="order-title">
                       <div class="dd-num">订单编号：
@@ -110,7 +109,6 @@
                       </div>
                     </div>
                   </div>
-                </foreach>
                 </div>
               </div>
             </div>

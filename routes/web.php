@@ -199,7 +199,7 @@ Route::get('home/index', 'home\Index@index');
 //个人中心首页路由
 Route::get('home/personal/show', 'home\Index@index2');
 //个人中心订单路由
-Route::get('home/order/list','home\Index@order');
+Route::get('home/order/list','home\Order@list');
 
 Route::group(['prefix'=>'goods'], function(){
 

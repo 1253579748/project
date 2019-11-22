@@ -24,10 +24,4 @@ class Index extends Controller
     {
         return view('home.user.frame');
     }
-
-    public  function order(){
-
-        return view('home.order.list');
-
-    }
 }
