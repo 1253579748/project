@@ -13,6 +13,7 @@
     <div class="layui-card-body ">
         <table class="layui-table layui-form">
             <thead>
+
             <tr>
                 <th width="70">ID</th>
                 <th width="100">描述</th>

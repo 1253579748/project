@@ -211,3 +211,28 @@ Route::group(['prefix'=>'goods'], function(){
 
 });
 
+//购物车路由
+Route::group(['prefix'=>'home/shopcart'], function(){
+
+    //查看购物车
+    Route::get('show', 'home\shopcart@show');
+
+    //删除购物车
+    Route::get('del', 'home\shopcart@del');
+
+    //加
+    Route::get('jia', 'home\shopcart@jia');
+
+    //减
+    Route::get('jian', 'home\shopcart@jian');
+
+    //提交
+    Route::get('sub', 'home\shopcart@sub');
+
+    //复选框
+    Route::get('checkbox', 'home\shopcart@checkbox');
+
+
+
+});
+
