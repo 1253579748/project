@@ -231,6 +231,8 @@ Route::group(['prefix'=>'home/shopcart'], function(){
     Route::get('checkbox', 'home\shopcart@checkbox');
 
 
+    //确认购物车 提交到订单路由
+    Route::post('data', 'home\shopcart@data');
 
 });
 

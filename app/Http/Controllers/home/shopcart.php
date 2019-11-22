@@ -115,6 +115,35 @@ class shopcart extends Controller
 
     public function sub(Request $request)
     {
-        dump($request->id);
+        $id =$request->id;
+        $arr =DB::table('shop_cart')
+            ->wherein('id', $id)
+            ->get();
+
+        $aa = 0 ;
+        foreach ($arr as $k=>$v){
+            $aa += $v->price * $v->num ;
+            $uid = $v->uid;
+        }
+        $data =DB::table('address')
+            ->where('uid', '=', $uid)
+            ->get();
+        dump($arr);
+//        $id =serialize($id);
+        dump($id);
+        return view('home.shopcart.list',['arr'=>$arr,'aa'=>$aa,'data'=>$data,'id'=>$id]);
+    }
+
+
+    //确认购物车 提交到订单控制器
+    public function data(Request $request)
+    {
+        //地址id
+        $addid =$request->addid;
+
+
+        //购物车id   数组
+        $cartid =$request->cartid;
+
     }
 }
