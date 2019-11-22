@@ -112,18 +112,27 @@ Route::group(['prefix' => '/admin', 'middleware' => ['user.login', 'user.power']
     //添加权限
     Route::get('/power/add', 'admin\Power@add');
     Route::post('/power/sub', 'admin\Power@sub');
+    //修改权限
+    Route::get('/power/update', 'admin\Power@update');
+    Route::post('/power/upda', 'admin\Power@upda');
 
     //管理员角色删除
     Route::post('/power/updel/{id}', 'admin\Power@updel');
     //管理员角色添加
     Route::get('/power/useradd', 'admin\Power@useradd');
     Route::post('/power/usersub', 'admin\Power@usersub');
+    //修改管理员角色
+    Route::get('/power/adupdate', 'admin\Power@adupdate');
+    Route::post('/power/adupda', 'admin\Power@adupda');
 
     //添加角色
     Route::get('/power/roleadd', 'admin\Power@roleadd');
     Route::post('/power/rolesub', 'admin\Power@rolesub');
     //删除角色
     Route::post('/power/roledel/{id}', 'admin\Power@roledel');
+    //修改角色
+    Route::get('/power/roleupdate', 'admin\Power@roleupdate');
+    Route::post('/power/roleupda', 'admin\Power@roleupda');
 });
 
 //后台操作->验证是否登录
@@ -138,19 +147,11 @@ Route::group(['prefix' => '/admin', 'middleware' => ['user.login']], function(){
     Route::get('/power/role', 'admin\Power@role');
 });
 
-
-
-    Route::get('index','admin\Cates@index');
-    Route::post('create','admin\Cates@create');
-
-
-
 //后台登录
 Route::get('/admin/login', 'admin\LoginController@show')->middleware('user.load');
 Route::post('/admin/login', 'admin\LoginController@login')->middleware('user.load');
 //后台退出
 Route::get('/admin/logout', 'admin\Index@logout');
-
 
 //后台分类
 Route::group(['prefix'=>'admin/cates'],function(){
@@ -194,10 +195,48 @@ Route::group(['prefix'=>'admin/banner'],function(){
 
 
 /********************分割线*****************************/
+//前台首页->中间件：判断是否登录
+Route::get('home/index', 'home\Index@index')->middleware('home.login');
 
-Route::get('home/index', 'home\Index@index');
+//前台登录->中间件：登录后不进入登录页
+Route::get('home/login', 'home\Login@show')->middleware('home.load');
+Route::post('home/login', 'home\Login@login')->middleware('home.load');
+//前台注册
+Route::post('home/login/register', 'home\Login@register');
+//前台修改密码
+Route::post('/home/login/resetpwd', 'home\Login@resetpwd');
+//前台退出
+Route::get('/home/logout', 'home\Index@logout');
+//验证码
+Route::post('home/yan', 'home\Login@yan');
+Route::post('home/yanre', 'home\Login@yanre');
+Route::post('home/yanup', 'home\Login@yanup');
 
-Route::get('home/user', 'home\Index@index2');//无用路由
+//前台个人信息
+Route::group(['prefix'=>'home/personal', 'middleware'=>['home.login']], function(){
+    //显示个人资料
+    Route::get('show', 'home\Personal@show');
+    //修改个人资料
+    Route::get('update', 'home\Personal@update');
+    Route::post('upda', 'home\Personal@upda');
+    Route::post('upd', 'home\Personal@upd');
+    //修改支付密码
+    Route::get('paypwd', 'home\Personal@paypwd');
+    Route::post('paypass', 'home\Personal@paypass');
+    //修改登录密码
+    Route::get('logpwd', 'home\Personal@logpwd');
+    Route::post('logpass', 'home\Personal@logpass');
+    //收货地址
+    Route::get('address', 'home\Personal@address');
+    //添加地址
+    Route::post('addres', 'home\Personal@addres');
+    //修改地址
+    Route::post('upres', 'home\Personal@upres');
+    //删除地址
+    Route::post('delres/{id}', 'home\Personal@delres');
+    //默认地址
+    Route::get('defa/{id}', 'home\Personal@defa');
+});
 
 Route::group(['prefix'=>'goods'], function(){
 
@@ -233,4 +272,3 @@ Route::group(['prefix'=>'home/shopcart'], function(){
 
 
 });
-

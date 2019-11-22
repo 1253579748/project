@@ -21,6 +21,7 @@
                     <td>{{ $ro->name }}</td>
                     <td>
                         <button type="submit" class="btn btn-primary delete" data-id="{{ $ro->id }}">删除</button>
+                        <a href="/admin/power/roleupdate?id=<?php echo $ro->id ?>">修改</a>
                     </td>
 
                 </tr>

@@ -40,6 +40,7 @@
                 <td>{{ $re->action }}</td>
                 <td>
                     <button type="submit" class="btn btn-primary delete" data-id="{{ $re->id }}">删除</button>
+                    <a href="/admin/power/update?id=<?php echo $re->id ?>">修改</a>
                 </td>
             </tr>
             @endforeach
