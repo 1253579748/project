@@ -18,7 +18,14 @@
 			
 			<tr data-id="{{$v->id}}" data-name="{{$v->name}}">
 			  <th scope="row">{{$v->id}}</th>
-			  <td>{{$v->name}}</td>
+
+			  <td> 
+			  @if($v->level == '2')
+			  |-----
+			  @elseif($v->level == '3')	
+			  |-----|-----
+			  @endif
+			  <span>{{$v->name}}</span></td>
 			  <td>{{$v->pid}}</td>
 			  <td>
 				<a class="type-edit btn btn-primary"" >修改</a>
@@ -38,7 +45,7 @@
 			var name = $(this).parent().parent().get(0).dataset.name;
 			var id  = $(this).parent().parent().data('id');
 			//console.dir($(this).parent().parent()[0].dataset.name);
-			$(this).parent().prev().prev().replaceWith('<input type="text" data-id="' + id + '" name="name" value="'+ name +'">');
+			var sp = $(this).parent().prev().prev().children().replaceWith('<input type="text" data-id="' + id + '" name="name" value="'+ name +'">');
 			//自动聚焦
 			$('input[name=name]').focus();
 			$('input[name=name]').change(function(){
@@ -56,8 +63,10 @@
 					success:function(res){
 						if(res == 'ok'){
 							//更新tr标签的data-name 防止重复点击后没更新数据
-							tname.parent().attr('data-name',tval);
-							tname.replaceWith('<td>'+tval+'</td>');
+							tname.parent().parent().attr('data-name',tval);
+
+
+							tname.replaceWith('<span>'+tval+'</span>');
 
 						}
 					},
@@ -70,9 +79,10 @@
 			$('input[name=name]').blur(function(){
 
 				var tname = $(this);
+
 				var tval = tname.val();
 				if(tval == name){
-					tname.replaceWith('<td>'+name+'</td>');
+					tname.replaceWith('<span>'+name+'</span>');
 				}
 			})
 

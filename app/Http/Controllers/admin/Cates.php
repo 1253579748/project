@@ -16,12 +16,15 @@ class Cates extends Controller
                 $str1 = str_replace(',',"",$path);
                 $num = strlen($path)-strlen($str1);
                 if($num == 2){
-                   $data[$k]->name = "|------".$v->name;
+                   $data[$k]->level = '2';
                 }else if($num == 3){
-                   $data[$k]->name = "|------"."|------".$v->name;
+                   $data[$k]->level = '3';
+                }else{
+                    $data[$k]->level = '1';
                 }
             
         }
+        //dump($data);
         return $data;
 
     }

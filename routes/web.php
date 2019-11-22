@@ -201,6 +201,8 @@ Route::get('home/personal/show', 'home\Index@index2');
 //个人中心订单路由
 Route::get('home/order/list','home\Order@list');
 
+
+
 Route::group(['prefix'=>'goods'], function(){
 
     Route::get('list/{id}', 'home\Goods@list');
