@@ -84,6 +84,30 @@ class Power extends Controller
             ], 500);
         }
     }
+    //修改权限页面
+    public function update()
+     {
+        //接收id
+         $id = $_GET['id'];
+         $re = DB::table('permissions')->where('id',$id)->first();
+         //查询数据后返回到显示页面
+         return view('admin.Power.update',['re'=>$re]);
+     }
+    //修改权限
+    public function upda()
+    {
+        $dat = [];
+        $dat['id'] = $_POST['id'];
+        $dat['name'] = $_POST['name'];
+        $dat['descr'] = $_POST['descr'];
+        $dat['controller'] = $_POST['controller'];
+        $dat['action'] = $_POST['action'];
+
+        $re = DB::table('permissions')->where('id', '=', $dat['id'])->update($dat);
+        if ($re){
+            return redirect('/admin/power/index');
+        }
+    }
 
     //管理员角色页面
     public function user()
@@ -160,6 +184,28 @@ class Power extends Controller
             ], 500);
         }
     }
+    //修改管理员角色页面
+    public function adupdate()
+     {
+        //接收id
+         $id = $_GET['id'];
+         $re = DB::table('user_has_roles')->where('id',$id)->first();
+         //查询数据后返回到显示页面
+         return view('admin.Power.adupdate',['re'=>$re]);
+     }
+    //修改管理员角色
+    public function adupda()
+    {
+        $dat = [];
+        $dat['id'] = $_POST['id'];
+        $dat['user_id'] = $_POST['user_id'];
+        $dat['role_id'] = $_POST['role_id'];
+
+        $re = DB::table('user_has_roles')->where('id', '=', $dat['id'])->update($dat);
+        if ($re){
+            return redirect('/admin/power/user');
+        }
+    }
 
     //角色管理
     public function role()
@@ -218,6 +264,27 @@ class Power extends Controller
                 'code' => 1,
                 'msg' => '删除失败',
             ], 500);
+        }
+    }
+    //修改角色页面
+    public function roleupdate()
+     {
+        //接收id
+         $id = $_GET['id'];
+         $re = DB::table('roles')->where('id',$id)->first();
+         //查询数据后返回到显示页面
+         return view('admin.Power.roleupdate',['re'=>$re]);
+     }
+    //修改角色
+    public function roleupda()
+    {
+        $dat = [];
+        $dat['id'] = $_POST['id'];
+        $dat['name'] = $_POST['name'];
+
+        $re = DB::table('roles')->where('id', '=', $dat['id'])->update($dat);
+        if ($re){
+            return redirect('/admin/power/role');
         }
     }
 }
