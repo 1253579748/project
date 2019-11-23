@@ -34,6 +34,17 @@ class shopcart extends Controller
             return redirect('/home/shopcart/show');
         }
     }
+    public function dels(Request $request)
+    {
+       $id = $request->id;
+        $arr =DB::table('shop_cart')
+            ->wherein('id', $id)
+            ->delete();
+        dump($arr);
+
+}
+
+
     public function jia(Request $request)
     {
 
