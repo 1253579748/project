@@ -42,6 +42,9 @@
         </section>
         <section class="item-show__div clearfix">
             <div class="pull-left">
+            @php
+
+            @endphp
                 <div class="item-list__area clearfix">
                     @foreach($goods->toArray()['data'] as $v)
                     <div class="item-card">
