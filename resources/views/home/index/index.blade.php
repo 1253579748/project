@@ -234,7 +234,7 @@
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_shopcart.html" class="r-item-hd">
+				<a href="/home/shopcart/show" class="r-item-hd">
 					<i class="iconfont icon-cart" data-badge="{{$num}}"></i>
 					<div class="r-tip__box"><span class="r-tip-text">购物车</span></div>
 				</a>

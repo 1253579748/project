@@ -281,6 +281,9 @@ Route::group(['prefix'=>'home/personal', 'middleware' => ['home.login']], functi
     Route::post('delres/{id}', 'home\Personal@delres');
     //默认地址
     Route::get('defa/{id}', 'home\Personal@defa');
+    //头像
+    Route::get('headimg', 'home\Personal@headimg');
+    Route::post('head', 'home\Personal@head');
 });
 
 
