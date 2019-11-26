@@ -11,7 +11,7 @@
         </div>
         <form class="form-horizontal" role="form" action="paypass" method="post">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-            <input type="hidden" name="uid" value="<?php echo $pay->uid ?>">
+            <input type="hidden" name="id" value="<?php echo $pay->id ?>">
             <div class="form-group" style="margin-bottom: 30px;">
                 <label for="firstname" class="col-sm-2 control-label">修改密码：</label>
                 <div class="col-sm-5">
