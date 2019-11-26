@@ -23,7 +23,7 @@
                 </div>
                 <div class="bottom">
                     <div class="form-group">
-                        <button type="submit">添加</button>
+                        <button type="submit" onclick="submit()">添加</button>
                     </div>
                 </div>
             </form>
@@ -32,6 +32,14 @@
 @endsection
 @section('js')
     <script>
+        // function submit() {
+        //     if(document.getElementById("exampleInputFile").value==""){
+        //         alert("你没有选择文件");
+        //         return false;
+        //     }
+        //     return true;
+        // }
+        
         // function ajax() {
         //     $.ajax({
         //         url: '/admin/ads/add',
