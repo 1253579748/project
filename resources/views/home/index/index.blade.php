@@ -66,8 +66,15 @@
 				</p>
 			</div>
 			<div class="cart-box">
-				<a href="udai_shopcart.html" class="cart-but">
-					<i class="iconfont icon-shopcart cr fz16"></i> 购物车 0 件
+				@php
+					$shop =DB::table('shop_cart')->get();
+					$num = 0;
+					foreach ($shop as $k=>$v){
+						  $num += $v->num;
+					  }
+				@endphp
+				<a href="/home/shopcart/show" class="cart-but">
+					<i class="iconfont icon-shopcart cr fz16"></i> 购物车 {{$num}} 件
 				</a>
 			</div>
 		</div>
@@ -221,31 +228,29 @@
 	<div class="right-nav">
 		<ul class="r-with-gotop">
 			<li class="r-toolbar-item">
-				<a href="udai_welcome.html" class="r-item-hd">
+				<a href="/home/personal/show" class="r-item-hd">
 					<i class="iconfont icon-user"></i>
 					<div class="r-tip__box"><span class="r-tip-text">用户中心</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
 				<a href="/home/shopcart/show" class="r-item-hd">
-					<i class="iconfont icon-cart" data-badge="10"></i>
+					<i class="iconfont icon-cart" data-badge="{{$num}}"></i>
 					<div class="r-tip__box"><span class="r-tip-text">购物车</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_collection.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-aixin"></i>
 					<div class="r-tip__box"><span class="r-tip-text">我的收藏</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="" class="r-item-hd">
 					<i class="iconfont icon-liaotian"></i>
 					<div class="r-tip__box"><span class="r-tip-text">联系客服</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="issues.html" class="r-item-hd">
 					<i class="iconfont icon-liuyan"></i>
 					<div class="r-tip__box"><span class="r-tip-text">留言反馈</span></div>
 				</a>

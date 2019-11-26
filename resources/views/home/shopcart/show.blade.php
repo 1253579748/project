@@ -40,7 +40,7 @@
                                 <div class="type c9">型号：{{$v->bar_code}}</div>
                             </td>
                             <td>
-                                    {{$v->price}}
+                                ￥{{$v->price}}
                             </td>
                             <td>
                                 <div class="cart-num__box">
@@ -49,7 +49,7 @@
                                     <a href="/home/shopcart/jia?id={{$v->id}}&num={{$v->num}}">+</a>
                                 </div>
                             </td>
-                            <td ><p><?=$v->num * $v->price ?></p></td>
+                            <td ><p>￥<?=$v->num * $v->price ?></p></td>
                             <td><a href="/home/shopcart/del?id={{$v->id}}">删除</a></td>
                         </tr>
                         @endforeach
