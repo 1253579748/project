@@ -1,5 +1,11 @@
 @extends('home.index.index')
 
+@section('cates')
+@endsection
+
+@section('cate') 
+@endsection
+
 @section('css')
 <style>
 
@@ -24,9 +30,6 @@
 
 @section('main')
 
-@php
-    dump($goods);
-@endphp
 <meta name="csrf-token" content="{{ csrf_token() }}">
 	<div class="content inner">
 		<section class="item-show__div item-show__head clearfix">
@@ -444,17 +447,10 @@ $('.item-action__basket').click(function(){
 						</div>
 						<div class="rich-text">
 							<p style="text-align: center;">
-								<i id="desc-module-1" style="font-size: 0"></i>
-
-								<img src="images/temp/S-001_1.jpg" alt=""><br><img src="images/temp/S-001_2.jpg" alt=""><br>
-
-								<i id="desc-module-2" style="font-size: 0"></i><img src="images/temp/S-001_3.jpg" alt=""><br><img src="images/temp/S-001_4.jpg" alt=""><br><img src="images/temp/S-001_5.jpg" alt=""><br><img src="images/temp/S-001_6.jpg" alt=""><br><img src="images/temp/S-001_7.jpg" alt=""><br><img src="images/temp/S-001_8.jpg" alt=""><br>
-								
-								<i id="desc-module-3" style="font-size: 0"></i><img src="images/temp/S-001_9.jpg" alt=""><br><img src="images/temp/S-001_10.jpg" alt=""><br><img src="images/temp/S-001_11.jpg" alt=""><br><img src="images/temp/S-001_12.jpg" alt=""><br>
-								
-								<i id="desc-module-4" style="font-size: 0"></i><img src="images/temp/S-001_13.jpg" alt=""><br><img src="images/temp/S-001_14.jpg" alt=""><br><img src="images/temp/S-001_15.jpg" alt=""><br><img src="images/temp/S-001_16.jpg" alt=""><br><img src="images/temp/S-001_17.jpg" alt=""><br><img src="images/temp/S-001_18.jpg" alt=""><br><img src="images/temp/S-001_19.jpg" alt=""><br><img src="images/temp/S-001_20.jpg" alt=""><br><img src="images/temp/S-001_21.jpg" alt=""><br><img src="images/temp/S-001_22.jpg" alt=""><br><img src="images/temp/S-001_23.jpg" alt=""><br><img src="images/temp/S-001_24.jpg" alt=""><br><img src="images/temp/S-001_25.jpg" alt=""><br><img src="images/temp/S-001_26.jpg" alt=""><br><img src="images/temp/S-001_27.jpg" alt=""><br><img src="images/temp/S-001_28.jpg" alt=""><br><img src="images/temp/S-001_29.jpg" alt=""><br><img src="images/temp/S-001_30.jpg" alt=""><br><img src="images/temp/S-001_31.jpg" alt=""><br><img src="images/temp/S-001_32.jpg" alt=""><br><img src="images/temp/S-001_33.jpg" alt=""><br><img src="images/temp/S-001_34.jpg" alt=""><br><img src="images/temp/S-001_35.jpg" alt=""><br><img src="images/temp/S-001_36.jpg" alt=""><br>
-								
-								<i id="desc-module-5" style="font-size: 0"></i><img src="images/temp/S-001_37.jpg" alt=""><br><img src="images/temp/S-001_38.jpg" alt=""><br><img src="images/temp/S-001_39.jpg" alt=""><br><img src="images/temp/S-001_40.jpg" alt=""><br><img src="images/temp/S-001_41.png" width="790" alt="">
+								@foreach($goods['goods_detail'] as $k=>$v)
+								<i id="desc-module-{{$v['position']}}-{{$k}}" style="font-size: 0"></i>
+								<img src="/storage/{{$v['img']}}" alt=""><br>
+								@endforeach
 							</p>
 						</div>
 					</div>
@@ -1167,21 +1163,12 @@ $('.item-action__basket').click(function(){
 				<div class="tab-content" id="descCate">
 					<div role="tabpanel" class="tab-pane fade in active" id="detail-tab" aria-labelledby="detail-tab">
 						<div class="descCate-content bgf5">
+							@foreach($goods['goods_detail'] as $k=>$v)
 							<dd class="dc-idsItem selected">
-								<a href="#desc-module-1"><i class="iconfont icon-dot"></i> 产品图</a>
+								<a href="#desc-module-{{$v['position']}}-{{$k}}"><i class="iconfont icon-dot">{{$v['description']}}</i></a>
 							</dd>
-							<dd class="dc-idsItem">
-								<a href="#desc-module-2"><i class="iconfont icon-selected"></i> 细节图</a>
-							</dd>
-							<dd class="dc-idsItem">
-								<a href="#desc-module-3"><i class="iconfont"></i> 尺寸及试穿</a>
-							</dd>
-							<dd class="dc-idsItem">
-								<a href="#desc-module-4"><i class="iconfont"></i> 模特效果图</a>
-							</dd>
-							<dd class="dc-idsItem">
-								<a href="#desc-module-5"><i class="iconfont"></i> 常见问题</a>
-							</dd>
+							@endforeach
+
 						</div>
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="evaluate-tab" aria-labelledby="evaluate-tab">

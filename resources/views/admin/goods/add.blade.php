@@ -5,11 +5,11 @@
 <!-- <meta charset="gbk"> -->
 <link rel="stylesheet" href="/admin/uploadImg/css/upload-img.css">
 
-<div id="app" style="width:300px;height:300px" v-cloak>
+<div id="app" style="width:300px;height:150px" v-cloak>
     <div class="uploading-data" v-if="isUploading"></div>
 
     <div class="upload-img-column">
-        <div class="words">上传图片 (@{{imgTempList.length}}/5)</div>
+        <div class="words">上传图片 (@{{imgTempList.length}}/1)</div>
         <div class="upload-wrap">
             <div class="box">
                 <label class="p dotted">
@@ -35,7 +35,8 @@
     <canvas id="compressCanvas" style="position: fixed; z-index: -1; opacity: 0; top: -100%; left: -100%"></canvas>
 </div>
 
-<form id="fmsub">
+<form id="fmsub" class="container-fluid">
+<div  class="col-xs-4">
   <div class="form-group">
     <label for="exampleInputEmail1">商品名称</label>
     <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="商品名">
@@ -79,8 +80,10 @@
     售价
     <input type="text" name="price" class="form-control" id="exampleInputPassword1" placeholder="￥">
   </div>
-
-
+</div>
+    <hr>
+    <br>
+    <br>
     <select name="model_id"  class="form-control" id="model">
         <option>---选择商品模型-</option>
         @foreach($model as $v)
@@ -88,26 +91,25 @@
         @endforeach
     </select>
 
-<div class="container-fluid">
+    <div class="container-fluid">
 
-  <div style="" class="col-xs-8">
-    <div id="#spec">
-        <table class="table table-bordered" id="tab">
+      <div style="" class="col-xs-8">
+        <div id="#spec">
+            <table class="table table-bordered" id="tab">
+
+            </table>
+        </div>
+
+        <table class="table table-bordered" id="tabEach">
 
         </table>
+      </div>
+
+
+      <div style="" id="attr" class="col-xs-4">
+            
+      </div>
     </div>
-
-    <table class="table table-bordered" id="tabEach">
-
-    </table>
-  </div>
-
-
-  <div style="" id="attr" class="col-xs-4">
-        
-  </div>
-</div>
-
 
 </form>
 <button name="btn" class="btn btn-default">Submit</button>
@@ -123,7 +125,7 @@ $('button[name=btn]').on('click', function(){
     if (isNaN($('select[name=type_id]').val())) return false;
     if (isNaN($('select[name=model_id]')[0].selectedOptions[0].id)) return false;
     if ( isNaN($('input[name=price]').val()) ) return false;
-    console.dir('ddd')
+
     app.onUploadImg();//上传图片
 
     return false;
@@ -136,6 +138,8 @@ $('button[name=btn]').on('click', function(){
 
 
 $('#model').change(function(){
+    $('#tabEach').html('');
+    $('#tab').html('');
     var id = this.selectedOptions[0].id;
     $.ajax({
         type: 'get',
@@ -143,7 +147,7 @@ $('#model').change(function(){
         success: function(res) {
 
             eachSpec(res);
-            debugger;
+
         }
     })
 
@@ -155,7 +159,7 @@ $('#model').change(function(){
             $('#attr').html('');
             // $('#tab').html('');
             attrAction(res);
-            debugger;
+
         }
     })
 
@@ -238,7 +242,6 @@ function showSpec(specData)
         $(`<td>库存<input type="text" name="spec_store"/></td>`).appendTo('.k_'+k);
     }
 
-    debugger;
 
 
 }

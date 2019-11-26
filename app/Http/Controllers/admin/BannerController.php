@@ -47,6 +47,9 @@ class BannerController extends Controller
         }else{
             return redirect('/admin/banner/add');
         }
+
+
+
     }
     public function del(Request $request)
     {

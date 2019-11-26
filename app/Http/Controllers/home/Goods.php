@@ -14,7 +14,15 @@ class Goods extends Controller
     //
     public function list(Request $request, $id)
     {
+        if (!is_numeric($id)) {
+            return redirect('/');
+        } 
+
         $type = Type::where('id', $id)->first();//查出传过来的分类
+
+        if (!$type) { //没查到数据跳转首页
+            return redirect('/');
+        }
 
         $typeSon = Type::where('pid', $id)->first();
 
@@ -69,7 +77,7 @@ class Goods extends Controller
                 ->with(['GoodsImgOne'])
                 ->where('status', '!=', 2)
                 ->orderBy($order[0], $order[1])
-                ->paginate(4)
+                ->paginate(16)
                 ->appends($request->all());
 
         } elseif($type->pid === 0) { //顶级分类商品显示
@@ -78,7 +86,7 @@ class Goods extends Controller
                 ->where('status', '!=', 2)
                 ->with(['GoodsImgOne'])
                 ->orderBy($order[0], $order[1])
-                ->paginate(4)
+                ->paginate(16)
                 ->appends($request->all());
             
         } else { //二级分类下商品显示
@@ -88,17 +96,17 @@ class Goods extends Controller
                 ->where('status', '!=', 2)
                 ->with(['GoodsImgOne'])
                 ->orderBy($order[0], $order[1])
-                ->paginate(4)
+                ->paginate(16)
                 ->appends($request->all());
         }
 
         //推荐位商品
         $push = GoodsModel::where('is_push', '1')
             ->with(['GoodsImgOne'])
+            ->limit(3)
             ->get()
             ->toArray();
 
-        dump($push);
 
         return view('home.goods.list', [
                 'twoTypes' => $twoTypes,
@@ -113,7 +121,7 @@ class Goods extends Controller
     public function detail($id)
     {
         $goods = GoodsModel::where('id', $id)
-            ->with(['GoodsSpec', 'AttrItem', 'AttrItem.AttriBute', 'GoodsImg', 'Comment', 'ModelType', 'ModelType.Spec', 'ModelType.Spec.SpecItem', 'ModelType.AttriBute'])
+            ->with(['GoodsSpec', 'AttrItem', 'AttrItem.AttriBute', 'GoodsImg', 'Comment', 'ModelType', 'ModelType.Spec', 'ModelType.Spec.SpecItem', 'ModelType.AttriBute', 'GoodsDetail'])
             ->first()
             ->toArray();
 
@@ -123,7 +131,6 @@ class Goods extends Controller
             ->get()
             ->toArray();
 
-        dump($push);
 
         return view('home.goods.detail', ['goods'=>$goods, 'push'=>$push]);
     }
