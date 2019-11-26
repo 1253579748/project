@@ -20,7 +20,7 @@
                         </div>
                         @endforeach
                     </div>
-{{--                    <div class="add_addr"><a href="udai_address.html">添加新地址</a></div>--}}
+                    <div class="add_addr"><a href="/home/personal/address">添加新地址</a></div>
                     <div class="shop-title">确认订单</div>
                     <div class="shop-order__detail">
                         <table class="table">
@@ -35,6 +35,7 @@
                             </tr>
                             </thead>
                             <tbody>
+
                             @foreach($arr as $k=>$v)
                                 <input type="hidden" name="cartid[]" value="{{$v->id}}">
                                 <tr>

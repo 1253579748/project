@@ -281,9 +281,11 @@ Route::group(['prefix'=>'home/personal'], function(){
     Route::get('defa/{id}', 'home\Personal@defa');
 });
 
+
 Route::get('home/index', 'home\Index@index');
 
 Route::get('home/user', 'home\Index@index2');//无用路由
+
 
 
 //前台商品路由
@@ -294,6 +296,35 @@ Route::group(['prefix'=>'goods'], function(){
     Route::get('detail/{id}', 'home\Goods@detail');
 
     Route::post('addShopCar', 'home\Goods@addShopCar');
+
+});
+
+
+Route::group(['prefix'=>'home/shopcart'], function(){
+    //查看购物车
+    Route::get('show', 'home\shopcart@show');
+
+    //删除购物车
+    Route::get('del', 'home\shopcart@del');
+
+    //删除多个购物车
+    Route::post('dels', 'home\shopcart@dels');
+
+    //加
+    Route::get('jia', 'home\shopcart@jia');
+
+    //减
+    Route::get('jian', 'home\shopcart@jian');
+
+    //提交
+    Route::get('sub', 'home\shopcart@sub');
+
+    //复选框
+    Route::get('checkbox', 'home\shopcart@checkbox');
+
+
+    //确认购物车 提交到订单路由
+    Route::post('data', 'home\shopcart@data');
 
 });
 
