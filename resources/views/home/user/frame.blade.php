@@ -22,16 +22,21 @@
 	<div class="tab-header">
 		<div class="inner">
 			<div class="pull-left">
-				<div class="pull-left">嗨，欢迎来到<span class="cr">U袋网</span></div>
-				<a href="agent_level.html">网店代销</a>
-				<a href="temp_article/udai_article4.html">帮助中心</a>
+				<div class="pull-left">嗨，欢迎来到<span class="cr">星心光商城</span></div>
+				<a href="">网店代销</a>
+				<a href="">帮助中心</a>
 			</div>
 			<div class="pull-right">
-				<a href="login.html"><span class="cr">登录</span></a>
-				<a href="login.html?p=register">注册</a>
-				<a href="udai_welcome.html">我的U袋</a>
-				<a href="udai_order.html">我的订单</a>
-				<a href="udai_integral.html">积分平台</a>
+				@if(empty(session('homeuserInfo')))
+				<a href="/home/login"><span class="cr">亲，请登录</span></a>	
+				<a href="/home/login">立即注册</a>
+				@else
+				<b style="color:#800000">{{ session('homeuserInfo.username') }}</b>
+				<a href="/home/logout" style="color:#500000">退出</a>
+				<a href="/home/personal/show">我的星心光</a>
+				<a href="/home/personal/order">我的订单</a>
+				@endif
+				<a href="">积分平台</a>
 			</div>
 		</div>
 	</div>
@@ -47,7 +52,7 @@
 	<div class="content clearfix bgf5">
 		<section class="user-center inner clearfix">
 			<div class="pull-left bgf">
-				<a href="udai_welcome.html" class="title">U袋欢迎页</a>
+				<a href="" class="title">星心光欢迎页</a>
 				<dl class="user-center__nav">
 					<dt>帐户信息</dt>
 					<a href="udai_setting.html"><dd>个人资料</dd></a>
@@ -96,7 +101,7 @@
 	<div class="right-nav">
 		<ul class="r-with-gotop">
 			<li class="r-toolbar-item">
-				<a href="udai_welcome.html" class="r-item-hd">
+				<a href="/home/personal/show" class="r-item-hd">
 					<i class="iconfont icon-user" data-badge="0"></i>
 					<div class="r-tip__box"><span class="r-tip-text">用户中心</span></div>
 				</a>
