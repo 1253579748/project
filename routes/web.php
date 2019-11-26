@@ -133,6 +133,15 @@ Route::group(['prefix' => '/admin', 'middleware' => ['user.login', 'user.power']
     //修改角色
     Route::get('/power/roleupdate', 'admin\Power@roleupdate');
     Route::post('/power/roleupda', 'admin\Power@roleupda');
+
+    //修改角色权限
+    Route::get('/power/rpupde', 'admin\Power@rpupde');
+    Route::post('/power/rpup', 'admin\Power@rpup');
+    //角色权限删除
+    Route::post('/power/rpdel/{id}', 'admin\Power@rpdel');
+    //角色权限添加
+    Route::get('/power/ropo', 'admin\Power@ropo');
+    Route::post('/power/roposub', 'admin\Power@roposub');
 });
 
 //后台操作->验证是否登录
@@ -145,6 +154,8 @@ Route::group(['prefix' => '/admin', 'middleware' => ['user.login']], function(){
     Route::get('/power/index', 'admin\Power@index');
     //角色管理
     Route::get('/power/role', 'admin\Power@role');
+    //角色权限
+    Route::get('/power/rolpow', 'admin\Power@rolpow');
 });
 
 //后台登录
@@ -200,8 +211,8 @@ Route::get('home/personal/show', 'home\Index@index2');
 //个人中心订单路由
 Route::get('home/order/list','home\Order@list');
 
-//前台首页->中间件：判断是否登录
-Route::get('home/index', 'home\Index@index')->middleware('home.login');
+//前台首页
+Route::get('home/index', 'home\Index@index');
 
 //前台登录->中间件：登录后不进入登录页
 Route::get('home/login', 'home\Login@show')->middleware('home.load');
@@ -218,7 +229,7 @@ Route::post('home/yanre', 'home\Login@yanre');
 Route::post('home/yanup', 'home\Login@yanup');
 
 //前台个人信息
-Route::group(['prefix'=>'home/personal', 'middleware'=>['home.login']], function(){
+Route::group(['prefix'=>'home/personal'], function(){
     //显示个人资料
     Route::get('show', 'home\Personal@show');
     //修改个人资料

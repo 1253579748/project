@@ -4,35 +4,50 @@
 <div class="panel panel-default">
     <div class="panel-heading">管理员角色详情</div>
     <div class="panel-body">
-        <a href="/admin/power/useradd" style="color:red;"> ==> 添加管理员角色</a>
+        <a href="/admin/power/useradd" style="padding-left:50px;color:red"> => 添加角色</a>
     </div>
         <table class="table">
             <thead>
                 <tr>
                     <th>编号</th>
-                    <th>用户ID</th>
-                    <th>角色ID</th>
+                    <th>用户名</th>
+                    <th>角色名称</th>
                     <th>操作</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($rol as $ro)
+                @foreach($arr as $key=>$ar)
                 <tr>
-                    <td>{{ $ro->id }}</td>
-                    <td>{{ $ro->user_id }}</td>
-                    <td>{{ $ro->role_id }}</td>
+                    <td>{{ $key+1 }}</td>
+                    <td>{{ $ar['name'] }}</td>
+                    @if(empty($ar['role']))
+                    <td style="color:#900001">暂无角色</td>
+                    @else
                     <td>
-                        <button type="submit" class="btn btn-primary delete" data-id="{{ $ro->id }}">删除</button>
-                        <a href="/admin/power/adupdate?id=<?php echo $ro->id ?>">修改</a>
+                        @foreach(($ar['role']) as $key=>$rol)
+                            <li>{{$rol}}</li>
+                        @endforeach
                     </td>
+                    @endif
+                    @if(empty($ar['id']))
+                    <td>
+                        <a href="/admin/power/useradd">添加角色</a>
+                    </td>
+                    @else
+                    <td>
+                      @foreach(($ar['id']) as $key=>$ad)
+                        <li>
+                            <a style="cursor:pointer;" class="delete" data-id="{{$ad}}">删除</a> | 
+                            <a href="/admin/power/adupdate?id={{$ad}}">修改</a>
+                        </li>
+                      @endforeach
+                    </td>
+                    @endif
 
                 </tr>
                 @endforeach
             </tbody>
         </table>
-    <div style="text-align:center">
-    {{ $rol->links() }}
-    </div>
 </div>
 @endsection
 
@@ -49,7 +64,9 @@
             },
             success: function(res) {
                 if (res.code == 0) {
-                    $(_t).parent().parent().remove();
+                    location='/admin/power/user';
+                    // $(_t).parent().remove();
+                    // $(_t).parent().parent().prev().children().remove();
                 }
             },
             error: function(err) {

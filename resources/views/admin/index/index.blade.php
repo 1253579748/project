@@ -126,13 +126,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <a href="#"><i class="fa fa-file-text-o nav_icon"></i>权限管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="/admin/power/index">权限资源列表</a>
+                                    <a href="/admin/power/index">权限列表</a>
                                 </li>
                                 <li>
                                     <a href="/admin/power/role">角色管理</a>
                                 </li>
                                 <li>
-                                    <a href="/admin/power/user">管理员角色列表</a>
+                                    <a href="/admin/power/rolpow">角色权限管理</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/power/user">管理员角色管理</a>
                                 </li>
                             </ul>
                             <!-- //nav-second-level -->
