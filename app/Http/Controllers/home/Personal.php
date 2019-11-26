@@ -14,6 +14,9 @@ class Personal extends Controller
     {
         //通过session中找到用户id，查询用户详细信息
         $info = session()->get('homeuserInfo');
+        if ($info == null){
+            return redirect('/home/login');
+        }
         $res = DB::table('users')->where('id', '=', $info['id'])->first();
         //通过用户id到用户详情表查询用户详情
         $user = DB::table('user_info')->where('uid', '=', $res->id)->first();
