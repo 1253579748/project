@@ -197,11 +197,16 @@
                             contentType: false,
                             data: data,
                             success: function(res) {
-                                //调用接口已经成功
-                                alert('短信验证码已经发送成功');
-                                $("#getCodeBtn").attr('disabled', true); //要禁用该按钮
-                                // //调用一个函数，完成倒计时效果。
-                                getTime();
+                                if(res.code == 0){
+                                    //调用接口已经成功
+                                    alert('短信验证码已经发送成功');
+                                    $("#getCodeBtn").attr('disabled', true); //要禁用该按钮
+                                    // //调用一个函数，完成倒计时效果。
+                                    getTime();
+                                }
+                            },
+                            error: function(err) {
+                                alert("发送失败，请重试!");
                             }
                         });
                     });
@@ -321,11 +326,16 @@
                             contentType: false,
                             data: dat,
                             success: function(res) {
-                                //调用接口已经成功
-                                alert('短信验证码已经发送成功');
-                                $("#geCodeBtn").attr('disabled', true); //要禁用该按钮
-                                // //调用一个函数，完成倒计时效果。
-                                geTime();
+                                if (res.code == 0) {
+                                    //调用接口已经成功
+                                    alert(res.msg);
+                                    $("#geCodeBtn").attr('disabled', true); //要禁用该按钮
+                                    // //调用一个函数，完成倒计时效果。
+                                    geTime();
+                                }
+                            },
+                            error: function(err) {
+                                alert("发送失败，请重试!");
                             }
                         });
                     });
@@ -363,11 +373,16 @@
                                 _token: '{{ csrf_token() }}'
                             },
                             success: function(res) {
-                                //调用接口已经成功
-                                alert('短信验证码已经发送成功');
-                                $("#gCodeBtn").attr('disabled', true); //要禁用该按钮
-                                //调用一个函数，完成倒计时效果。
-                                gTime();
+                                if (res.code == 0){
+                                    //调用接口已经成功
+                                    alert('短信验证码已经发送成功');
+                                    $("#gCodeBtn").attr('disabled', true); //要禁用该按钮
+                                    //调用一个函数，完成倒计时效果。
+                                    gTime();
+                                }
+                            },
+                            error: function(err) {
+                                alert("发送失败，请重试!");
                             }
                         });
                     });
