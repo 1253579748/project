@@ -32,9 +32,10 @@
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">操作 <span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right">
-                      <li><a href="/admin/goods/editImg/{{$v['id']}}">图片管理</a></li>
+                      <li><a href="/admin/goods/editImg/{{$v['id']}}">商品图片</a></li>
                       <li><a href="/admin/goods/editGoods/{{$v['id']}}">编辑商品</a></li>
                       <li><a onclick="del({{$v['id']}})" href="javascript:;">删除商品</a></li>
+                      <li><a href="/admin/goods/editDetail/{{$v['id']}}">详情管理</a></li>
                     </ul>
                   </div><!-- /btn-group -->
                 </div><!-- /input-group -->

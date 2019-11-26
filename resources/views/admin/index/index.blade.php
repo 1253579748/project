@@ -83,21 +83,32 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </ul>
                             <!-- /nav-second-level -->
                         </li>
-                        <li class="">
-                            <a href="#"><i class="fa fa-book nav_icon"></i>商品管理 <span class="fa arrow"></span></a>
+
+                        <li>
+                            <a href="#"><i class="fa fa-cogs nav_icon"></i>商品管理 <span class="nav-badge">12</span> <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="general.html">General<span class="nav-badge-btm">08</span></a>
+                                    <a href="/admin/goods/list">商品列表</a>
                                 </li>
                                 <li>
-                                    <a href="typography.html">Typography</a>
+                                    <a href="/admin/goods/add">添加商品</a>
                                 </li>
                             </ul>
                             <!-- /nav-second-level -->
                         </li>
+
                         <li>
-                            <a href="widgets.html"><i class="fa fa-th-large nav_icon"></i>订单管理 <span class="nav-badge-btm">08</span></a>
+                            <a href="#"><i class="fa fa-th-large nav_icon"></i>订单管理 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>
+                                    <a href="/admin/order/list">订单列表</a>
+                                </li>
+                                <li>
+                                    <!-- <a href="/admin/">添加商品</a> -->
+                                </li>
+                            </ul>
                         </li>
+
                         <li>
                             <a href="#"><i class="fa fa-envelope nav_icon"></i>活动管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">

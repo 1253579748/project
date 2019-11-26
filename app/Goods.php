@@ -21,6 +21,12 @@ class Goods extends Model
     {
         return $this->hasOne('App\GoodsImg', 'goods_id', 'id');
     }
+    
+    public function GoodsDetail()
+    {
+        return $this->hasMany('App\GoodsDetail', 'goods_id', 'id');
+    }
+
 
     //关联商品规格
     public function GoodsSpec()

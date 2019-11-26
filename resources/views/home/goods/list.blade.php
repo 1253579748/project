@@ -1,10 +1,13 @@
 @extends('home.index.index')
 
+@section('cates')
+@endsection
+
+@section('cate') 
+@endsection
+
 @section('main')
 
-@php
-    dump($goods->toArray());
-@endphp
     <div class="content inner">
         <section class="filter-section clearfix">
             <ol class="breadcrumb">
@@ -42,6 +45,9 @@
         </section>
         <section class="item-show__div clearfix">
             <div class="pull-left">
+            @php
+
+            @endphp
                 <div class="item-list__area clearfix">
                     @foreach($goods->toArray()['data'] as $v)
                     <div class="item-card">
@@ -84,7 +90,7 @@
             </div>
             <div class="pull-right">
                 
-                <div class="desc-segments__content">
+                <div style="height:550px" class="desc-segments__content">
                     <div class="lace-title">
                         <span class="c6">爆款推荐</span>
                     </div>
