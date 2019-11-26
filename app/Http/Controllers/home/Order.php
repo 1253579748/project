@@ -14,14 +14,24 @@ class Order extends Controller
     public  function list(){
 
         $orders = OrderModel::where('user_id', '99')
-                    // ->select('status')
-                    ->groupBy('status')
-                    ->get();
+                    ->with('OrderDetail')
+                    ->get()
+                    ->groupBy('status');
 
-        dd($orders->toArray());
-        
+        dump($orders->toArray());
+        $showStatus = [
+            0 => '已作废',
+            1 => '未付款',
+            2 => '待发货',
+            3 => '已发货',
+            4 => '已完成',
+            5 => '历史订单'
+        ];
 
-        return view('home.order.list',['data1'=>$data1]);
+        return view('home.order.list',[
+                'orders'=>$orders->toArray(),
+                'showStatus'=>$showStatus
+            ]);
 
     }
        //确认购物车 提交到订单控制器

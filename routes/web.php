@@ -279,6 +279,8 @@ Route::group(['prefix'=>'home/personal'], function(){
     Route::post('delres/{id}', 'home\Personal@delres');
     //默认地址
     Route::get('defa/{id}', 'home\Personal@defa');
+    //评论商品
+    Route::post('comment', 'admin\Comments@add');
 });
 
 
@@ -300,9 +302,9 @@ Route::group(['prefix'=>'goods'], function(){
 });
 
 //前台订单路由
-Route::group([], function(){
+Route::group(['prefix'=>'home/personal'], function(){
 
-    Route::get('list', 'home\Order@list');
+    Route::get('order', 'home\Order@list');
 
 });
 
