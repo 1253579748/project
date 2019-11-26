@@ -1104,7 +1104,7 @@
 		<div class="footer-links inner">
 			<dl>
 				<dt>U袋网</dt>
-				<a href="temp_article/udai_article10.html"><dd>企业简介</dd></a>
+				<a href="temp_article/udai_article10.html"><dd>企   fdfd业简介</dd></a>
 				<a href="temp_article/udai_article11.html"><dd>加入U袋</dd></a>
 				<a href="temp_article/udai_article12.html"><dd>隐私说明</dd></a>
 			</dl>

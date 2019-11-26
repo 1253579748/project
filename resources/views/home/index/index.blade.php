@@ -40,8 +40,8 @@
 				<b style="color:#800000">{{ session('homeuserInfo.username') }}</b>
 				<a href="/home/logout" style="color:#500000">退出</a>
 				<a href="/home/personal/show">我的星心光</a>
+				<a href="/home/personal/order">我的订单</a>
 				@endif
-				<a href="udai_order.html">我的订单</a>
 				<a href="">积分平台</a>
 			</div>
 		</div>
@@ -66,8 +66,15 @@
 				</p>
 			</div>
 			<div class="cart-box">
-				<a href="udai_shopcart.html" class="cart-but">
-					<i class="iconfont icon-shopcart cr fz16"></i> 购物车 0 件
+				@php
+					$shop =DB::table('shop_cart')->get();
+					$num = 0;
+					foreach ($shop as $k=>$v){
+						  $num += $v->num;
+					  }
+				@endphp
+				<a href="/home/shopcart/show" class="cart-but">
+					<i class="iconfont icon-shopcart cr fz16"></i> 购物车 {{$num}} 件
 				</a>
 			</div>
 		</div>
@@ -221,31 +228,29 @@
 	<div class="right-nav">
 		<ul class="r-with-gotop">
 			<li class="r-toolbar-item">
-				<a href="udai_welcome.html" class="r-item-hd">
+				<a href="/home/personal/show" class="r-item-hd">
 					<i class="iconfont icon-user"></i>
 					<div class="r-tip__box"><span class="r-tip-text">用户中心</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_shopcart.html" class="r-item-hd">
-					<i class="iconfont icon-cart" data-badge="10"></i>
+				<a href="/home/shopcart/show" class="r-item-hd">
+					<i class="iconfont icon-cart" data-badge="{{$num}}"></i>
 					<div class="r-tip__box"><span class="r-tip-text">购物车</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="udai_collection.html" class="r-item-hd">
+				<a href="#" class="r-item-hd">
 					<i class="iconfont icon-aixin"></i>
 					<div class="r-tip__box"><span class="r-tip-text">我的收藏</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="" class="r-item-hd">
 					<i class="iconfont icon-liaotian"></i>
 					<div class="r-tip__box"><span class="r-tip-text">联系客服</span></div>
 				</a>
 			</li>
 			<li class="r-toolbar-item">
-				<a href="issues.html" class="r-item-hd">
 					<i class="iconfont icon-liuyan"></i>
 					<div class="r-tip__box"><span class="r-tip-text">留言反馈</span></div>
 				</a>
@@ -274,33 +279,14 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer-links inner">
-			<dl>
-				<dt>U袋网</dt>
-				<a href="temp_article/udai_article10.html"><dd>企业简介</dd></a>
-				<a href="temp_article/udai_article11.html"><dd>加入U袋</dd></a>
-				<a href="temp_article/udai_article12.html"><dd>隐私说明</dd></a>
-			</dl>
-			<dl>
-				<dt>服务中心</dt>
-				<a href="temp_article/udai_article1.html"><dd>售后服务</dd></a>
-				<a href="temp_article/udai_article2.html"><dd>配送服务</dd></a>
-				<a href="temp_article/udai_article3.html"><dd>用户协议</dd></a>
-				<a href="temp_article/udai_article4.html"><dd>常见问题</dd></a>
-			</dl>
-			<dl>
-				<dt>新手上路</dt>
-				<a href="temp_article/udai_article5.html"><dd>如何成为代理商</dd></a>
-				<a href="temp_article/udai_article6.html"><dd>代销商上架教程</dd></a>
-				<a href="temp_article/udai_article7.html"><dd>分销商常见问题</dd></a>
-				<a href="temp_article/udai_article8.html"><dd>付款账户</dd></a>
-			</dl>
-		</div>
 		<div class="copy-box clearfix">
 			<ul class="copy-links">
-{{--				@foreach($arr as $k=>$v)--}}
-{{--				<a href="{{$v->href}}"><li>{{$v->title}}</li></a>--}}
-{{--				@endforeach--}}
+				@php
+					$arr =DB::table('ads')->get();
+				@endphp
+				@foreach($arr as $k=>$v)
+				<a href="{{$v->href}}"><li>{{$v->title}}</li></a>
+				@endforeach
 			</ul>
 			<!-- 版权 -->
 			<p class="copyright">

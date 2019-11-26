@@ -7,7 +7,12 @@
     <div class="panel-body">
         <div class="container">
             <div class="mt" style="padding: 10px;">
-                <ul><li><a href="" style="padding-bottom: 0;color: #e4393c;border-bottom: 2px solid #e4393c;font-weight: 700;cursor: pointer;text-decoration: none;">基本信息</a></li>
+                <ul>
+                    <li>
+                        <a href="/home/personal/show" style="padding-bottom:0;color:#e4393c;border-bottom:2px solid #e4393c;font-weight:700;cursor:pointer;text-decoration:none;">基本信息</a>
+
+                        <a href="/home/personal/headimg" style="padding-bottom:0;color:#e4393c;border-bottom:2px solid #e4393c;font-weight:700;cursor:pointer;text-decoration:none;margin-left:20px;">头像照片</a>
+                    </li>
                 </ul>
             </div>
             <!-- 左侧 -->
@@ -80,8 +85,8 @@
             <div style="width:70%;text-align: center;">
                 <span style="color:#999;font-size:12px">
                     注：修改密码请到
-                    <a href="/home/personal/paypwd?uid=<?php echo $user->uid ?>" style="color:#005ea7;text-decoration:none;">修改支付密码</a>
-                    <a href="/home/personal/logpwd?id=<?php echo $res->id ?>" style="color:#005ea7;text-decoration:none;">修改登录密码</a>
+                    <a style="color:#005ea7;text-decoration:none;">修改支付密码</a>
+                    <a style="color:#005ea7;text-decoration:none;">修改登录密码</a>
                 </span>
             </div>
         </div>

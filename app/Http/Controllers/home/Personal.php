@@ -14,6 +14,9 @@ class Personal extends Controller
     {
         //通过session中找到用户id，查询用户详细信息
         $info = session()->get('homeuserInfo');
+        if ($info == null){
+            return redirect('/home/login');
+        }
         $res = DB::table('users')->where('id', '=', $info['id'])->first();
         //通过用户id到用户详情表查询用户详情
         $user = DB::table('user_info')->where('uid', '=', $res->id)->first();
@@ -62,8 +65,8 @@ class Personal extends Controller
     //修改支付密码
     public function paypwd()
     {
-        $uid = $_GET['uid'];
-        $pay = DB::table('user_info')->where('uid', '=', $uid)->first();
+        $id = $_GET['id'];
+        $pay = DB::table('user_info')->where('uid', '=', $id)->first();
 
         return view('home.personal.paypwd', ['pay'=>$pay]);
     }
@@ -87,7 +90,7 @@ class Personal extends Controller
         $pay_pw = $request->pay_pw;
         //验证两次输入的密码是否一致
         if ($pay_pwd == $pay_pw) {
-            $paa = DB::table('user_info')->where('uid', '=', $request->uid)->update(['pay_pwd'=>$pay_pwd]);
+            $paa = DB::table('user_info')->where('id', '=', $request->id)->update(['pay_pwd'=>$pay_pwd]);
             if ($paa) {
                 return redirect('/home/personal/show');
             }
@@ -250,6 +253,20 @@ class Personal extends Controller
         $de = DB::table('address')->where('id', '=', $id)->update(['is_default'=>1]);
         if ($de) {
             return redirect('/home/personal/address');
+        }
+    }
+
+    //头像
+    public function headimg()
+    {
+        return view('home.personal.headimg');
+    }
+    public function head(Request $request)
+    {
+        if ($request->headimg) {
+            return "ok";
+        } else {
+            return "no";
         }
     }
 }

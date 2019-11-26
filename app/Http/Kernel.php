@@ -60,6 +60,7 @@ class Kernel extends HttpKernel
         'user.login' => \App\Http\Middleware\IsLogin::class,
         'user.load' => \App\Http\Middleware\IsLoad::class,
         'user.power' => \App\Http\Middleware\IsPower::class,
+        'home.login' => \App\Http\Middleware\Login::class,
         'home.load' => \App\Http\Middleware\Load::class,
     ];
 }

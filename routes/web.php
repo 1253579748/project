@@ -1,7 +1,7 @@
 <?php
 
 //商品
-Route::prefix('admin/goods')->group(function () {
+Route::group(['prefix'=>'admin/goods', 'middleware' => ['user.login']], function () {
 
     Route::get('add', 'admin\Goods@add');
 
@@ -35,7 +35,7 @@ Route::prefix('admin/goods')->group(function () {
 });
 
 //商品模型规格
-Route::group(['prefix'=>'admin/model'], function(){
+Route::group(['prefix'=>'admin/model', 'middleware' => ['user.login']], function(){
 
     Route::get('list', 'admin\Model@list');
 
@@ -48,7 +48,7 @@ Route::group(['prefix'=>'admin/model'], function(){
 });
 
 //订单
-Route::group(['prefix'=>'admin/order'], function(){
+Route::group(['prefix'=>'admin/order', 'middleware' => ['user.login']], function(){
 
     Route::get('add', 'admin\Order@add');//添加订单，未完成功能
     
@@ -65,7 +65,7 @@ Route::group(['prefix'=>'admin/order'], function(){
 });
 
 //支付管理
-Route::group(['prefix'=>'admin/pay'], function(){
+Route::group(['prefix'=>'admin/pay', 'middleware' => ['user.login']], function(){
 
     Route::get('orderPay', 'admin\Finance@orderPay');
 
@@ -103,11 +103,13 @@ Route::prefix('api')->group(function () {
 |
 */
 
+//前台首页
 Route::get('/', 'home\Index@index');
 
 
 // 后台首页路由
 Route::get('admin/index/index','admin\Index@index');
+
 
 //后台操作->验证是否登录，验证是否有权限
 Route::group(['prefix' => '/admin', 'middleware' => ['user.login', 'user.power']], function(){
@@ -194,7 +196,7 @@ Route::get('/admin/logout', 'admin\Index@logout');
 
 
 //后台分类
-Route::group(['prefix'=>'admin/cates'],function(){
+Route::group(['prefix'=>'admin/cates', 'middleware' => ['user.login']],function(){
     Route::get('index','admin\Cates@index');
     Route::get('create','admin\Cates@create');
     Route::post('store','admin\Cates@store');
@@ -203,7 +205,7 @@ Route::group(['prefix'=>'admin/cates'],function(){
 });
 
 //后台评论
-Route::group(['prefix'=>'admin/comments'],function(){
+Route::group(['prefix'=>'admin/comments', 'middleware' => ['user.login']],function(){
 	Route::get('index','admin\Comments@index');
 	Route::get('update','admin\Comments@update');
 	Route::post('store','admin\Comments@store');
@@ -211,7 +213,7 @@ Route::group(['prefix'=>'admin/comments'],function(){
 	Route::post('create','admin\Cates@create');
 });
 //后台友情链接路由
-Route::group(['prefix'=>'admin/ads'],function(){
+Route::group(['prefix'=>'admin/ads', 'middleware' => ['user.login']],function(){
     Route::get('show','admin\AdsController@show');
     Route::get('add','admin\AdsController@add');
     Route::post('add','admin\AdsController@addData');
@@ -223,7 +225,7 @@ Route::group(['prefix'=>'admin/ads'],function(){
 
 
 //后台友情链接路由
-Route::group(['prefix'=>'admin/banner'],function(){
+Route::group(['prefix'=>'admin/banner', 'middleware' => ['user.login']],function(){
     Route::get('show','admin\BannerController@show');
     Route::get('add','admin\BannerController@add');
     Route::post('add','admin\BannerController@addData');
@@ -256,7 +258,7 @@ Route::post('home/yanre', 'home\Login@yanre');
 Route::post('home/yanup', 'home\Login@yanup');
 
 //前台个人信息
-Route::group(['prefix'=>'home/personal'], function(){
+Route::group(['prefix'=>'home/personal', 'middleware' => ['home.login']], function(){
     //显示个人资料
     Route::get('show', 'home\Personal@show');
     //修改个人资料
@@ -279,8 +281,14 @@ Route::group(['prefix'=>'home/personal'], function(){
     Route::post('delres/{id}', 'home\Personal@delres');
     //默认地址
     Route::get('defa/{id}', 'home\Personal@defa');
+
     //评论商品
     Route::post('comment', 'admin\Comments@add');
+
+    //头像
+    Route::get('headimg', 'home\Personal@headimg');
+    Route::post('head', 'home\Personal@head');
+
 });
 
 
@@ -297,9 +305,8 @@ Route::group(['prefix'=>'goods'], function(){
 
     Route::get('detail/{id}', 'home\Goods@detail');
 
-    Route::post('addShopCar', 'home\Goods@addShopCar');
-
 });
+
 
 //前台订单路由
 Route::group(['prefix'=>'home/personal'], function(){
@@ -309,7 +316,11 @@ Route::group(['prefix'=>'home/personal'], function(){
 });
 
 
-Route::group(['prefix'=>'home/shopcart'], function(){
+Route::post('goods/addShopCar', 'home\Goods@addShopCar')->middleware('home.login');
+
+
+Route::group(['prefix'=>'home/shopcart', 'middleware' => ['home.login']], function(){
+    
     //查看购物车
     Route::get('show', 'home\shopcart@show');
 
@@ -331,7 +342,7 @@ Route::group(['prefix'=>'home/shopcart'], function(){
     //复选框
     Route::get('checkbox', 'home\shopcart@checkbox');
 
-
+    
     //确认购物车 提交到订单路由
     Route::post('data', 'home\shopcart@data');
 

@@ -107,10 +107,17 @@ class Login extends Controller
         $telphone = $request->telphone;
         $res = sendTemplateSMS($telphone,[$code],"1");//手机号码，替换内容数组，模板ID
         
-        return [
-            'code'=>0,
-            'msg'=>'发送成功',
-        ];
+        if ($res) {
+            return [
+                'code'=>0,
+                'msg'=>'发送成功',
+            ];
+        } else {
+            return response()->json([
+                'code' => 1,
+                'msg' => '发送失败！',
+            ], 500);
+        }
     }
     //注册验证码
     public function yanre(Request $request)
@@ -126,11 +133,18 @@ class Login extends Controller
         $phone = $request->phone;
 
         $res = sendTemplateSMS($phone,[$cod],"1");//手机号码，替换内容数组，模板ID
-        
-        return [
-            'code'=>0,
-            'msg'=>'发送成功',
-        ];
+
+        if ($res) {
+            return [
+                'code'=>0,
+                'msg'=>'发送成功',
+            ];
+        } else {
+            return response()->json([
+                'code' => 1,
+                'msg' => '发送失败！',
+            ], 500);
+        }
     }
     //修改密码验证码
     public function yanup(Request $request)
@@ -145,10 +159,17 @@ class Login extends Controller
         $phon = $request->phon;
         $res = sendTemplateSMS($phon,[$co],"1");//手机号码，替换内容数组，模板ID
         
-        return [
-            'code'=>0,
-            'msg'=>'发送成功',
-        ];
+        if ($res) {
+            return [
+                'code'=>0,
+                'msg'=>'发送成功',
+            ];
+        } else {
+            return response()->json([
+                'code' => 1,
+                'msg' => '发送失败！',
+            ], 500);
+        }
     }
 
     //前台注册
