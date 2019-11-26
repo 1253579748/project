@@ -36,6 +36,8 @@
               <a href="#tab5">待评价</a></li>
           </ul>
           <div class="am-tabs-bd">
+
+
             <div class="am-tab-panel am-fade am-in am-active" id="tab1">
               <div class="order-top">
                 <div class="th th-item">
@@ -112,6 +114,7 @@
                 </div>
               </div>
             </div>
+
             <div class="am-tab-panel am-fade" id="tab2">
               <div class="order-top">
                 <div class="th th-item">
@@ -132,7 +135,7 @@
               <div class="order-main">
                 <div class="order-list">
                   <!-- 未付款 -->
-                <foreach name="ud" item="u">
+                  @foreach
                    <div class="order-status5">
                     <div class="order-title">
                       <div class="dd-num">订单编号：
@@ -142,8 +145,11 @@
                       <span>成交时间：2222</span>
                       <!-- <em>店铺：小桔灯</em>-->
                   	</div>
+
                     <div class="order-content">
                       <div class="order-left">
+
+                      @foreach()
                         <ul class="item-list">
                           <li class="td td-item">
                             <div class="item-pic">
@@ -166,7 +172,10 @@
                             <div class="item-operation"></div>
                           </li>
                         </ul>
+                      @endforeach
+
                       </div>
+
                       <div class="order-right">
                         <li class="td td-amount">
                           <div class="item-amount">1111111111
@@ -188,11 +197,18 @@
                         </div>
                       </div>
                     </div>
+                  @endforeach
+
+
                   </div>
-                </foreach>
+
+
+
+
                 </div>
               </div>
             </div>
+            
           </div>
         </div>
       </div>

@@ -239,4 +239,11 @@ Route::group(['prefix'=>'goods'], function(){
 
 });
 
+//前台订单路由
+Route::group([], function(){
+
+    Route::get('list', 'home\Order@list');
+
+});
+
 
