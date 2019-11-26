@@ -1,5 +1,11 @@
 @extends('home.index.index')
 
+@section('cates')
+@endsection
+
+@section('cate')
+@endsection
+
 @section('main')
     <div class="content clearfix bgf5">
         <section class="user-center inner clearfix">
