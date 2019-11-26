@@ -33,7 +33,7 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
                                 </div>
-                                <input class="form-control phone" id="telphone" name="telphone" required placeholder="手机号" maxlength="11" autocomplete="off" type="text" value="{{ old('telphone') }}">
+                                <input class="form-control phone" id="telphone" name="telphone" required placeholder="手机号" maxlength="11" autocomplete="off" type="text">
                             </div>
                         </div>
                         <div class="form-group">
@@ -87,7 +87,7 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
                                 </div>
-                                <input class="form-control phone" name="phone" id="phone" required placeholder="手机号" maxlength="11" autocomplete="off" type="text" value="{{ old('phone') }}">
+                                <input class="form-control phone" name="phone" id="phone" required placeholder="手机号" maxlength="11" autocomplete="off" type="text">
                             </div>
                         </div>
                         <div class="form-group">
@@ -132,7 +132,7 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
                                 </div>
-                                <input class="form-control phone" name="phon" id="phon" required placeholder="手机号" maxlength="11" autocomplete="off" type="text" value="{{ old('phon') }}">
+                                <input class="form-control phone" name="phon" id="phon" required placeholder="手机号" maxlength="11" autocomplete="off" type="text">
                             </div>
                         </div>
                         <div class="form-group">
@@ -185,18 +185,22 @@
                     $("#getCodeBtn").click(function() {
                         //获取输入的手机号码
                         var telphone = $("#telphone").val();
+
+                        var data = new FormData();
+                        data.append('telphone', telphone);
+                        data.append('_token', '{{ csrf_token() }}');
                         //ajax请求文件，调用短信发送的接口
                         $.ajax({
                             type: 'post',
-                            url: '/home/yan?telphone=' + telphone,
-                            data: {
-                                _token: '{{ csrf_token() }}'
-                            },
+                            url: '/home/yan',
+                            processData: false,
+                            contentType: false,
+                            data: data,
                             success: function(res) {
                                 //调用接口已经成功
-                                // alert('短信验证码已经发送成功');
+                                alert('短信验证码已经发送成功');
                                 $("#getCodeBtn").attr('disabled', true); //要禁用该按钮
-                                //调用一个函数，完成倒计时效果。
+                                // //调用一个函数，完成倒计时效果。
                                 getTime();
                             }
                         });
@@ -231,7 +235,7 @@
                                     alert(err.responseJSON.msg);
                                 }
                                 if (err.responseJSON.errors != undefined) {
-                                    $('#errors').css('display', 'block').html();
+                                    $('#errors').css('display', 'block').html("");
                                     let errs = err.responseJSON.errors
                                     for (err in errs) {
                                         $('<p>'+errs[err][0]+'</p>').appendTo('#errors');
@@ -270,7 +274,7 @@
                                     alert(err.responseJSON.msg);
                                 }
                                 if (err.responseJSON.errors != undefined) {
-                                    $('#error').css('display', 'block').html();
+                                    $('#error').css('display', 'block').html("");
                                     let errs = err.responseJSON.errors
                                     for (err in errs) {
                                         $('<p>'+errs[err][0]+'</p>').appendTo('#error');
@@ -305,18 +309,22 @@
                     $("#geCodeBtn").click(function() {
                         //获取输入的手机号码
                         var phone = $("#phone").val();
+
+                        var dat = new FormData();
+                        dat.append('phone', phone);
+                        dat.append('_token', '{{ csrf_token() }}');
                         //ajax请求文件，调用短信发送的接口
                         $.ajax({
                             type: 'post',
-                            url: '/home/yanre?phone=' + phone,
-                            data: {
-                                _token: '{{ csrf_token() }}'
-                            },
+                            url: '/home/yanre',
+                            processData: false,
+                            contentType: false,
+                            data: dat,
                             success: function(res) {
                                 //调用接口已经成功
-                                // alert('短信验证码已经发送成功');
+                                alert('短信验证码已经发送成功');
                                 $("#geCodeBtn").attr('disabled', true); //要禁用该按钮
-                                //调用一个函数，完成倒计时效果。
+                                // //调用一个函数，完成倒计时效果。
                                 geTime();
                             }
                         });
@@ -356,7 +364,7 @@
                             },
                             success: function(res) {
                                 //调用接口已经成功
-                                // alert('短信验证码已经发送成功');
+                                alert('短信验证码已经发送成功');
                                 $("#gCodeBtn").attr('disabled', true); //要禁用该按钮
                                 //调用一个函数，完成倒计时效果。
                                 gTime();

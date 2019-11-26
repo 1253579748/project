@@ -12,7 +12,7 @@
             <div class="form-group">
                 <label for="firstname" class="col-sm-2 control-label">权限名称：</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="name" value="<?php echo $re->name ?>" placeholder="用户名">
+                    <input type="text" class="form-control" name="name" value="<?php echo $re->name ?>" placeholder="权限名称">
                 </div>
             </div>
             <div class="form-group">

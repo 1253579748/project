@@ -63,11 +63,15 @@
                 }
             },
             error: function(err) {
-                $('#errors').css('display', 'block').html();
-                let errs = err.responseJSON.errors;
-
-                for (err in errs) {
-                    $('<p>'+errs[err][0]+'</p>').appendTo('#errors');
+                if (err.responseJSON.code == 2) {
+                    alert(err.responseJSON.msg);
+                }
+                if (err.responseJSON.errors != undefined) {
+                    $('#error').css('display', 'block').html("");
+                    let errs = err.responseJSON.errors
+                    for (err in errs) {
+                        $('<p>'+errs[err][0]+'</p>').appendTo('#error');
+                    }
                 }
             }
         });

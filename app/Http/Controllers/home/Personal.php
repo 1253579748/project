@@ -139,6 +139,7 @@ class Personal extends Controller
     {
         $in = session()->get('homeuserInfo.id');
         $address = DB::table('address')->where('uid', '=', $in)->get();
+        // dd($address);
 
         return view('home.personal.address', ['address'=>$address]);
     }
