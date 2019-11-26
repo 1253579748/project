@@ -84,3 +84,196 @@
 2019-11-25 02:28:52  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"情趣内衣一件","subject":"星心光商城在线支付","total_amount":999,"out_trade_no":"201911251990"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 02:28:52\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'return_url\' value=\'http://www.phpon.cn\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'Cj9znm0eonVzotFqeVhjkFtuqNs4tHu1lRds1/vA4vKa235HekS49Is7LCq1iGAS3oiNSyTLtJUqZjqOo8fCGYUH6OUx+M5EEfRYUFZ42HR5Z0kHUHMC34dF6RiU6rFyq9FxldiJ9k1GXc61di3amO+m0XFNTEjxxQHjAGShl0b/KsNfxk/s8GMonoifJ8lSzAyALQzgALQiCIArEC764LRQEAdJYAKTNJXDGpp6MFq5EN5qlBI3kxrW/ql2TInjjUNQPqJzH3RjJZ7rCco1L/vA9V6GpfeZlpLeb0+PfP+GGFbPwNUFHAGUJcGLrcosk51RTu1PIFiMyOrBTmEteA==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
 2019-11-25 02:28:53  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"情趣内衣一件","subject":"星心光商城在线支付","total_amount":999,"out_trade_no":"201911251990"}
 2019-11-25 02:28:53  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"情趣内衣一件","subject":"星心光商城在线支付","total_amount":999,"out_trade_no":"201911251990"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 02:28:53\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'return_url\' value=\'http://www.phpon.cn\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'P2X1pyhP5XKOE3KKRKhSG45Mh2C+FSEO0t25OyoQ+g/C+ZT6EmKDK7jvTr8PrYjj+VuIZ27/oZYy1I2Y/toL33C9+WRK8C3MlIVZPfNdagUouaTBwiSmyYBW4iznrZL8eNPWvC1urjQIS2qZDgwyNcsN0aJuZmMpNO/iHJ/FdeUTYQqfrJBLBQbWgXY3q6hy0TYpmL6WXGm6n+aSBDarWLE1r7xVBYJ+Jq8CmiVP/s9XKIIyp3CLaJ8gx1iE29UAXrT2hIWaTbzZ+IjP6+FoTxyucI27EWjBp5yzzDfrZop4Elyq0fkcHebRabwKgl3ve9amOJvNJ4ttCComXrVPCQ==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-25 16:08:03  {"out_trade_no":"","trade_no":""}
+2019-11-25 16:08:03  response: stdClass::__set_state(array(
+   'alipay_trade_query_response' => 
+  stdClass::__set_state(array(
+     'code' => '40004',
+     'msg' => 'Business Failed',
+     'sub_code' => 'ACQ.INVALID_PARAMETER',
+     'sub_msg' => '参数无效：支付宝订单号和外部订单号不能同时为空',
+     'buyer_pay_amount' => '0.00',
+     'invoice_amount' => '0.00',
+     'point_amount' => '0.00',
+     'receipt_amount' => '0.00',
+  )),
+   'sign' => 'B5qupEQR84xNMcH4CaH5aNVqSmHnJLBjnbT/k3Pn1VuUtHUyA0kB5yR8/bt5/q57ENLT0dNtYwKpXO80F53EpddWMpo3uzUhJUerlNor1MoUin4+WPDfnOAz18ldDPqtyjWHVf0nAPP1yLJE1fYZXoHoGTPAZ64kSGSgwQ9avX571UfA+dxFjPyOrJ6kMdI+FHcs43Km14qOVv9tYe4MfxJgUoY4B54yzNhcheNFo26VES9E5Pt1ztSSG4AgCiW0SsqDjg0uu0s6vIchrQ3Kih7x8tC2KGsQr9TUMzkk7iCEYoCfO+GTpiM5Txy6Qn0uixoRpkwCidbbi1OqlrOJNw==',
+))
+2019-11-25 16:08:10  {"out_trade_no":"2019112515592259","trade_no":"2019112522001488921000204646"}
+2019-11-25 16:08:10  response: stdClass::__set_state(array(
+   'alipay_trade_query_response' => 
+  stdClass::__set_state(array(
+     'code' => '10000',
+     'msg' => 'Success',
+     'buyer_logon_id' => 'xdn***@sandbox.com',
+     'buyer_pay_amount' => '0.00',
+     'buyer_user_id' => '2088102180088923',
+     'buyer_user_type' => 'PRIVATE',
+     'invoice_amount' => '0.00',
+     'out_trade_no' => '2019112515592259',
+     'point_amount' => '0.00',
+     'receipt_amount' => '0.00',
+     'send_pay_date' => '2019-11-25 15:59:28',
+     'total_amount' => '0.01',
+     'trade_no' => '2019112522001488921000204646',
+     'trade_status' => 'TRADE_SUCCESS',
+  )),
+   'sign' => 'QBLCsjzG3l8RQ3y7RHMtOoc92qOOy/+/Z952IWF1Tt7ZktlSJbzgxYvNQwmAnqQnw6H6TQdjBhuxxfHyCGb1NaDSWRsi7Y42u8I4GN1n/Be9SPdn5eQ7n/ePfWsPyzmT9SlGZeQgY5j0YHlyzbV3azJqoVuL6kXHwHolTZMl2grUi5SGbkjfe/O7z3liYUI3/6lq0b/UCZ7n1lKFn8kE9lj1kL9/5mmYF+oqeExoAxX3crvs7bM9815YfxxtpnEMmICV7V/T9d+YGD4+LsLXeKaotuIsBuo3yPHKdk4WSyTSs1TT2oMPIXvCh/FwdfYb8LGMCOAqNuccCsnJ9cWPNg==',
+))
+2019-11-25 18:22:48  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"测试","total_amount":"0.001","out_trade_no":"20191125182227782"}
+2019-11-25 18:22:48  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"测试","total_amount":"0.001","out_trade_no":"20191125182227782"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 18:22:48\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'notify_url\' value=\'http://pay.phpon.cn/notify_url.php\'/><input type=\'hidden\' name=\'return_url\' value=\'http://pay.phpon.cn/return_url.php\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'iW1pzDdYmmZnAT/SuQnxIs4N6h9vTcnrbk5fZfXxzVLcNEp3WVnJBFiwg9ktElbcpH7AI+92blSlZeu4/jaODXxbCAN9d6rh6SpXWfgQOWO0hl2OmpW4CHVl3EI6fXVDuP5t90LqewZEbSO60kz/j3CKhyS7yCwV+69HxzZychRK/FMZ/T9Rl5tNcfBPOG2ucVI+M0v5d/bFy07HX9U8FvSKNzsSlTWQ6rqaDiGnbA+cNrYu9lRkxbx3dEPLF4lxNLgSo3ps0ie5P3/RJyb8leJbhsl3hQgCmM6j0eDMYLyh89OSOMISs1SS1sahO95bpYJubB+Cd7dhNd2SWgrbIw==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-25 18:22:54  {"out_trade_no":"","trade_no":"","refund_amount":"","out_request_no":"","refund_reason":""}
+2019-11-25 18:22:59  response: stdClass::__set_state(array(
+   'alipay_trade_refund_response' => 
+  stdClass::__set_state(array(
+     'code' => '40004',
+     'msg' => 'Business Failed',
+     'sub_code' => 'ACQ.INVALID_PARAMETER',
+     'sub_msg' => '参数无效：申请退款金额不能为空 ',
+     'refund_fee' => '0.00',
+     'send_back_fee' => '0.00',
+  )),
+   'sign' => 'c076e8emLlqBBeeDleHrrBjAL7W1nBS0waM/YRL+CcLa95kJed9V74i0s6Vpa6lt5BFAdu2BXR/tXaHyMe4j6YFEhp3V++yuWh1RxXbAQ3lj20S4gSRqhYBft3hFdAjWVK7zASju1OgYTnc891FueCOVvRvuYev8USUy1O6CLaKVyperSNX8yjgsUcKLPLRwoWmv2wlzDZzp0ukdr5PgfaDKh6Wi2gMYlpaHuFBHv2w6l39FJfukejYRDsz1+4NSq7murEojuZrhLCI8VC3u7JVNy3Q0KLyGOrr+ZkXWjZz8YY2Qxoyvf02O5FWkXNFA99z7cYEKi4MRcP6qEEHUSA==',
+))
+2019-11-25 18:24:19  {"out_trade_no":"","trade_no":""}
+2019-11-25 18:24:19  response: stdClass::__set_state(array(
+   'alipay_trade_close_response' => 
+  stdClass::__set_state(array(
+     'code' => '40004',
+     'msg' => 'Business Failed',
+     'sub_code' => 'ACQ.INVALID_PARAMETER',
+     'sub_msg' => '参数无效：支付宝订单号和外部订单号不能同时为空',
+  )),
+   'sign' => 'Ar7G5O9FJQZgvznpvxYooNP5zW802A7fImxhDrOwlQvWoBJTKIMrLsjzY+uM3dpe74s6OtnlSw94E3W4y6NJs62ws4EP2jyBi6ikDIINCrPYe6xhEMpWSlKPWEW4jFZjflXnSfSNs124THW/wArBVDrEu3KwrtLFGZ/JVQ+Os1iaO0gKKFBJwHuXoLN7MCZKs68g5IvvPgdN2tOmMzQui8/kOLRw9a+ckC1YPHXIDlo9fpHXoPrG89T731Ext87VJEY9GVK0QmhDSLtWUHznpKwVkLp20i+XwtQI8+FeH+fdTgcBlO9AJM78/AmqWjBzEKeMMHm/byV1LDKonbX22g==',
+))
+2019-11-25 18:44:41  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"测试","total_amount":"0.01","out_trade_no":"20191125182227782"}
+2019-11-25 18:44:41  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"测试","total_amount":"0.01","out_trade_no":"20191125182227782"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 18:44:41\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'notify_url\' value=\'http://pay.phpon.cn/notify_url.php\'/><input type=\'hidden\' name=\'return_url\' value=\'http://pay.phpon.cn/return_url.php\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'aedg6hvmWU39E73gqNFbLRt0l7NnlfmOYJhooB5LxjVZL0si9FnQ7ijog7T+zGjvB9j5gn0eBY/vXJXg2g7JyKEssuxUDcjlBcIwa8EpZB8GXlnRtpqpkNyBjt0l3ykDX3ckTifVZQYyHQpwGhV4CPlpUhqnmhGHisM507ChFRrJiYx/79eptqN5NGNu9wr19L94gOIE+Gb8V4k6u6NLMXvyVAVRJjpiVTozDDDUp5XE+9dAswgsTqGf1thNmehgbtGM5rpf2NpQ9B6BaZEwngQQ6paZu1k+LXHtzrMM3C/6S/xY+2pk4GQkPT7Kwy4UI9Zc0UEfT1ot1gM9BMqITA==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-25 21:36:51  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314","out_trade_no":"3"}
+2019-11-25 21:36:51  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314","out_trade_no":"3"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 21:36:51\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'return_url\' value=\'http://www.phpon.cn\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'JQ/1MAHGQO7jB1lSuW3bNQLlo5awHpjTh1JCj30AxVYcogVdUcqzTwMUGs50V1uWRUJM9CHnVtgArWWED6we4koG3ZS1f6yEyBLyQ57Omnk2yrBU39kBtXKAFTKH4XcZdUIBjeTw1mvLv9fCHzcmDZXsbBgU3LshPLdk23U4hH7qbVRYXKFOaP57YTYrOmBUTquEev2fqN2VIvBYEx9URCxYsdeY5e1KYNjia0Zu87Tqr3YEOTtwS1W8HNGp6lhXorXpRTUV1/MGmAab4ga5wFC8EoPHzr65WatrrnHl2RikcuH1W1/UE+Hj0sMQWXCZvWUwGWs+ShAHn3J2l7cosg==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-25 21:39:20  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314","out_trade_no":"3"}
+2019-11-25 21:39:20  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314","out_trade_no":"3"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 21:39:20\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'return_url\' value=\'http://www.phpon.cn\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'rUnj9+ZyZK29K4OT9kAPwAjSe+vW66VR1RPdXVeGyys6R1rHdd0bD/mB4/Gi3mxMTTBkE7FDOd2MLexCU3dYzTfvfzMHSaLBSz3JCtgCghmL/ZGyK25t2wYZAshpw/AEBQGD43u+cJyiuDKsng2YJ0dacFRMyN7g3TRgpHy0GytN7qh84awLcS1VSyNzahVRJ10gfYQUR4v1GrxNyVV9ypkwSD3gHc0mEquJWD+v9RgneHK8BqZp9gPH+eBe+pzqrVarMJUIxqo9JHOXs92AhqcpCRJM7x6mBrN7c4y7/s4qApmiTigbWqHyn0OvsRF2ngc9KItiQViEycw9Lm+3rA==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-25 21:39:22  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314","out_trade_no":"3"}
+2019-11-25 21:39:22  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314","out_trade_no":"3"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 21:39:22\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'return_url\' value=\'http://www.phpon.cn\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'YCw1B8IJAUyiJ8V9WwiBYL26nlI6ZD2335r7PPey3Cy/TnHjYyNIw/SAqZzPBlgWeq4K4LHRW1fRLy1sWO8DOdsKV5h5gOH0WD6uuMgf39NNOvzHxcCVZmyCsF7kCN0hxdslaxj6AI5eESkDovVjbqYEs3au7+6eWGR9xGrsc1aquKg7UfAsLOi8WVktFCU8dLF8WQ07kzR2ejYEX6Ai0O8z3XSM3vH5oHZBfCvE68pnirD5gUvT/K3mqv2NLpFb1Utm6v4iJmrae01iIohGI23ZfXyqzj/KuT94zkbhrctrN3xgLsxRPXjff+CdgIlNVPl4vgf2mfeLW6wgVQZFfA==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-25 21:39:32  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314","out_trade_no":"3"}
+2019-11-25 21:39:32  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314","out_trade_no":"3"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 21:39:32\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'return_url\' value=\'http://www.phpon.cn\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'jZXi/l1rf2vydTBC5jH+9mx5+hkqnhemfLFSJwcZHnGu/6z7TvLP+7ZNWu9uGcGjpXasgALnDM2pTcNSDRPgfrp0ljbpvAlxeyX0s1BTHyvef8iuW7ZggTtBj5KOP9Ui+7nowEE/F/v329USy5po62N0JSn6bsUqpwI39YXFQkGLEbOgpg5ZPmlgbW3gDaThOpw3hVxdM5/6GWeckpqdLyeDcOyypSaZGuH5/WZhRYJfe3Ul696kcre+6BhPCFv7bu0BUyo9XSPjvFH2sB6WPkS3/oBhtQuhNeeDq/j3KfOkctNhXfb0JJFGaVh8afnShHzKMTDTXWE9Bks32ZRD0g==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-25 21:40:08  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"星心光商城订单支付","total_amount":"1314","out_trade_no":"6"}
+2019-11-25 21:40:08  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"星心光商城订单支付","total_amount":"1314","out_trade_no":"6"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 21:40:08\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'return_url\' value=\'http://www.phpon.cn\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'cGnRXwG8zSov81k0I+2Pz4wU9FHJ7c+IrtLlKaosusAE0VFQ1ArQGxOGAQoI5LFgMZARb1si5f2Sh+EwuKrbI8yye+MgTYeo5wdvkH3ubeVd3dmxbfKHxaq0tTSBcdPmLAtwa7LoLrf0P39Bi/3jyktIYfRyGznfUBIYxa6E6NCq5LOcHD+kxyvK4F/4PB35iSrGz7nkW56pJkuOKYuYFotrsuTKrggRTZqWQuIvuAO6pXL2wGm2VYZgKfg51kX+ACDpK0N9AU+kn/+eJyG6+UK9eg08QTIUdPA8twixvXpwdt8q4yP7FmwjnloBsK2kBeVxCN0vpsx1QicVhrbn+w==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-25 21:51:11  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"测试","total_amount":"0.01","out_trade_no":"20191125215059143"}
+2019-11-25 21:51:11  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"测试","total_amount":"0.01","out_trade_no":"20191125215059143"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 21:51:11\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'notify_url\' value=\'http://pay.phpon.cn/notify_url.php\'/><input type=\'hidden\' name=\'return_url\' value=\'http://pay.phpon.cn/return_url.php\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'qEo3lEAQ2/jL+psfiEFNn2XBCwZGr2VP9yRx0U00czxIffZPyvAtPoqZ9gT46TkTvTKXTwmdmT5u6fjB8LUi1tLzuDXTF8a5iu5PdIUEma+E6494py+9NGrzot8+ZrJF4NT6dNYHY5PF8iqXV3b5kA1M2ALxl1YQWlDii0OKPOZMLXLIgD1JE6FoRCQq76CiZ41JM0w9QzllN/VOgLmfT5A4ITQUJFvUvfhPQL/Yym/1gF4gL284JDXRZnA8V4xRgP1nm9BjaDl6ZDsgMUoR0zYBPb2VdL/Hfr0AFb/ry5pa2P6TWT33NASfVBJckcu2ezsEJuf1qk804pbH14eG6A==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-25 21:51:25  array (
+  'gmt_create' => '2019-11-25 21:51:16',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-11-25 21:51:24',
+  'notify_time' => '2019-11-25 21:51:25',
+  'subject' => '测试',
+  'sign' => 'UwtHEUZzjBSkSOnHf0hatH9USEdTb+d4v8C5Wo6jCRjilWcyytkjgEq8dl0ZILF9Ysgpv/hq7RpQLvmH1pRwuxcSuKkFnC/UmohZAHA4psI/6a1j8OldEkFvUExEdR/5t7ltl+luvOvdnj+qGnmTP/lMHE4xVhVWHTO6qA+O+5pg3W5EWPDCIvkZyNk/ye0sUS61b84zoPzseCY2yjDAHMkOEiVyiPUHpf09FUGrJbvSrTNH4+t91Pqs6+v9RPFuxm1isWxiN3AMQ5uWCdW6G3mgTfLDKD2O2RHJCzhY1ASZUQqWKJ9RT5h5Zrm7FaHPpRy8ocXg/aHK0ihPZDxRdg==',
+  'buyer_id' => '2088102180088923',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019112500222215124088921000664681',
+  'fund_bill_list' => '[{"amount":"0.01","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '20191125215059143',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019112522001488921000204648',
+  'auth_app_id' => '2016101500689566',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'app_id' => '2016101500689566',
+  'buyer_pay_amount' => '0.01',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088102179634212',
+)
+2019-11-25 21:56:13  array (
+  'gmt_create' => '2019-11-25 21:51:16',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-11-25 21:51:24',
+  'notify_time' => '2019-11-25 21:56:13',
+  'subject' => '测试',
+  'sign' => 'J413tKU326CsOEA1oMh4pvIxe3U+FIpoG0ooVu+VlidlxtAcwJ7ckWoiF0XunBnzZbiOj57DD8DjY2dd6Pktv2vlbUONXCO9y2b7byMXkZ5PEIQi2JlypadfMxFXKtk8ppm7ZASakihlcD7H/doTuj95yqQ6GRi5ojUKESKwLp1ld1/zww4WdQkuy5BhdszQUDv651OeCkG/6MYQv2e/SpSFNEIUBv0Mp8RXqbRfLCU+OPCkKLAtLp2sRY6e2UhEtlsU+9yy4gPZvWm/uJHsqtq+CLWDa2pIqfBiQI6q56KNyYhadNyBT+DT66V8A9H5NPhl0wXm8UBxDVBa+LqJZw==',
+  'buyer_id' => '2088102180088923',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019112500222215124088921000664681',
+  'fund_bill_list' => '[{"amount":"0.01","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '20191125215059143',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019112522001488921000204648',
+  'auth_app_id' => '2016101500689566',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'app_id' => '2016101500689566',
+  'buyer_pay_amount' => '0.01',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088102179634212',
+)
+2019-11-25 22:34:37  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"3"}
+2019-11-25 22:34:37  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"3"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 22:34:37\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'return_url\' value=\'http://www.phpon.cn\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'nUNhvE/A40jUelDxnzBdP5T+EOcDveE2Mmi6Db8OSEdo7Ng6xNI29QdPKybWz5cmXeY++xXhisJAY2HtjFdc4kgtCBaC2/gInrdt9MwMWfRGIYV0V1/Q/RGv+JT8Pww64dYQ/q/U6D9/5bW58lTkqVh8L8kShpKHJ8424AvTIt/4nVInDJcqMcmfSBcVGy1WWmywVEDvbSWpFwWzxBNGsUKCHFNgnwdJDbfSlBNgkErtkzkKJc4Rm9qSDJVm0tUk4IGvcQEgX5YNSijcEtTQ+D2n7z4ljw9/NGCyqATbRhPDAwGtkGjEgU3gmdZQ3a7BgOFKo9utfosf8oevprFH0Q==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-25 22:37:17  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"3"}
+2019-11-25 22:37:17  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"3"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 22:37:17\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'notify_url\' value=\'http://phpon.cn/admin/pay/payNotify\'/><input type=\'hidden\' name=\'return_url\' value=\'http://www.phpon.cn/home/index\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'FYOBQsxt1VYK5WCsPQxTtlOz4fIoQZAQo0nOLNQo7rGOB0+oYJiVJpzKKdm5tZ10rBDVti8o59pjyjBg5x7Vh3GSwO0NG4CUYay0FPWzFNP8sp+4zEuzd8q0ikawZEaO+ruV/RlTLII9sDtZYsJTCkMfMtpXXmm+Vv3pvIHzN/Kep0fEgLL5ZFqFRM7TsJhvmuHUBLJoJ8BfiVnS24P13hkiMzab1sSmA0CTTqi3UwbRw1JSrVROV+6HHdhve+ghqigeG6Hi/qSykfASCAlxN7g/jL/4MsHDric5F5ObYJWh1cQA6J+Y87IxfwVNldAS6X6ChO4pqeWY6FnA0/8Lqg==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-25 22:42:25  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"3"}
+2019-11-25 22:42:25  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"外星人amindfa15:微软雅黑_32G_AMD_1070_15.6寸+日照深入生子烟:全网通4G+128G_红色_套餐一","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"3"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 22:42:25\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'notify_url\' value=\'http://phpon.cn/admin/pay/payNotify\'/><input type=\'hidden\' name=\'return_url\' value=\'http://phpon.cn/home/index\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'nySpXC1WMN2ZVOE1aSIuy4ilfKjH9TPMCrLXp6COema4aE5ZPEsycVLJPLGhEeX5WTLhJDbTNEfgn21n8gV9liMD4l4pKmOvMYgg6u6DYlWygrtPmZ9wiHYuvrnYR1wgRV6FSpm1xgXOO5+sPcZ5EkyJZoGnzYxIA/qm+8fyCPtDqD1CZlvlpMTMRxiaROtT0HLFK1M2Wk/pwRbCrQ5CSWz5QCAP340oJQTO56uRTTtaTCp+WuFNrKW/vYsPW84saLrD+PhpqJdIR9ZrCXFeAZoTI2xE+YyTOA+QZsrjwsWc2oLB/Pl5JWUB7LSjwg7nDYxIBmRMlffjtOJb0KqXqg==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-25 22:43:23  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"6"}
+2019-11-25 22:43:23  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"6"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 22:43:23\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'notify_url\' value=\'http://phpon.cn/admin/pay/payNotify\'/><input type=\'hidden\' name=\'return_url\' value=\'http://phpon.cn/home/index\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'b/ob6Wb3S7q8VtF7pRFn77L7tdJ3AGJzKVc3T5/a1nDrsJ7zC5pDDciLvwyZnh9sFzz+AyeGF+Iub84mmicfVy5w5WxwxYc6oYDbOaNoE05JUgvyNrjunNu/Jllp2foNrK8AaFoQlr2oeUWJyvjnGnxMtC4wBSzJWJBd+6c1cFEfac5byzxvlwLZRoSl+2b0ls6q+yluIS+pY8kf0JJuj6aN89mLh17sQJV8P8KMWH/LrhlU6ukrls31s9uAJFX03JhCLbmYIESyOO7mK2Ke0HaBipNCtYE9KInxijRqJehNORBV/IKUKIo/YsI9Vq+LqIHWOscvJ9zVUUdWd7egiQ==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-25 22:43:44  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"9"}
+2019-11-25 22:43:44  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"9"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-25 22:43:44\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'notify_url\' value=\'http://phpon.cn/admin/pay/payNotify\'/><input type=\'hidden\' name=\'return_url\' value=\'http://phpon.cn/home/index\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'EOmsARGGbecBbrZaOs7Jh6ercTupl+npFgKNrgtptv+uJp/I6SS3/plHeeG3UlTfTlnoLrn1Z89RKehuNKBlRemPF+6FQSBjD13OhmhhiPF/+S4ksopxpQ4EdL6pZWH3e2gltXG8txfDsd7R4C1uJsX8cjOQZKhIKkXiI7AO6QEZml4a8zf3YuGRqXh03yYOriI0US1M+ezud9jRLT1MABfZR2J/MOw/mvPIztTExojXJKLkx8N+UcsDAfTjvhde+Q3CyPaPNy4NxUUNEsO2NwJ3Skc37yH4RZlzRWKbkREn1HmXjBFKADf7L8Vc9bsKPOmyj7BpLUTzpkutuPoesg==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-26 09:08:12  array (
+  'name' => 'fadfafa',
+)
+2019-11-26 09:09:52  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"12"}
+2019-11-26 09:09:52  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"12"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-26 09:09:52\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'notify_url\' value=\'http://phpon.cn/admin/pay/payNotify\'/><input type=\'hidden\' name=\'return_url\' value=\'http://phpon.cn/home/index\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'lKkuBetgYxKRNX4eUqHVy35XRgr4tlbAEx4FMvo3qPRIJAjj7WoNakS6Mg3fYoy+E+qTQut1ZUQ5f/EdJH3t8y2903LauJtIM/eMlesbCAIxp1B+PsBHCfGG6OX4oP5WQPDJnwRzIVrwZnDNUKcpBjjKLvt1Dbk4vQ6dxSFoVV0eWjsygaS76yeXE/sRBKy8eYzvgsbK8WehNc99DLj6HO9leWAXQW8ytsm8C4FAg4XiG6yarIE9XUOVx+EEsgklVgY1IqiJG3HlMQcKmzCYvhLwSg9P5IBYTisJy8VSlzepeOJJZME6FnNry2w8Cxi8TQTZtHo8NSjfpfpahmCilw==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-26 09:10:42  array (
+  'gmt_create' => '2019-11-26 09:10:29',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-11-26 09:10:40',
+  'notify_time' => '2019-11-26 09:10:42',
+  'subject' => '星心光商城订单支付',
+  'sign' => 'K5lI2HIYaqPIkyMcGbs5LPDjkiOdfVlXtlOxikZY8/BEulg+lPa3//vn/PM63DDbFhZ/h2P8VpeAupB/OCU3daGhjox0nWj5WlF99TPnadQ/bx3HXFujB0zsxLZWCVL6H8tV3azlsQO1T+A0Nr6zk8wcO/oXYx+VzLBvP+g0X/ipU7z5X5pJtzlkoZgM/tZ0iTrgRRYUURDzUH4FWxJx/5bhgEYY/d1NzuE5vBss3cpR8ZLEe8N3h3MdKvk324O5N+HKwk3RGQZPFHCKWfQDT9ujWFsuHEh7hFG88bMAWVDnzZY9NeuQFHiHFeDE1xRaKsG40fufva1nNyxO5IZWnQ==',
+  'buyer_id' => '2088102180088923',
+  'invoice_amount' => '1314.00',
+  'version' => '1.0',
+  'notify_id' => '2019112600222091041088921000663439',
+  'fund_bill_list' => '[{"amount":"1314.00","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '12',
+  'total_amount' => '1314.00',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019112622001488921000200857',
+  'auth_app_id' => '2016101500689566',
+  'receipt_amount' => '1314.00',
+  'point_amount' => '0.00',
+  'app_id' => '2016101500689566',
+  'buyer_pay_amount' => '1314.00',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088102179634212',
+)
+2019-11-26 09:13:01  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"21"}
+2019-11-26 09:13:01  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"product_code":"FAST_INSTANT_TRADE_PAY","body":"","subject":"星心光商城订单支付","total_amount":"1314.00","out_trade_no":"21"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016101500689566\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA2\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.page.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2019-11-26 09:13:01\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20161101\'/><input type=\'hidden\' name=\'notify_url\' value=\'http://phpon.cn/admin/pay/payNotify\'/><input type=\'hidden\' name=\'return_url\' value=\'http://phpon.cn/home/index\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'kizNRdKJ1k04We/qwZc2BaOySBVBdTU5SnZT1hBazU1N3fOuzNCSHYhRrNfSYDj3Hb7HJDzxGYIuPKKFusDk/LWZ5vEK1AjDVxwNq6hgkvRrtVyeYQMAgsss1VeZMY/gnrSrKy94QvDPg9tMOzcnTh7CHN9RwODy4xXOAnsLiQrnaRDYNLk9guZmpvRZFwnxWdYcNrdLA42K7EPznw8W0TppAKGqlG4octOV2ra5L3QL7JAgCWJGEylBVCWLkBTp6eqzqiN4aJNYNd66N4YabJubiQP8z5at36CQ9x+Rp8e/F1PpHDe88d5xsSINGLkYOKPC6xqpsfHziDkVrP5aBQ==\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2019-11-26 09:13:19  array (
+  'gmt_create' => '2019-11-26 09:13:09',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-11-26 09:13:17',
+  'notify_time' => '2019-11-26 09:13:18',
+  'subject' => '星心光商城订单支付',
+  'sign' => 'Wwlc5cCa+wbqXYaxUyIUWNwZSUq7B8qgsaK0WZbkRxxruMUQ+xYjSkhWWA8WN5B8vW1DDzqWHgIYJiNcP3dApH6YGR15b3+7gGasYgospxDib+gYCR4demNBG4Oo9a/4x3SRKJZsmHBxcouTk1BGOZUBX4uCjyE3wmmtu7cJMhtxlaRerl5n6EPkv8RoedHzgZ2Fc4vOgX5SMCva1/HA6EzPhUQBn0i/J6mfKpwIBCDl4RWpNdG5hVZkFFdDZSoAYQhtogwaPrQ0oOLCX4OfLio/r6ux9eFF1idVtFhtVFA5azSOu33UiVid8lx8gomMeOpZZlFk9P9FonuWCOa3uA==',
+  'buyer_id' => '2088102180088923',
+  'invoice_amount' => '1314.00',
+  'version' => '1.0',
+  'notify_id' => '2019112600222091318088921000661537',
+  'fund_bill_list' => '[{"amount":"1314.00","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '21',
+  'total_amount' => '1314.00',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019112622001488921000200858',
+  'auth_app_id' => '2016101500689566',
+  'receipt_amount' => '1314.00',
+  'point_amount' => '0.00',
+  'app_id' => '2016101500689566',
+  'buyer_pay_amount' => '1314.00',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088102179634212',
+)

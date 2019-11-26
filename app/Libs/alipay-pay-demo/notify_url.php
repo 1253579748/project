@@ -15,7 +15,7 @@
 require_once 'config.php';
 require_once 'pagepay/service/AlipayTradeService.php';
 
-$arr=$_POST;
+$arr = $_POST;
 $alipaySevice = new AlipayTradeService($config); 
 $alipaySevice->writeLog(var_export($_POST,true));
 $result = $alipaySevice->check($arr);
@@ -67,6 +67,7 @@ if($result) {//验证成功
     }
 	//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
 	echo "success";	//请不要修改或删除
+    var_dump($_POST);
 }else {
     //验证失败
     echo "fail";

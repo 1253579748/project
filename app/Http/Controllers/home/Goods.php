@@ -77,7 +77,7 @@ class Goods extends Controller
                 ->with(['GoodsImgOne'])
                 ->where('status', '!=', 2)
                 ->orderBy($order[0], $order[1])
-                ->paginate(4)
+                ->paginate(16)
                 ->appends($request->all());
 
         } elseif($type->pid === 0) { //顶级分类商品显示
@@ -86,7 +86,7 @@ class Goods extends Controller
                 ->where('status', '!=', 2)
                 ->with(['GoodsImgOne'])
                 ->orderBy($order[0], $order[1])
-                ->paginate(4)
+                ->paginate(16)
                 ->appends($request->all());
             
         } else { //二级分类下商品显示
@@ -96,17 +96,17 @@ class Goods extends Controller
                 ->where('status', '!=', 2)
                 ->with(['GoodsImgOne'])
                 ->orderBy($order[0], $order[1])
-                ->paginate(4)
+                ->paginate(16)
                 ->appends($request->all());
         }
 
         //推荐位商品
         $push = GoodsModel::where('is_push', '1')
             ->with(['GoodsImgOne'])
+            ->limit(3)
             ->get()
             ->toArray();
 
-        dump($push);
 
         return view('home.goods.list', [
                 'twoTypes' => $twoTypes,
@@ -131,7 +131,6 @@ class Goods extends Controller
             ->get()
             ->toArray();
 
-        dump($push);
 
         return view('home.goods.detail', ['goods'=>$goods, 'push'=>$push]);
     }

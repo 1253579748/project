@@ -64,6 +64,15 @@ Route::group(['prefix'=>'admin/order'], function(){
 
 });
 
+//支付管理
+Route::group(['prefix'=>'admin/pay'], function(){
+
+    Route::get('orderPay', 'admin\Finance@orderPay');
+
+    Route::post('payNotify', 'admin\Finance@payNotify');
+
+});
+
 
 //api接口
 Route::prefix('api')->group(function () {
@@ -77,6 +86,8 @@ Route::prefix('api')->group(function () {
     Route::get('attr/get/{id}', 'api\Spec@getAttr');
 
     Route::get('user/getId/{name}', 'api\User@getId');
+
+    Route::get('getJoke', 'api\Index@getJoke');
 
 
 });
@@ -92,9 +103,7 @@ Route::prefix('api')->group(function () {
 |
 */
 
-Route::get('/', function () {
-    return view('前台首页');
-});
+Route::get('/', 'home\Index@index');
 
 
 // 后台首页路由
@@ -229,4 +238,5 @@ Route::group(['prefix'=>'goods'], function(){
     Route::post('addShopCar', 'home\Goods@addShopCar');
 
 });
+
 

@@ -122,11 +122,11 @@ $('input[name=search]').click(function(){
                       @switch($v->status)
                          @case(1) <!--//用户未付款-->
                         <li><a onclick="changeOrderStatus({{$v->id}}, 0)" href="javascript:;">作废订单</a></li>
-                        <li ><a href="/admin/order/editDetail/{{$v['id']}}">提醒付款</a></li>
+                        <li ><a href="/admin/order/editDetail/{{$v->id}}">提醒付款</a></li>
                         @break
 
                         @case(2) <!--//用户已付款-->
-                        <li me-id="{{$v['id']}}" me-getman="{{$v['getman']}}:{{$v['phone']}}-{{$v['address']}}" data-toggle="modal" data-target="#sendOutModal" onclick="sendOut(this)"><a href="javascript:;">发货</a></li>
+                        <li me-id="{{$v->id}}" me-getman="{{$v->getman}}:{{$v->phone}}-{{$v->address}}" data-toggle="modal" data-target="#sendOutModal" onclick="sendOut(this)"><a href="javascript:;">发货</a></li>
                         @break
 
                         @case(3) <!--//已发货-->

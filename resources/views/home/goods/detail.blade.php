@@ -1,5 +1,11 @@
 @extends('home.index.index')
 
+@section('cates')
+@endsection
+
+@section('cate') 
+@endsection
+
 @section('css')
 <style>
 
@@ -24,9 +30,6 @@
 
 @section('main')
 
-@php
-    dump($goods);
-@endphp
 <meta name="csrf-token" content="{{ csrf_token() }}">
 	<div class="content inner">
 		<section class="item-show__div item-show__head clearfix">
