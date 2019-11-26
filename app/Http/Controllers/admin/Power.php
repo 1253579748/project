@@ -5,7 +5,9 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use App\UserRole;
+use App\Admin;
+use App\User_Has_Roles;
+use App\Role;
 
 class Power extends Controller
 {
@@ -115,19 +117,40 @@ class Power extends Controller
         $rol = DB::table('user_has_roles')->paginate(5);
         $user_id = $rol->pluck('user_id');
 
-        // $res = UserRole::with(['Users'])->get()->toArray();
-        // // dd($res);
-        // $len = count($res);
-        // // dd($len);
-        // for ($i = 0; $i < $len; $i++){
-        //     $arr = $res[$i];
-        //     // dd($arr);
-        //     foreach($arr['users'] as $key=>$value){
-        //         $name = $value['name'];
-        //     }
-        // }
-
-        return view('admin.Power.user', ['rol' => $rol]);
+        $res = Admin::with(['User_Has_Roles.Role'])->get()->toArray();
+        // dd($res);
+        $len = count($res);
+        $arr = [];
+        for ($i = 0; $i < $len; $i++){
+            //用户表id
+            $arr[$i]['user_id'] = $res[$i]['id'];
+            //用户名
+            $arr[$i]['name'] = $res[$i]['name'];
+            if (($res[$i]['user__has__roles']) != null) {
+                //用户拥有的角色表id
+                // $arr[$i]['id'] = $res[$i]['user__has__roles'][0]['id'];
+                // dump($arr);
+                for ($r = 0; $r < $len; $r++) {
+                    $ar = $res[$r]['user__has__roles'];
+                    // dump($ar);
+                    $le = count($ar);
+                    for ($k = 0; $k < $le; $k++) {
+                        //用户拥有的角色表id
+                        $arr[$r]['id'][$k] = $ar[$k]['id'];
+                        $aa = $ar[$k]['role'];
+                        // dump($aa);
+                        foreach ($aa as $value) {
+                            // dump($value['name']);
+                            //角色名称
+                            $arr[$r]['role'][$k] = $value['name'];
+                        }
+                    }
+                }
+            }
+        }
+        // dd($arr);
+        // return 123;
+        return view('admin.Power.user', ['arr'=>$arr]);
     }
 
     //删除管理员角色
@@ -157,31 +180,21 @@ class Power extends Controller
     //添加管理员角色
     public function usersub(Request $request)
     {
-        $this->validate($request, [
-            'user_id' => 'required',
-            'role_id' => 'required',
-        ], [
-            'required' => ':attribute必须填写',
-        ], [
-            'user_id' => '用户id',
-            'user_id' => '角色id',
-        ]);
-        $data = [];
-        $data['user_id'] = $request->user_id;
-        $data['role_id'] = $request->role_id;
+        $dd = DB::table('admin')->where('name', '=', $request->username)->first();
+        if($dd){
+            $data = [];
+            $data['user_id'] = $dd->id;
+            $data['role_id'] = $request->get('role_id', 3);
 
-        $res = DB::table('user_has_roles')->insert($data);
+            $res = DB::table('user_has_roles')->insert($data);
 
-        if ($res) {
-            return [
-                'code' => 0,
-                'msg' => '添加成功',
-            ];
+            if ($res){
+                return redirect('/admin/power/user');
+            } else {
+                echo("<script>alert('添加失败！');location='/admin/power/useradd'</script>");
+            }
         } else {
-            return response()->json([
-                'code' => 1,
-                'msg' => '添加失败',
-            ], 500);
+            echo("<script>alert('用户名不存在哦！');location='/admin/power/useradd'</script>");
         }
     }
     //修改管理员角色页面
@@ -194,16 +207,17 @@ class Power extends Controller
          return view('admin.Power.adupdate',['re'=>$re]);
      }
     //修改管理员角色
-    public function adupda()
+    public function adupda(Request $request)
     {
         $dat = [];
         $dat['id'] = $_POST['id'];
-        $dat['user_id'] = $_POST['user_id'];
-        $dat['role_id'] = $_POST['role_id'];
+        $dat['role_id'] = $request->get('role_id', 3);
 
         $re = DB::table('user_has_roles')->where('id', '=', $dat['id'])->update($dat);
         if ($re){
             return redirect('/admin/power/user');
+        } else {
+            echo("<script>alert('内容没有变化，无需修改哦！');location='/admin/power/user'</script>");
         }
     }
 
@@ -285,6 +299,122 @@ class Power extends Controller
         $re = DB::table('roles')->where('id', '=', $dat['id'])->update($dat);
         if ($re){
             return redirect('/admin/power/role');
+        }
+    }
+
+    //角色权限
+    public function rolpow()
+    {
+        $res = Role::with(['Role_Has_Permissions.Permissions'])->get()->toArray();
+        // dd($res);
+        $len = count($res);
+        $arr = [];
+        for ($i = 0; $i < $len; $i++){
+            //角色名
+            $arr[$i]['name'] = $res[$i]['name'];
+            if (($res[$i]['role__has__permissions']) != null) {
+                for ($r = 0; $r < $len; $r++) {
+                    $ar = $res[$r]['role__has__permissions'];
+                    $le = count($ar);
+                    for ($k = 0; $k < $le; $k++) {
+                        //角色拥有的权限表id
+                        $arr[$r]['id'][$k] = $ar[$k]['id'];
+                        $aa = $ar[$k]['permissions'];
+                        // dump($aa);
+                        foreach ($aa as $value) {
+                            //权限名称
+                            $arr[$r]['rolename'][$k] = $value['name'];
+                            //权限对应的控制器
+                            $arr[$r]['controller'][$k] = $value['controller'].'@'.$value['action'];
+                            //权限对应的方法
+                            // $arr[$r]['action'][$k] = $value['action'];
+                        }
+                    }
+                }
+            }
+        }
+        // dd($arr);
+        // return 123;
+        return view('admin.Power.rolpow', ['arr'=>$arr]);
+    }
+    //修改角色权限页面
+    public function rpupde()
+    {
+        //接收id
+        $id = $_GET['id'];
+        $res = DB::table('role_has_permissions')->where('id',$id)->first();
+        // dd($res);
+        $re = DB::table('permissions')->where('id', '=', $res->permission_id)->first();
+
+        return view('admin.Power.rpupde', ['res'=>$res, 're'=>$re]);
+    }
+    //修改角色权限
+    public function rpup(Request $request)
+    {
+        $da = [];
+        $da['name'] = $request->name;
+        $da['controller'] = $request->controller;
+        $da['action'] = $request->action;
+
+        $tt = [];
+        $tt['permission_id'] = $_POST['permission_id'];
+        $re = DB::table('permissions')->where('id', '=', $tt['permission_id'])->update($da);
+
+        if ($re){
+            return redirect('/admin/power/rolpow');
+        } else {
+            echo("<script>alert('内容没有变化，无需修改哦！');location='/admin/power/rolpow'</script>");
+        }
+    }
+
+    //删除角色权限
+    public function rpdel($id)
+    {
+        $res = DB::table('role_has_permissions')->where('id', '=', $id)->delete();
+
+        if ($res) {
+            return [
+                'code' => 0,
+                'msg' => '删除成功',
+            ];
+        } else {
+            return response()->json([
+                'code' => 1,
+                'msg' => '删除失败',
+            ], 500);
+        }
+    }
+
+    //添加角色权限页面
+    public function ropo()
+    {
+        return view('admin.Power.ropo');
+    }
+    //添加角色权限
+    public function roposub(Request $request)
+    {
+        $data = [];
+        $data['name'] = $request->name;
+        $data['controller'] = $request->controller;
+        $data['action'] = $request->action;
+
+        $res = DB::table('permissions')->insert($data);
+        $rr = DB::table('permissions')
+                ->where([
+                    ['action', '=', $request->action],
+                    ['controller', '=', $request->controller],
+                ])->first();
+
+        $dat = [];
+        $dat['role_id'] = $request->get('role_id', 3);
+        $dat['permission_id'] = $rr->id;
+
+        $re = DB::table('role_has_permissions')->insert($dat);
+
+        if ($re){
+            return redirect('/admin/power/rolpow');
+        } else {
+            echo("<script>alert('添加失败！');location='/admin/power/ropo'</script>");
         }
     }
 }

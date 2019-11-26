@@ -28,16 +28,21 @@
 	<div class="tab-header">
 		<div class="inner">
 			<div class="pull-left">
-				<div class="pull-left">嗨，欢迎来到<span class="cr">U袋网</span></div>
-				<a href="agent_level.html">网店代销</a>
-				<a href="temp_article/udai_article4.html">帮助中心</a>
+				<div class="pull-left">嗨，欢迎来到<span class="cr">星心光商城</span></div>
+				<a href="">网店代销</a>
+				<a href="">帮助中心</a>
 			</div>
 			<div class="pull-right">
-				<a href="login.html"><span class="cr">登录</span></a>	
-				<a href="login.html?p=register">注册</a>
-				<a href="/home/personal/show">我的U袋</a>
+				@if(empty(session('homeuserInfo')))
+				<a href="/home/login"><span class="cr">亲，请登录</span></a>	
+				<a href="/home/login">立即注册</a>
+				@else
+				<b style="color:#800000">{{ session('homeuserInfo.username') }}</b>
+				<a href="/home/logout" style="color:#500000">退出</a>
+				<a href="/home/personal/show">我的星心光</a>
+				@endif
 				<a href="udai_order.html">我的订单</a>
-				<a href="udai_integral.html">积分平台</a>
+				<a href="">积分平台</a>
 			</div>
 		</div>
 	</div>
@@ -125,16 +130,19 @@
 					<div class="avt-port">
 						<img src="/home/images/icons/default_avt.png" alt="欢迎来到U袋网" class="cover b-r50">
 					</div>
-					<!-- 已登录 -->
-					<div class="name c6">Hi~ <span class="cr">18759808122</span></div>
-					<div class="point c6">积分: 30</div>
-
+					@if(empty(session('homeuserInfo')))
 					<!-- 未登录 -->
-					<!-- <div class="name c6">Hi~ 你好</div>
-					<div class="point c6"><a href="">点此登录</a>，发现更多精彩</div> -->
+					<div class="name c6">Hi~ 您好</div>
+					<div class="point c6"><a href="/home/login">点此登录</a>，发现更多精彩</div>
+					@else
+					<!-- 已登录 -->
+					<div class="name c6">Hi~ <span class="cr">{{ session('homeuserInfo.username') }}</span></div>
+					<div class="point c6" style="color:#888">星享值: 8888</div>
+					@endif
+
+					
 					<div class="report-box">
-						<span class="badge">+30</span>
-						<a class="btn btn-info btn-block disabled" href="#" role="button">已签到1天</a>
+						<a style="position:relative;text-decoration:none;color:#f40;display:block;height:26px;line-height:26px;background:#ffe4dd;font-size:12px;" href="http://report.12377.cn:13225/toreportinputNormal_anis.do?spm=a21bo.2017.0.0.5af911d9AMJLve&file=toreportinputNormal_anis.do">网上有害信息举报专区</a>
 						<!-- <a class="btn btn-primary btn-block" href="#" role="button">签到领积分</a> -->
 					</div>
 				</div>

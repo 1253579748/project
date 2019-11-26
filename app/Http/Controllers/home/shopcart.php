@@ -34,6 +34,17 @@ class shopcart extends Controller
             return redirect('/home/shopcart/show');
         }
     }
+    public function dels(Request $request)
+    {
+       $id = $request->id;
+        $arr =DB::table('shop_cart')
+            ->wherein('id', $id)
+            ->delete();
+        dump($arr);
+
+}
+
+
     public function jia(Request $request)
     {
 
@@ -48,11 +59,13 @@ class shopcart extends Controller
             ->where('id', '=', $key)
             ->first();
         $store_count =  $arr2->store_count;
-
-        if ($num == $store_count){
+        if ($num >= $store_count){
             echo "<script>alert('数量已经达到最大库存');</script>";
-
-//            echo "alert('数量已经达到最大库存')";
+            $arr = DB::table('shop_cart')
+                ->where('id', '=', $id)
+                ->update([
+                    'num'=>$store_count
+                ]);
             return redirect('/home/shopcart/show');
         }
         $num++;

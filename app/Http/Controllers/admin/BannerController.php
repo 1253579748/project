@@ -20,6 +20,18 @@ class BannerController extends Controller
     }
     public function addData(Request $request)
     {
+        $this->validate($request, [
+            'img_describe' => 'required',
+            'img_url' => 'required',
+            'img_add' => 'required',
+        ], [
+            'required' => ':attribute必须填写',
+        ], [
+            'img_describe' => '描述',
+            'img_url' => '地址',
+            'img_add' => '图片',
+        ]);
+
         $img_describe = $request->img_describe;
         $img_url = $request->img_url;
         $img_add = $request->img_add->getClientOriginalName();
@@ -78,9 +90,15 @@ class BannerController extends Controller
         $id = $request->id;
         $img_describe = $request->img_describe;
         $img_url = $request->img_url;
-        $img_add = $request->img_add->getClientOriginalName();
+
+        $img_add = $request->img_add;
         $arr= DB::table('banner_item')->where('id', '=', $id)->first();
         $img_addd = $arr->img_add;
+        if ($img_add){
+            $img_add = $request->img_add->getClientOriginalName();
+        }else{
+            $img_add = $img_addd ;
+        }
 
         $edit=DB::table('banner_item')
             ->where('id','=',$id)
@@ -90,18 +108,16 @@ class BannerController extends Controller
                 'img_add'=>$img_add
             ]);
 
-        $url = public_path() . '/storage/admin/banner_img/' . $img_addd;
-        $url = base_path() . '/storage/app/public/admin/banner_img/' . $img_add;
+        $url = base_path() . '/storage/app/public/admin/banner_img/' . $img_addd;
 
         if ($edit){
             if (file_exists($url)) {
                 unlink($url);
             }
-            $zz= $request->img_add->storeAs('admin/banner_img', $img_add,'public');
+            $request->img_add->storeAs('admin/banner_img', $img_add,'public');
             return redirect('/admin/banner/show');
         }else{
-            echo "alert('修改失败')";
-            return redirect('/admin/banner/edit');
+            return redirect('/admin/banner/show');
         }
     }
 }

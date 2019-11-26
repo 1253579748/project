@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Admin;
+use App\Role;
 
 class AdminList extends Controller
 {
@@ -20,6 +22,7 @@ class AdminList extends Controller
             $al->where('name', 'like', '%'.$search.'%');
         }
         $arr = $al->paginate(5);
+
         return view('admin.AdminList.index', [
             'arr' => $arr,'search'=>$search,
         ]);
@@ -45,27 +48,37 @@ class AdminList extends Controller
             'password' => '密码',
             'phone' => '手机号',
         ]);
-
-        $data = [];
-
-        $data['name'] = $request->username;
-        $data['pwd'] = Hash::make($request->password);
-        $data['phone'] = $request->phone;
-        $data['created_at'] = date('Y-m-d H:i:s');
-        $data['updated_at'] = date('Y-m-d H:i:s');
-
-        $res = DB::table('admin')->insert($data);
-
-        if ($res) {
-            return [
-                'code' => 0,
-                'msg' => '添加成功',
-            ];
-        } else {
+        $dd = DB::table('admin')->where('name', '=', $request->username)->first();
+        //判断管理员是否存在
+        if ($dd) {
             return response()->json([
-                'code' => 1,
-                'msg' => '添加失败',
+                'code' => 2,
+                'msg' => '用户名已存在',
             ], 500);
+        } else {
+            $data = [];
+
+            $data['name'] = $request->username;
+            $data['pwd'] = Hash::make($request->password);
+            $data['phone'] = $request->phone;
+            $data['created_at'] = date('Y-m-d H:i:s');
+            $data['updated_at'] = date('Y-m-d H:i:s');
+
+            $res = DB::table('admin')->insert($data);
+            $re = DB::table('admin')->where('phone', '=', $request->phone)->first();
+            DB::table('user_has_roles')->insert(['user_id'=>$re->id]);
+
+            if ($res) {
+                return [
+                    'code' => 0,
+                    'msg' => '添加成功',
+                ];
+            } else {
+                return response()->json([
+                    'code' => 2,
+                    'msg' => '添加失败',
+                ], 500);
+            }  
         }
     }
 

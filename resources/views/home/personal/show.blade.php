@@ -79,7 +79,7 @@
             </div>
             <div style="width:70%;text-align: center;">
                 <span style="color:#999;font-size:12px">
-                    注：修改密码请到 
+                    注：修改密码请到
                     <a href="/home/personal/paypwd?uid=<?php echo $user->uid ?>" style="color:#005ea7;text-decoration:none;">修改支付密码</a>
                     <a href="/home/personal/logpwd?id=<?php echo $res->id ?>" style="color:#005ea7;text-decoration:none;">修改登录密码</a>
                 </span>

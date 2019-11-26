@@ -54,7 +54,7 @@
                     </div>
                     <div class="checkbox shopcart-total">
                         <label><input type="checkbox" class="check-all"><i></i> 全选</label>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">删除</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="del">删除</a>
                         <div class="pull-right">
                             已选商品 <span>2</span> 件
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计（不含运费）
@@ -93,6 +93,32 @@
                             if ($(this).attr('qwe') == 1){
                                 $(this).prop('checked', true);
                             }
+                        });
+
+                        $(".del").click(function () {
+                            var id = [];
+
+                            $('input').each(function(){
+                                var status = $(this).prop('checked') // 当前是否选中
+                                if (status){
+                                    id.push($(this).val())
+                                }
+
+                            });
+
+                            $.ajax({
+                                    url: '/home/shopcart/dels',
+                                    method: 'post',
+                                    data: {
+                                        _token: '{{ csrf_token() }}' ,
+                                        id: id,
+                                    },
+                                    // 定义一个接受结果的函数
+                                    success: function(res){
+
+                                    }
+                                })
+                            window.location.reload();
                         });
                     </script>
                 </form>
