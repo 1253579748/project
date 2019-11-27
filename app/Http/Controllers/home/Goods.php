@@ -125,6 +125,8 @@ class Goods extends Controller
             ->first()
             ->toArray();
 
+        GoodsModel::where('id', $id)->increment('look_count');
+
         //推荐位商品
         $push = GoodsModel::where('is_push', '1')
             ->with(['GoodsImgOne'])
@@ -139,6 +141,7 @@ class Goods extends Controller
     {
 
         $userId = session()->get('homeuserInfo.id'); //获取用户ID
+        if (!$userId) return [];
 
         $result = Shopcart::where('key', $request->id)
             ->where('uid', $userId ?? 1)

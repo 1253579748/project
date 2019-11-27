@@ -13,7 +13,7 @@ class Order extends Controller
     //个人中心订单显示
     public  function list(){
 
-        $orders = OrderModel::where('user_id', '99')
+        $orders = OrderModel::where('user_id', session()->get('homeuserInfo.id'))
                     ->with('OrderDetail')
                     ->get()
                     ->groupBy('status');
@@ -98,7 +98,9 @@ class Order extends Controller
             DB::commit();
             //DB::rollBack();
             
-            return view('home.order.addOrder',['id'=>$idd,'total'=>$order['total'],'res'=>$res,'uadd'=>$uadd]);
+            return redirect('home/personal/order');
+
+            // ('home.order.addOrder',['id'=>$idd,'total'=>$order['total'],'res'=>$res,'uadd'=>$uadd]);
 
     }
 }

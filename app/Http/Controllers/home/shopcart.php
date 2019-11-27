@@ -10,15 +10,26 @@ class shopcart extends Controller
 {
     public function show()
     {
-        $arr =DB::table('shop_cart')->get();
-        $data =DB::table('shop_cart')
-            ->where('checkbox', '=', '1')
+        $uid = session()->get('homeuserInfo.id');
+
+        $arr =DB::table('shop_cart')
+            ->where('uid', '=', $uid)
             ->get();
+
+        $data =DB::table('shop_cart')
+            ->where([
+                ['checkbox', '=', '1'],
+                ['uid', '=', $uid]
+            ])
+            ->get();
+
         $aa = 0 ;
+        $num = 0 ;
         foreach ($data as $k=>$v){
           $aa += $v->price * $v->num ;
+          $num += $v->num;
         }
-        return view('home.shopcart.show',(['arr'=>$arr,'aa'=>$aa]));
+        return view('home.shopcart.show',(['arr'=>$arr,'aa'=>$aa,'num'=>$num]));
     }
 
     public function del(Request $request)
@@ -37,11 +48,9 @@ class shopcart extends Controller
     public function dels(Request $request)
     {
        $id = $request->id;
-        $arr =DB::table('shop_cart')
+       DB::table('shop_cart')
             ->wherein('id', $id)
             ->delete();
-        dump($arr);
-
 }
 
 
@@ -141,9 +150,7 @@ class shopcart extends Controller
         $data =DB::table('address')
             ->where('uid', '=', $uid)
             ->get();
-        dump($arr);
 //        $id =serialize($id);
-        dump($id);
         return view('home.shopcart.list',['arr'=>$arr,'aa'=>$aa,'data'=>$data,'id'=>$id]);
     }
 
@@ -153,7 +160,6 @@ class shopcart extends Controller
     {
         //地址id
         $addid =$request->addid;
-
 
         //购物车id   数组
         $cartid =$request->cartid;

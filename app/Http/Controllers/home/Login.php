@@ -40,10 +40,10 @@ class Login extends Controller
 
             //验证验证码是否正确
             //接收输入的手机验证码
-            // $checkcode = $_POST['checkcode'];
-            // $code = $request->session()->get('code');
-            // //把生成发送的验证码和用户手机收到的验证码进行比对
-            // if ($code == $checkcode) {
+            $checkcode = $_POST['checkcode'];
+            $code = $request->session()->get('code');
+            //把生成发送的验证码和用户手机收到的验证码进行比对
+            if ($code == $checkcode) {
 
                 //验证密码
                 if (password_verify($request->password, $userInfo->password)) {
@@ -86,9 +86,9 @@ class Login extends Controller
                 } else {
                   echo("<script>alert('密码错误');location='/home/login'</script>");
                 }
-            // }else {
-            //     echo("<script>alert('验证码错误');location='/home/login'</script>");
-            // }
+            }else {
+                echo("<script>alert('验证码错误');location='/home/login'</script>");
+            }
         } else {
             return back()->withInput();
         }
@@ -108,15 +108,19 @@ class Login extends Controller
         $res = sendTemplateSMS($telphone,[$code],"1");//手机号码，替换内容数组，模板ID
         
         if ($res) {
-            return [
-                'code'=>0,
-                'msg'=>'发送成功',
-            ];
+
+            return response()->json([
+                'code' => 0,
+                'msg' => '发送成功！',
+            ], 200);
+
         } else {
+
             return response()->json([
                 'code' => 1,
                 'msg' => '发送失败！',
             ], 500);
+
         }
     }
     //注册验证码
@@ -134,16 +138,22 @@ class Login extends Controller
 
         $res = sendTemplateSMS($phone,[$cod],"1");//手机号码，替换内容数组，模板ID
 
+        // dd($res);
+
         if ($res) {
-            return [
-                'code'=>0,
-                'msg'=>'发送成功',
-            ];
+
+            return response()->json([
+                'code' => 0,
+                'msg' => '发送成功！',
+            ], 200);
+
         } else {
+
             return response()->json([
                 'code' => 1,
                 'msg' => '发送失败！',
             ], 500);
+
         }
     }
     //修改密码验证码
@@ -160,15 +170,19 @@ class Login extends Controller
         $res = sendTemplateSMS($phon,[$co],"1");//手机号码，替换内容数组，模板ID
         
         if ($res) {
-            return [
-                'code'=>0,
-                'msg'=>'发送成功',
-            ];
+
+            return response()->json([
+                'code' => 0,
+                'msg' => '发送成功！',
+            ], 200);
+
         } else {
+
             return response()->json([
                 'code' => 1,
                 'msg' => '发送失败！',
             ], 500);
+
         }
     }
 

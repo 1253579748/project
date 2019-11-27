@@ -17,7 +17,6 @@
                         <thead>
                         <tr>
                             <th width="150">
-
                             </th>
                             <th width="300">商品信息</th>
                             <th width="150">单价</th>
@@ -62,7 +61,7 @@
                         <label><input type="checkbox" class="check-all"><i></i> 全选</label>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="del">删除</a>
                         <div class="pull-right">
-                            已选商品 <span>2</span> 件
+                            已选商品 <span>{{$num}}</span> 件
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计（不含运费）
                             <b class="cr">¥{{$aa}}<span class="fz24"></span></b>
                         </div>
