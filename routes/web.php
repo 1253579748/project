@@ -1,7 +1,7 @@
 <?php
 
 //商品
-Route::group(['prefix'=>'admin/goods', 'middleware' => ['user.login']], function () {
+Route::group(['prefix'=>'admin/goods', 'middleware' => ['user.login', 'user.power']], function () {
 
     Route::get('add', 'admin\Goods@add');
 
@@ -65,7 +65,7 @@ Route::group(['prefix'=>'admin/order', 'middleware' => ['user.login']], function
 });
 
 //支付管理
-Route::group(['prefix'=>'admin/pay', 'middleware' => ['user.login']], function(){
+Route::group(['prefix'=>'admin/pay', 'middleware' => ['home.login']], function(){
 
     Route::get('orderPay', 'admin\Finance@orderPay');
 

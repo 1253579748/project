@@ -17,7 +17,7 @@ class Personal extends Controller
         $res = DB::table('users')->where('id', '=', $info['id'])->first();
         //通过用户id到用户详情表查询用户详情
         $user = DB::table('user_info')->where('uid', '=', $res->id)->first();
-
+        // dd($user);
         return view('home.personal.show', ['res'=>$res, 'user'=>$user]);
     }
 
@@ -260,10 +260,33 @@ class Personal extends Controller
     }
     public function head(Request $request)
     {
-        if ($request->headimg) {
-            return "ok";
+        $id = session()->get('homeuserInfo.id');
+        $this->validate($request, [
+            'headimg' => 'required',
+        ], [
+            'required' => ':attribute未选择',
+        ], [
+            'headimg' => '图片',
+        ]);
+
+        //保存文件
+        // $request->headimg->store('touxiang', 'public');
+        // $data = [];
+        // $data['headimg'] = $request->headimg->store('touxiang', 'public');
+        $headimg = $request->headimg->store('touxiang', 'public');
+        $res = DB::table('user_info')->where('id', '=', $id)->update(['headimg'=>$headimg]);
+
+        if ($res) {
+            return [
+                'code' => 0,
+                'msg' => '修改成功',
+            ];
         } else {
-            return "no";
+            return response()->json([
+                'code' => 1,
+                'msg' => '修改失败',
+            ], 500);
         }
+
     }
 }
