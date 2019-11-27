@@ -40,8 +40,8 @@
 				<b style="color:#800000">{{ session('homeuserInfo.username') }}</b>
 				<a href="/home/logout" style="color:#500000">退出</a>
 				<a href="/home/personal/show">我的星心光</a>
+				<a href="/home/personal/order">我的订单</a>
 				@endif
-				<a href="udai_order.html">我的订单</a>
 				<a href="">积分平台</a>
 			</div>
 		</div>

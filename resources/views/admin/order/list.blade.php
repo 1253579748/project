@@ -268,7 +268,7 @@ var showStatus = @json($showStatus);
 function sendOut(send)
 {
     if (send.name == 'submit') {
-        if ( isNaN($('input[name=odd]').val()) || $('input[name=odd]').val() == '' || $('input[name=express]').val() == '') return alert('请填写好物流信息~');
+        if ( $('input[name=odd]').val() == '' || $('input[name=express]').val() == '') return alert('请填写好物流信息~');
 
     $.ajax({
         type: 'post',
