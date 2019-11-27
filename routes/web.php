@@ -35,7 +35,7 @@ Route::group(['prefix'=>'admin/goods', 'middleware' => ['user.login', 'user.powe
 });
 
 //商品模型规格
-Route::group(['prefix'=>'admin/model', 'middleware' => ['user.login']], function(){
+Route::group(['prefix'=>'admin/model', 'middleware' => ['user.login', 'user.power']], function(){
 
     Route::get('list', 'admin\Model@list');
 
@@ -48,7 +48,7 @@ Route::group(['prefix'=>'admin/model', 'middleware' => ['user.login']], function
 });
 
 //订单
-Route::group(['prefix'=>'admin/order', 'middleware' => ['user.login']], function(){
+Route::group(['prefix'=>'admin/order', 'middleware' => ['user.login', 'user.power']], function(){
 
     Route::get('add', 'admin\Order@add');//添加订单，未完成功能
     
@@ -68,11 +68,10 @@ Route::group(['prefix'=>'admin/order', 'middleware' => ['user.login']], function
 Route::group(['prefix'=>'admin/pay', 'middleware' => ['home.login']], function(){
 
     Route::get('orderPay', 'admin\Finance@orderPay');
-
-    Route::post('payNotify', 'admin\Finance@payNotify');
-
 });
 
+//支付宝
+Route::post('admin/pay/payNotify', 'admin\Finance@payNotify');
 
 //api接口
 Route::prefix('api')->group(function () {
@@ -106,10 +105,8 @@ Route::prefix('api')->group(function () {
 //前台首页
 Route::get('/', 'home\Index@index');
 
-
-// 后台首页路由
-Route::get('admin/index/index','admin\Index@index');
-
+//后台首页->验证是否登录
+Route::get('/admin/index/index','admin\Index@index')->middleware('user.login');
 
 //后台操作->验证是否登录，验证是否有权限
 Route::group(['prefix' => '/admin', 'middleware' => ['user.login', 'user.power']], function(){
@@ -137,6 +134,8 @@ Route::group(['prefix' => '/admin', 'middleware' => ['user.login', 'user.power']
     //更多信息
     Route::get('/userList/other', 'admin\UserList@other');
 
+    //权限资源列表
+    Route::get('/power/index', 'admin\Power@index');
     //删除权限
     Route::post('/power/del/{id}', 'admin\Power@del');
     //添加权限
@@ -146,6 +145,8 @@ Route::group(['prefix' => '/admin', 'middleware' => ['user.login', 'user.power']
     Route::get('/power/update', 'admin\Power@update');
     Route::post('/power/upda', 'admin\Power@upda');
 
+    //管理员角色列表
+    Route::get('/power/user', 'admin\Power@user');
     //管理员角色删除
     Route::post('/power/updel/{id}', 'admin\Power@updel');
     //管理员角色添加
@@ -155,6 +156,8 @@ Route::group(['prefix' => '/admin', 'middleware' => ['user.login', 'user.power']
     Route::get('/power/adupdate', 'admin\Power@adupdate');
     Route::post('/power/adupda', 'admin\Power@adupda');
 
+    //角色管理
+    Route::get('/power/role', 'admin\Power@role');
     //添加角色
     Route::get('/power/roleadd', 'admin\Power@roleadd');
     Route::post('/power/rolesub', 'admin\Power@rolesub');
@@ -164,6 +167,8 @@ Route::group(['prefix' => '/admin', 'middleware' => ['user.login', 'user.power']
     Route::get('/power/roleupdate', 'admin\Power@roleupdate');
     Route::post('/power/roleupda', 'admin\Power@roleupda');
 
+    //角色权限
+    Route::get('/power/rolpow', 'admin\Power@rolpow');
     //修改角色权限
     Route::get('/power/rpupde', 'admin\Power@rpupde');
     Route::post('/power/rpup', 'admin\Power@rpup');
@@ -174,20 +179,6 @@ Route::group(['prefix' => '/admin', 'middleware' => ['user.login', 'user.power']
     Route::post('/power/roposub', 'admin\Power@roposub');
 });
 
-//后台操作->验证是否登录
-Route::group(['prefix' => '/admin', 'middleware' => ['user.login']], function(){
-    //后台首页
-    Route::get('/index/index','admin\Index@index');
-    //管理员角色列表
-    Route::get('/power/user', 'admin\Power@user');
-    //权限资源列表
-    Route::get('/power/index', 'admin\Power@index');
-    //角色管理
-    Route::get('/power/role', 'admin\Power@role');
-    //角色权限
-    Route::get('/power/rolpow', 'admin\Power@rolpow');
-});
-
 //后台登录
 Route::get('/admin/login', 'admin\LoginController@show')->middleware('user.load');
 Route::post('/admin/login', 'admin\LoginController@login')->middleware('user.load');
@@ -196,7 +187,7 @@ Route::get('/admin/logout', 'admin\Index@logout');
 
 
 //后台分类
-Route::group(['prefix'=>'admin/cates', 'middleware' => ['user.login']],function(){
+Route::group(['prefix'=>'admin/cates', 'middleware' => ['user.login', 'user.power']],function(){
     Route::get('index','admin\Cates@index');
     Route::get('create','admin\Cates@create');
     Route::post('store','admin\Cates@store');
@@ -205,7 +196,7 @@ Route::group(['prefix'=>'admin/cates', 'middleware' => ['user.login']],function(
 });
 
 //后台评论
-Route::group(['prefix'=>'admin/comments', 'middleware' => ['user.login']],function(){
+Route::group(['prefix'=>'admin/comments', 'middleware' => ['user.login', 'user.power']],function(){
 	Route::get('index','admin\Comments@index');
 	Route::get('update','admin\Comments@update');
 	Route::post('store','admin\Comments@store');
@@ -213,7 +204,7 @@ Route::group(['prefix'=>'admin/comments', 'middleware' => ['user.login']],functi
 	Route::post('create','admin\Cates@create');
 });
 //后台友情链接路由
-Route::group(['prefix'=>'admin/ads', 'middleware' => ['user.login']],function(){
+Route::group(['prefix'=>'admin/ads', 'middleware' => ['user.login', 'user.power']],function(){
     Route::get('show','admin\AdsController@show');
     Route::get('add','admin\AdsController@add');
     Route::post('add','admin\AdsController@addData');
@@ -225,7 +216,7 @@ Route::group(['prefix'=>'admin/ads', 'middleware' => ['user.login']],function(){
 
 
 //后台友情链接路由
-Route::group(['prefix'=>'admin/banner', 'middleware' => ['user.login']],function(){
+Route::group(['prefix'=>'admin/banner', 'middleware' => ['user.login', 'user.power']],function(){
     Route::get('show','admin\BannerController@show');
     Route::get('add','admin\BannerController@add');
     Route::post('add','admin\BannerController@addData');
