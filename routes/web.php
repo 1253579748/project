@@ -65,7 +65,7 @@ Route::group(['prefix'=>'admin/order', 'middleware' => ['user.login']], function
 });
 
 //支付管理
-Route::group(['prefix'=>'admin/pay', 'middleware' => ['user.login']], function(){
+Route::group(['prefix'=>'admin/pay'], function(){
 
     Route::get('orderPay', 'admin\Finance@orderPay');
 
@@ -344,7 +344,7 @@ Route::group(['prefix'=>'home/shopcart', 'middleware' => ['home.login']], functi
 
     
     //确认购物车 提交到订单路由
-    Route::post('data', 'home\shopcart@data');
+    Route::post('data', 'home\Order@addOrder');
 
 });
 

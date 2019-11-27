@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-<!--         <div class="pay-wrap-tit">
+        <div class="pay-wrap-tit">
             在线支付
         </div>
         <div class="pay-wrap">
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <div class="bottom-panel">
             <a href="" class="go-next ui-btn-theme">支付</a>
         </div>
