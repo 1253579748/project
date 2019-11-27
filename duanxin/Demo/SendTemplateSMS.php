@@ -48,17 +48,23 @@ function sendTemplateSMS($to,$datas,$tempId)
      $rest->setAppId($appId);
     
      // 发送模板短信
-     echo "Sending TemplateSMS to $to <br/>";
+     // echo "Sending TemplateSMS to $to <br/>";
      $result = $rest->sendTemplateSMS($to,$datas,$tempId);
      if($result == NULL ) {
-         echo "result error!";
         return false;
+         echo "result error!";
      }
+
      if($result->statusCode!=0) {
+
+        return false;
          echo "error code :" . $result->statusCode . "<br>";
          echo "error msg :" . $result->statusMsg . "<br>";
+
          //TODO 添加错误处理逻辑
      }else{
+
+         return true;
          echo "Sendind TemplateSMS success!<br/>";
          // 获取返回信息
          $smsmessage = $result->TemplateSMS;
