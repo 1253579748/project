@@ -1,7 +1,7 @@
 @php
         $banner= \DB::table('banner_item')->get();
         //查询分类
-        
+
         $data = \App\Type::where('pid', 0)->get();
 @endphp
 <!DOCTYPE html>
@@ -61,17 +61,24 @@
 				</form>
 				<p class="help-block text-nowrap">
 					@foreach($data as $k => $v)
-					<a href="/goods/list/{{$v->id}}">{{$v->name}}</a>
+						<a href="/goods/list/{{$v->id}}">{{$v->name}}</a>
 					@endforeach
 				</p>
 			</div>
 			<div class="cart-box">
 				@php
-					$shop =DB::table('shop_cart')->get();
-					$num = 0;
-					foreach ($shop as $k=>$v){
-						  $num += $v->num;
-					  }
+					$uid = session('homeuserInfo.id');
+					if ($uid == null){
+						$num = 0;
+					}else{
+					    $shop =DB::table('shop_cart')
+					    	->where('uid','=',$uid)
+					    	->get();
+                        $num = 0;
+                        foreach ($shop as $k=>$v){
+                              $num += $v->num;
+                          }
+					}
 				@endphp
 				<a href="/home/shopcart/show" class="cart-but">
 					<i class="iconfont icon-shopcart cr fz16"></i> 购物车 {{$num}} 件

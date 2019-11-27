@@ -342,7 +342,7 @@ Route::group(['prefix'=>'home/shopcart', 'middleware' => ['home.login']], functi
     //复选框
     Route::get('checkbox', 'home\shopcart@checkbox');
 
-    
+
     //确认购物车 提交到订单路由
     Route::post('data', 'home\Order@addOrder');
 
