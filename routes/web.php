@@ -25,9 +25,9 @@ Route::group(['prefix'=>'admin/goods', 'middleware' => ['user.login', 'user.powe
 
     Route::post('delDetail', 'admin\Goods@delDetail');
 
-    Route::post('storeDetail', 'admin\Goods@storeDetail');
+    Route::post('storeDetail', 'admin\Goods@storeDetail');//保存详情
 
-    Route::post('storeImg', 'admin\Goods@storeImg');
+    Route::post('storeImg', 'admin\Goods@storeImg');//保存图片
 
     Route::post('delImg', 'admin\Goods@delImg');
 
@@ -211,18 +211,6 @@ Route::group(['prefix'=>'admin/ads', 'middleware' => ['user.login', 'user.power'
     Route::get('del','admin\AdsController@del');
     Route::get('edit','admin\AdsController@edit');
     Route::post('edit','admin\AdsController@editData');
-});
-
-
-
-//后台友情链接路由
-Route::group(['prefix'=>'admin/banner', 'middleware' => ['user.login', 'user.power']],function(){
-    Route::get('show','admin\BannerController@show');
-    Route::get('add','admin\BannerController@add');
-    Route::post('add','admin\BannerController@addData');
-    Route::get('del','admin\BannerController@del');
-    Route::get('edit','admin\BannerController@edit');
-    Route::post('edit','admin\BannerController@editData');
 });
 
 
