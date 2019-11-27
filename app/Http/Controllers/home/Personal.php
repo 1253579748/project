@@ -263,7 +263,7 @@ class Personal extends Controller
     }
     public function head(Request $request)
     {
-        $id = session()->get('homeuserInfo.id');
+        $uid = session()->get('homeuserInfo.id');
         $this->validate($request, [
             'headimg' => 'required',
         ], [
@@ -277,7 +277,7 @@ class Personal extends Controller
         // $data = [];
         // $data['headimg'] = $request->headimg->store('touxiang', 'public');
         $headimg = $request->headimg->store('touxiang', 'public');
-        $res = DB::table('user_info')->where('id', '=', $id)->update(['headimg'=>$headimg]);
+        $res = DB::table('user_info')->where('uid', '=', $uid)->update(['headimg'=>$headimg]);
 
         if ($res) {
             return [
