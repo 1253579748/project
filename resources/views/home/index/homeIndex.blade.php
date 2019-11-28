@@ -59,6 +59,7 @@
                             <div class="swiper-wrapper" id="joke">
                                 <!-- 笑话位 -->
 
+                
                             </div>
                         </div>
                     </div>
@@ -91,6 +92,25 @@
                 </div>
             </div>
         </section>
+
+        <script>
+/*            $.ajax({
+                type: 'get',
+                url: '/api/getJoke',
+                dataType: 'json',
+                success: function(res){
+                    // console.dir(res);
+                    var data = res.result.data;
+                    // for (let k in data) {
+                    //     $('#joke').append(`<a href="">${data[k].content}</a>`);
+                    // }
+                    if (!data) {
+                        $('#joke').append('<a href="">今日请求次数已达上限！</a>');
+                    } 
+                }
+            })*/
+            $('#joke').append('<a href="">今日请求次数已达上限！</a>');
+        </script>
         
         @foreach($typeGoods as $k=>$type) 
         <section class="scroll-floor floor-2">

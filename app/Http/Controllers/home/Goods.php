@@ -8,6 +8,7 @@ use App\Goods as GoodsModel;
 use App\Type;
 use App\ShopCart;
 use App\GoodsSpec;
+use App\User;
 
 class Goods extends Controller
 {
@@ -119,12 +120,13 @@ class Goods extends Controller
 
 
     public function detail($id)
-    {
+    { 
         $goods = GoodsModel::where('id', $id)
-            ->with(['GoodsSpec', 'AttrItem', 'AttrItem.AttriBute', 'GoodsImg', 'Comment', 'ModelType', 'ModelType.Spec', 'ModelType.Spec.SpecItem', 'ModelType.AttriBute', 'GoodsDetail'])
+            ->with(['GoodsSpec', 'AttrItem', 'AttrItem.AttriBute', 'GoodsImg', 'Comment', 'Comment.User', 'ModelType', 'ModelType.Spec', 'ModelType.Spec.SpecItem', 'ModelType.AttriBute', 'GoodsDetail'])
             ->first()
             ->toArray();
 
+        // dump($goods);
         GoodsModel::where('id', $id)->increment('look_count');
 
         //推荐位商品
@@ -154,7 +156,7 @@ class Goods extends Controller
             ], 200);
         }
 
-        $info = GoodsSpec::where('id', $request->id)
+        $info = GoodsSpec::where('id', $request->id) 
             ->with(['Goods', 'Goods.GoodsImgOne'])
             ->first()
             ->toArray();

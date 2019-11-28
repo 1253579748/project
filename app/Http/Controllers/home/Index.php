@@ -55,4 +55,72 @@ class Index extends Controller
         session()->forget('homeuserInfo');
         return redirect('/home/login');
     }
-}
+
+    public function search($search)
+    {
+
+        $types = Type::where('name', 'like', '%'.$search.'%')->limit(8)->get();
+
+        if ($types) {
+            return $types->toArray();
+        } else {
+            return [];
+        }
+    }
+
+    public function find(Request $request, $find)
+    {
+        if (!$find) {
+            return redirect()->action('home\Index@index');
+        }
+
+        $order = ['id', 'asc'];//默认排序
+
+        if ($request->buy == true) {
+            $order = ['buy_count', 'asc'];
+        } elseif (key_exists('buy', $request->all())) {
+            $order = ['buy_count', 'desc'];
+        }
+
+        if ($request->look == true) {
+            $order = ['look_count', 'asc'];
+        } elseif (key_exists('look', $request->all())) {
+            $order = ['look_count', 'desc'];
+        }
+
+
+        if ($request->money == true) {
+            $order = ['price', 'asc'];
+        } elseif ( key_exists('money', $request->all()) ) {
+            $order = ['price', 'desc'];
+        }
+
+
+
+        $goods = Goods::where('name', 'like', '%'.$find.'%')
+            ->where('status', '!=', 2)
+            ->with(['GoodsImgOne'])
+            ->orderBy($order[0], $order[1])
+            ->paginate(16)
+            ->appends($request->all());
+
+        //推荐位商品
+        $push = Goods::where('is_push', '1')
+            ->with(['GoodsImgOne'])
+            ->limit(3)
+            ->get()
+            ->toArray();
+            
+        $type = [];
+        $threeTypes = [];
+        $twoTypes = [];
+        // dump($goods);
+        return view('home.goods.list', [
+                'twoTypes' => $twoTypes,
+                'threeTypes' => $threeTypes,
+                'goods' => $goods,
+                'type' => $type,
+                'push' => $push
+            ]);
+    } 
+} 

@@ -49,21 +49,54 @@
 	<!-- 搜索栏 -->
 	<div class="top-search">
 		<div class="inner">
-			<a class="logo" href="index.html"><img src="/home/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
+			<a class="logo" href="/"><img src="/home/images/icons/logo.jpg" alt="星心光" class="cover"></a>
 			<div class="search-box">
 				<form class="input-group">
-					<input placeholder="Ta们都在搜星心光" type="text">
+					<input id="search" placeholder="Ta们都在搜星心光" type="text">
 					<span class="input-group-btn">
-						<button type="button">
+						<button name="search" type="button">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</button>
 					</span>
 				</form>
-				<p class="help-block text-nowrap">
-					@foreach($data as $k => $v)
-						<a href="/goods/list/{{$v->id}}">{{$v->name}}</a>
-					@endforeach
+				<p class="help-block text-nowrap searchList">
+					<!-- 搜索时推荐关键字 -->
+
 				</p>
+<script>
+
+$('button[name=search]').click(function(){
+	var val = $('#search').val();
+	if (val) {
+		location.href = '/home/find/'+ val;	
+	}
+});
+
+var timer;
+	$('#search').on('input', function(){
+		$('.searchList').html('');
+		clearTimeout(timer);
+
+		timer = setTimeout(function (){
+			$.ajax({
+				type: 'get',
+				url: '/home/search/' + $('#search').val(),
+				dataType: 'json',
+				success: function(res){
+					console.dir(res);
+					for (let k in res) {
+						$('.searchList').append(`<a href="/goods/list/${res[k]['id']}">${res[k]['name']}</a>`);
+						
+					}
+				}
+
+			})
+			
+		}, 1000);
+
+	})
+
+</script>
 			</div>
 			<div class="cart-box">
 				@php
@@ -297,7 +330,7 @@
 			</ul>
 			<!-- 版权 -->
 			<p class="copyright">
-				© 2005-2017 U袋网 版权所有，并保留所有权利<br>
+				© 2005-2017 星心光 版权所有，并保留所有权利<br>
 				ICP备案证书号：闽ICP备16015525号-2&nbsp;&nbsp;&nbsp;&nbsp;福建省宁德市福鼎市南下村小区（锦昌阁）1栋1梯602室&nbsp;&nbsp;&nbsp;&nbsp;Tel: 18650406668&nbsp;&nbsp;&nbsp;&nbsp;E-mail: 18650406668@qq.com
 			</p>
 		</div>

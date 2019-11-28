@@ -11,7 +11,7 @@
     <div class="content inner">
         <section class="filter-section clearfix">
             <ol class="breadcrumb">
-                <li><a href="index.html">首页</a></li>
+                <li><a href="/">首页</a></li>
                 <li class="active">商品列表</li>
             </ol>
 

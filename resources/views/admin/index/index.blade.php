@@ -98,6 +98,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </li>
 
                         <li>
+                            <a href="#"><i class="fa fa-cogs nav_icon"></i>商品模板 <span class="nav-badge">12</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>
+                                    <a href="/admin/model/list">模板列表</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/model/add">添加模板</a>
+                                </li>
+                            </ul>
+                            <!-- /nav-second-level -->
+                        </li>
+
+                        <li>
                             <a href="#"><i class="fa fa-th-large nav_icon"></i>订单管理 <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
