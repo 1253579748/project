@@ -27,6 +27,7 @@
 				<a href="">帮助中心</a>
 			</div>
 			<div class="pull-right">
+				<a href="/home/index">首页</a>&nbsp;&nbsp;&nbsp;
 				@if(empty(session('homeuserInfo')))
 				<a href="/home/login"><span class="cr">亲，请登录</span></a>	
 				<a href="/home/login">立即注册</a>

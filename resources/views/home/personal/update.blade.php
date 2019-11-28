@@ -15,7 +15,7 @@
             <div class="form-group" style="margin-bottom: 30px;">
                 <label for="firstname" class="col-sm-2 control-label">用户名：</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="username" value="<?php echo $users->username ?>" placeholder="用户名">
+                    <input type="text" class="form-control" name="username" value="<?php echo $users->username ?>" placeholder="用户名"><span style="color:#9999;font-size:12px;">由中文,字母,数字或下划线组成,5~10个字符</span>
                 </div>
             </div>
             <div class="form-group" style="margin-bottom: 30px;">
@@ -38,6 +38,20 @@
         </form>
     </div>
 </div>
+    
+    <!-- 错误信息 -->
+    <div class="form-group">
+        <div style="color:red;text-align:center">
+          @if(count($errors) > 0)
+            <b>提示：</b>
+          <ul>
+            @foreach($errors->all() as $err)
+            <li>{{ $err }}</li>
+            @endforeach
+          </ul>
+          @endif
+        </div>
+    </div>
 
 <div class="panel panel-default">
     <div class="panel-body">

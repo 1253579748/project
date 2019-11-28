@@ -169,7 +169,7 @@
                     alert(err.responseJSON.msg);
                 }
                 if (err.responseJSON.errors != undefined) {
-                    $('#errors').css('display', 'block').html();
+                    $('#errors').css('display', 'block').html("");
                     let errs = err.responseJSON.errors
                     for (err in errs) {
                         $('<p>'+errs[err][0]+'</p>').appendTo('#errors');
@@ -224,7 +224,7 @@
                         alert(err.responseJSON.msg);
                     }
                     if (err.responseJSON.errors != undefined) {
-                        $('#error').css('display', 'block').html();
+                        $('#error').css('display', 'block').html("");
                         let errs = err.responseJSON.errors
                         for (err in errs) {
                             $('<p>'+errs[err][0]+'</p>').appendTo('#error');

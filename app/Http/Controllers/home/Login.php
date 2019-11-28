@@ -40,10 +40,10 @@ class Login extends Controller
 
             //验证验证码是否正确
             //接收输入的手机验证码
-            $checkcode = $_POST['checkcode'];
-            $code = $request->session()->get('code');
-            //把生成发送的验证码和用户手机收到的验证码进行比对
-            if ($code == $checkcode) {
+            // $checkcode = $_POST['checkcode'];
+            // $code = $request->session()->get('code');
+            // //把生成发送的验证码和用户手机收到的验证码进行比对
+            // if ($code == $checkcode) {
 
                 //验证密码
                 if (password_verify($request->password, $userInfo->password)) {
@@ -86,9 +86,9 @@ class Login extends Controller
                 } else {
                   echo("<script>alert('密码错误');location='/home/login'</script>");
                 }
-            }else {
-                echo("<script>alert('验证码错误');location='/home/login'</script>");
-            }
+            // }else {
+            //     echo("<script>alert('验证码错误');location='/home/login'</script>");
+            // }
         } else {
             return back()->withInput();
         }

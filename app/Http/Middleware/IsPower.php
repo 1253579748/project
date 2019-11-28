@@ -42,6 +42,9 @@ class IsPower
                         ->where('id', '=', $power->permission_id)
                         ->first();
             // dd($power_tmp->controller);
+            if (!$power_tmp) {
+                continue;
+            }
 
             //将权限保存到数组
             $name_tmp = $power_tmp->controller.'@'.$power_tmp->action;
@@ -78,8 +81,8 @@ class IsPower
         if (in_array($action_str, $power_list)) {
             return $next($request);
         } else {
-            // echo ("<script>alert('没有权限哦~');location='/admin/index/index'</script>");
-            return response('没有权限哦~');
+            echo ("<script>alert('没有权限哦~');location='/admin/index/index'</script>");
+            // return response('没有权限哦~');
         }
         
     }

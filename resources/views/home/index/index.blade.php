@@ -175,7 +175,19 @@ var timer;
 			<div class="user-info__box">
 				<div class="login-box">
 					<div class="avt-port">
-						<img src="/home/images/icons/default_avt.png" alt="欢迎来到U袋网" class="cover b-r50">
+					@if(empty(session('homeuserInfo')))
+						<img src="/home/images/tou.jpeg" alt="欢迎来到U袋网" class="cover b-r50">
+					@else
+						@php
+							$uid = session()->get('homeuserInfo.id');
+							$use = DB::table('user_info')->where('uid', '=', $uid)->first();
+						@endphp
+						@if(($use->headimg) == null)
+	                        <img src="/home/images/tou.jpeg" alt="欢迎来到U袋网" class="cover b-r50">
+	                    @else
+	                        <img src="/storage/{{$use->headimg}}" alt="欢迎来到U袋网" class="cover b-r50">
+	                    @endif
+	                @endif
 					</div>
 					@if(empty(session('homeuserInfo')))
 					<!-- 未登录 -->

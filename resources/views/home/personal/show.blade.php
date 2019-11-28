@@ -69,7 +69,13 @@
 
             <!-- 右侧 -->
             <div class="col-sm-4" style="padding:20px;margin-bottom:20px;height:150px;background:#f9f9f9;border:1px solid #ccc;color:#666;line-height: 20px;">
-                <div style="margin-right:6px;width:104px;height:104px;float:left;"><img src="/home/images/tou.jpeg" style="width:100%;"></div>
+                <div style="margin-right:6px;width:104px;height:104px;float:left;">
+                    @if(($user->headimg) == null)
+                        <img src="/home/images/tou.jpeg" style="width:100%;">
+                    @else
+                        <img src="/storage/{{$user->headimg}}" style="width:100%;height:100%;">
+                    @endif
+                </div>
                 <div style="float:left;">
                     <div><b>用户名：{{ $res->username }}</b></div>
                     <div style="margin-bottom:10px;">
