@@ -266,18 +266,28 @@ class Power extends Controller
     //删除角色
     public function roledel($id)
     {
-        $res = DB::table('roles')->where('id', '=', $id)->delete();
-
-        if ($res) {
-            return [
-                'code' => 0,
-                'msg' => '删除成功',
-            ];
-        } else {
+        $re = DB::table('user_has_roles')->first();
+        //判断用户是否有角色
+        if ($re) {
             return response()->json([
                 'code' => 1,
                 'msg' => '删除失败',
             ], 500);
+        } else {
+            $res = DB::table('roles')->where('id', '=', $id)->delete();
+
+
+            if ($res) {
+                return [
+                    'code' => 0,
+                    'msg' => '删除成功',
+                ];
+            } else {
+                return response()->json([
+                    'code' => 1,
+                    'msg' => '删除失败', 
+                ], 500);
+            }
         }
     }
     //修改角色页面

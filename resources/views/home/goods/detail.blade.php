@@ -90,7 +90,7 @@
 							<span class="ind-count cr">{{count($goods['comment'])}}</span></a>
 						</li>
 						<li class="item-ind-item">
-							<a href=""><span class="ind-label c9">浏览量</span>
+							<a href="#"><span class="ind-label c9">浏览量</span>
 							<span class="ind-count cg">{{$goods['look_count']}}</span></a>
 						</li>
 					</ul>
@@ -401,14 +401,14 @@ $('.item-action__basket').click(function(){
 				<div class="swiper-container picked-swiper">
 					<div class="swiper-wrapper">
 
-						@for($i = 0; $i+3 < count($push); $i+=3)
+						@for($i = 0; $i+3 < count($push); $i+=3) 
 						<div class="swiper-slide">
 							@for($k = 0; $k < 3; $k++)
-							<a class="picked-item" href="/goods/detail/{{$push[$i+$k]['id']}}">
+							<a class="picked-item" href="{{$push[$i+$k]['id']}}">
 								<img src="/storage/{{$push[$i+$k]['goods_img_one']['url']}}" alt="" class="cover">
 								<div class="look_price">¥{{$push[$i+$k]['price']}}</div>
 							</a>
-							@endfor
+							@endfor 
 						</div>
 						@endfor
 
@@ -519,7 +519,7 @@ $('.item-action__basket').click(function(){
 						<div class="swiper-slide">
 							@for($k = 0; $k < 3; $k++)
 							<a class="picked-item" href="/goods/detail/{{$push[$i+$k]['id']}}">
-								<img src="/storage/{{$push[$i+$k]['goods_img_one']['url']}}" alt="" class="cover">
+								<img src="/storage/{{$push[$i+$k]['goods_img_one']['url']}}" class="cover">
 								<div class="look_price">¥{{$push[$i+$k]['price']}}</div>
 							</a>
 							@endfor
@@ -550,7 +550,7 @@ $('.item-action__basket').click(function(){
 
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane fade" id="evaluate-tab" aria-labelledby="evaluate-tab">
+<!-- 					<div role="tabpanel" class="tab-pane fade" id="evaluate-tab" aria-labelledby="evaluate-tab">
 						<div class="descCate-content posr bgf5">
 							<div class="lace-title">
 								<span class="c6">相关推荐</span>
@@ -607,7 +607,7 @@ $('.item-action__basket').click(function(){
 								</a>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<script>

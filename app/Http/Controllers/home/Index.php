@@ -70,8 +70,9 @@ class Index extends Controller
 
     public function find(Request $request, $find)
     {
+        // dd($find);
         if (!$find) {
-            return redirect()->action('home\Index@index');
+            return redirect()->action('home\Index@index'); 
         }
 
         $order = ['id', 'asc'];//默认排序

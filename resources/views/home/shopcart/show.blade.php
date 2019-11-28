@@ -31,7 +31,7 @@
                             <th scope="row">
                                 <label class="checked-label">
                                     <input class="fxk" type="checkbox" name="id[]" qwe = {{$v->checkbox}} value="{{$v->id}}" ><i></i>
-                                    <div class="img"><img style="height: 100px" src="/storage/{{$v->img}}" alt="" class="cover"></div>
+                                    <div class="img"><a href="/goods/detail/{{$v->gid}}"><img style="height: 100px" src="/storage/{{$v->img}}" alt="" class="cover"></a></div>
                                 </label>
                             </th>
                             <td>
