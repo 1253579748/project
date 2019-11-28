@@ -35,8 +35,22 @@ class Personal extends Controller
 
         return view('home.personal.update', ['users'=>$users, 'userinfo'=>$userinfo]);
     }
-    public function upda()
+    public function upda(Request $request)
     {
+        //表单验证
+        $this->validate($request, [
+            'phone' => 'required|regex:/^1[345789][0-9]{9}$/',
+            'username' => 'required|regex:/^[\x{4e00}-\x{9fa5}A-Za-z0-9_]{5,10}+$/u',
+            'email' => 'regex:/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i',
+        ], [
+            'required' => ':attribute未填写',
+            'regex' => ':attribute格式错误',
+        ], [
+            'phone' => '手机号码',
+            'username' => '用户名',
+            'email' => '邮箱',
+        ]);
+
         $dat = [];
         $dat['id'] = $_POST['id'];
         $dat['username'] = $_POST['username'];
@@ -51,15 +65,23 @@ class Personal extends Controller
     }
     public function upd(Request $request)
     {
+        //表单验证
+        $this->validate($request, [
+            'name' => 'regex:/^[\x{4e00}-\x{9fa5}]{2,3}+$/u',
+        ], [
+            'regex' => ':attribute格式错误',
+        ], [
+            'name' => '姓名',
+        ]);
+
         $da = [];
         $da['uid'] = $_POST['uid'];
         $da['name'] = $_POST['name'];
         $da['sex'] = $request->get('checkboxName', 3);
 
         $ino = DB::table('user_info')->where('uid', '=', $da['uid'])->update($da);
-        if ($ino){
-            return redirect('/home/personal/show');
-        }
+
+        return redirect('/home/personal/show');
     }
 
     //修改支付密码
