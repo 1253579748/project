@@ -133,6 +133,7 @@ class Personal extends Controller
     {
         //表单验证
         $this->validate($request, [
+            'pwd' => 'required',
             'password' => 'required|regex:/^[a-zA-Z\d]{6,12}$/',
             'pass' => 'required|regex:/^[a-zA-Z\d]{6,12}$/',
             'captcha' => 'required|captcha',
@@ -141,21 +142,30 @@ class Personal extends Controller
             'captcha' => '请输入正确的:attribute',
             'regex' => ':attribute格式错误',
         ], [
-            'password' => '密码',
+            'pwd' => '旧密码',
+            'password' => '新密码',
             'pass' => '确认密码',
             'captcha' => '验证码',
         ]);
-        $password = $request->password;
-        $pass = $request->pass;
-        //验证两次输入的密码是否一致
-        if ($password == $pass) {
-            $pwd = Hash::make($password);
-            $pa = DB::table('users')->where('id', '=', $request->id)->update(['password'=>$pwd]);
-            if ($pa) {
-                return redirect('/home/personal/show');
+
+        //验证旧密码是否正确
+        $ee = DB::table('users')->where('id', '=', $request->id)->first();
+
+        if (password_verify($request->pwd, $ee->password)) {
+            $password = $request->password;
+            $pass = $request->pass;
+            //验证两次输入的密码是否一致
+            if ($password == $pass) {
+                $pwd = Hash::make($password);
+                $pa = DB::table('users')->where('id', '=', $request->id)->update(['password'=>$pwd]);
+                if ($pa) {
+                    return redirect('/home/personal/show');
+                }
+            } else {
+                echo("<script>alert('两次密码不一致');location='/home/personal/logpwd?id={$request->id}'</script>");
             }
         } else {
-            echo("<script>alert('两次密码不一致');location='/home/personal/show'</script>");
+            echo("<script>alert('请输入正确的旧密码');location='/home/personal/logpwd?id={$request->id}'</script>");
         }
     }
 

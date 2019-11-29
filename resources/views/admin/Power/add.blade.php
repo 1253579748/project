@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="inputPassword3">简短描述：</label>
                 <div class="col-sm-5">
-                    <input type="text" name="descr" class="form-control" id="descr" placeholder="简短描述">
+                    <input type="text" name="descr" class="form-control" id="descr" placeholder="简短描述 (选填)">
                 </div>
             </div>
             <div class="form-group">

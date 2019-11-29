@@ -172,11 +172,22 @@ Route::group(['prefix' => '/admin', 'middleware' => ['user.login', 'user.power']
     //修改角色权限
     Route::get('/power/rpupde', 'admin\Power@rpupde');
     Route::post('/power/rpup', 'admin\Power@rpup');
-    //角色权限删除
+    //删除角色权限
     Route::post('/power/rpdel/{id}', 'admin\Power@rpdel');
-    //角色权限添加
+    //添加角色权限
     Route::get('/power/ropo', 'admin\Power@ropo');
     Route::post('/power/roposub', 'admin\Power@roposub');
+
+    //用户权限
+    Route::get('/power/userole', 'admin\Power@userole');
+    //添加用户权限
+    Route::get('/power/userpem', 'admin\Power@userpem');
+    Route::post('/power/usesub', 'admin\Power@usesub');
+    //修改用户权限
+    Route::get('/power/ueupde', 'admin\Power@ueupde');
+    Route::post('/power/ueup', 'admin\Power@ueup');
+    //删除用户权限
+    Route::post('/power/uedel/{id}', 'admin\Power@uedel');
 });
 
 //后台登录

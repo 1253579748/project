@@ -137,7 +137,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <a href="#"><i class="fa fa-file-text-o nav_icon"></i>权限管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="/admin/power/index">权限列表</a>
+                                    <a href="/admin/power/index">权限列表管理</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/power/userole">用户权限管理</a>
                                 </li>
                                 <li>
                                     <a href="/admin/power/role">角色管理</a>
@@ -384,7 +387,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
         <!--footer-->
         <div class="footer">
-           <p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+           <p>Copyright &copy; 2019 <a href="" target="_blank">关于我们</a></p>
+           <p><span>如果有侵犯您的版权或其他权益，请联系邮箱: abc@qq.cn</span></p>
         </div>
         <!--//footer-->
     </div>
