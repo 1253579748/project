@@ -40,14 +40,14 @@
 <script>
 
 $('#spec_btn').on('click', function(){
-    $(`<tr><td><input name="spec_name" type="text" /></td><td class="val"><input class="spec_value" type="text" /></td></tr>`).appendTo('#spec');
+    $(`<tr><td><input name="spec_name" type="text" /></td><td class="val"><input class="spec_value" placeholder="双击添加多个规格值" type="text" /></td></tr>`).appendTo('#spec');
     $(`.val`).unbind('dblclick').dblclick(function(){
         $(this).children().eq(0).clone().appendTo($(this));//克隆
     })
 });
 
 $('#attr_btn').click(function(){
-    $(`<tr><td><input name="attr_name" type="text" /></td><td class="atr"><input class="attr_value" type="text" /></td></tr>`).appendTo('#attr');
+    $(`<tr><td><input name="attr_name" type="text" /></td><td class="atr"><input class="attr_value" placeholder="双击添加多个属性值" type="text" /></td></tr>`).appendTo('#attr');
     $(`.atr`).unbind('dblclick').dblclick(function(){
         $(this).children().eq(0).clone().appendTo($(this));//克隆
     })

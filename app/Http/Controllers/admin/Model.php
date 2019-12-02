@@ -8,6 +8,7 @@ use App\ModelType;
 use App\Spec;
 use App\SpecItem;
 use Illuminate\Support\Facades\DB;
+use App\ModelType as ModelDB;
 
 class Model extends Controller
 {
@@ -26,6 +27,50 @@ class Model extends Controller
     public function add()
     {
         return view('admin.model.add');
+    }
+
+    public function edit($id)
+    {
+
+        if (!is_numeric($id)) {
+            return [];
+        }
+
+        $model = ModelDB::with(['Spec', 'Spec.SpecItem', 'AttriBute'])->find($id);
+        if (!$model) return ['msg'=>'没有相关模型！'];
+
+
+        // dump($model->toArray());
+
+        return view('admin.model.edit', [
+                'model' => $model->toArray()
+            ]);
+    }   
+
+
+    public function addSpecItem(Request $request)
+    {
+        $this->validate($request, [
+            'spec_id' => 'required|numeric',
+            'val' => 'required'
+        ]);
+
+        $spec_item = new SpecItem;
+        $spec_item->spec_id = $request->spec_id;
+        $spec_item->item = $request->val;
+        $spec_item->save();          
+
+    }
+
+    public function delSpecItem(Request $request)
+    {
+        $this->validate($request, [
+            'spec_item_id' => 'required|numeric'
+        ]);
+
+        dump($request->spec_item_id);
+        SpecItem::destroy($request->spec_item_id);          
+
     }
 
     public function store(Request $request)

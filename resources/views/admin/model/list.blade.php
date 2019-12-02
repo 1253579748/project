@@ -23,7 +23,7 @@
             <td>{{$v['id']}}</td>
             <td>{{$v['name']}}</td>
             <td>
-                <button class="btn btn-default">编辑</button>
+                <button onclick="location.href='/admin/model/edit/{{$v['id']}}'" class="btn btn-default">编辑</button>
                 <button onclick="del({{$v['id']}})" class="btn btn-default">删除</button>
             </td>
         </tr>

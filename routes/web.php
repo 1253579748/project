@@ -1,7 +1,7 @@
 <?php
 
 //商品
-Route::group(['prefix'=>'admin/goods', 'middleware' => ['user.login', 'user.power']], function () {
+Route::group(['prefix'=>'admin/goods', 'middleware' => ['user.login']], function () {
 
     Route::get('add', 'admin\Goods@add');
 
@@ -14,6 +14,10 @@ Route::group(['prefix'=>'admin/goods', 'middleware' => ['user.login', 'user.powe
     Route::post('store', 'admin\Goods@store'); //保存商品
 
     Route::post('edit', 'admin\Goods@editCheck');
+
+    Route::post('skuEdit', 'admin\Goods@skuEdit');
+
+    Route::get('editSuk/{id}', 'admin\Goods@editSuk');
 
     Route::get('delGoods/{id}', 'admin\Goods@delGoods');
 
@@ -29,17 +33,25 @@ Route::group(['prefix'=>'admin/goods', 'middleware' => ['user.login', 'user.powe
 
     Route::post('storeImg', 'admin\Goods@storeImg');//保存图片
 
-    Route::post('delImg', 'admin\Goods@delImg');
+    Route::post('delImg', 'admin\Goods@delImg'); 
 
 
 });
 
+
+// 'middleware' =>['user.login', 'user.power']
 //商品模型规格
-Route::group(['prefix'=>'admin/model', 'middleware' => ['user.login', 'user.power']], function(){
+Route::group(['prefix'=>'admin/model' ], function(){
 
     Route::get('list', 'admin\Model@list');
 
     Route::get('add', 'admin\Model@add');
+
+    Route::get('edit/{id}', 'admin\Model@edit');
+
+    Route::post('addSpecItem', 'admin\Model@addSpecItem');
+
+    Route::post('delSpecItem', 'admin\Model@delSpecItem');
 
     Route::post('del', 'admin\Model@del');
 
