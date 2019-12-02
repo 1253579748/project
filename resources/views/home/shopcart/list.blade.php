@@ -31,6 +31,16 @@
                         @endforeach
                     </div>
                     <div class="add_addr"><a href="/home/personal/address">添加新地址</a></div>
+                    <!-- 错误信息 -->
+                    <div style="color:red;text-align:center">
+                        @if(count($errors) > 0)
+                            <ul>
+                                @foreach($errors->all() as $err)
+                                    <li>{{ $err }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
                     <div class="shop-title">确认订单</div>
                     <div class="shop-order__detail">
                         <table class="table">

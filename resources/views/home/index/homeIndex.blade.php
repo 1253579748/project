@@ -7,7 +7,7 @@
     <div class="swiper-container banner-box">
         <div class="swiper-wrapper">
         @php
-            $banner = \DB::table('banner_item')->get();
+            $banner= DB::table('banner_item')->where('state', '=', 1)->get();
             $pushGoods = App\Goods::where('is_push', '1')
                             ->with(['GoodsImgOne'])
                             ->limit(8)

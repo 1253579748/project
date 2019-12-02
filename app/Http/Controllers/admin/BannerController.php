@@ -87,6 +87,15 @@ class BannerController extends Controller
     }
     public function editData(Request $request)
     {
+        $this->validate($request, [
+            'img_describe' => 'required',
+            'img_url' => 'required',
+        ], [
+            'required' => ':attribute必须填写',
+        ], [
+            'img_describe' => '描述',
+            'img_url' => '地址',
+        ]);
         $id = $request->id;
         $img_describe = $request->img_describe;
         $img_url = $request->img_url;
@@ -117,6 +126,30 @@ class BannerController extends Controller
             $request->img_add->storeAs('admin/banner_img', $img_add,'public');
             return redirect('/admin/banner/show');
         }else{
+            return redirect('/admin/banner/show');
+        }
+    }
+
+    public function state(Request $request)
+    {
+        $id = $request->id;
+        $arr =DB::table('banner_item')
+            ->where('id', '=', $id)
+            ->first();
+
+        if ($arr->state == 1){
+            DB::table('banner_item')
+                ->where('id','=',$id)
+                ->update([
+                    'state'=> 0
+                ]);
+            return redirect('/admin/banner/show');
+        }else{
+            DB::table('banner_item')
+                ->where('id','=',$id)
+                ->update([
+                    'state'=> 1
+                ]);
             return redirect('/admin/banner/show');
         }
     }

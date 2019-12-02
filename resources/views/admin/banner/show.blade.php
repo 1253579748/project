@@ -36,7 +36,10 @@
                             <img  class="layui-icon x-show" src="/storage/admin/banner_img/{{$v->img_add}}" alt="1">
 {{--                            <i class="layui-icon x-show">{{$v->img_add}}</i>--}}
                         </td>
-                        <td class="td-manage" style="width: 100px">
+                        <td class="td-manage" style="width: 150px">
+                            <button class="layui-btn layui-btn layui-btn-xs" onclick="stats({{$v->id}})"><i class="layui-icon">&#xe642;</i>
+                                {{($v->state == 1) ?  ('启用') :  ('禁用')}}
+                            </button>
                             <button class="layui-btn layui-btn layui-btn-xs" onclick="edit({{$v->id}})"><i class="layui-icon">&#xe642;</i>编辑</button>
                             <button class="layui-btn-danger layui-btn layui-btn-xs"  onclick="del({{$v->id}})"><i class="layui-icon">&#xe640;</i>删除</button>
                         </td>
@@ -59,6 +62,10 @@
         function edit(id) {
             var url = "/admin/banner/edit?id="+id;
             console.dir(url);
+            location.href=url;
+        }
+        function stats(id) {
+            var url = "/admin/banner/state?id="+id;
             location.href=url;
         }
     </script>

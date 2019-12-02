@@ -33,6 +33,16 @@ class AdsController extends Controller
     }
     public function addData (Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'href' =>'url',
+        ], [
+            'required' => ':attribute必须填写',
+        ], [
+            'href' => '地址',
+            'title' => '描述',
+        ]);
+
         $href = $request->href;
         $title = $request->title;
         $add= DB::table('ads')->insert([
@@ -68,6 +78,15 @@ class AdsController extends Controller
     }
     public function editData(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'href' =>'url',
+        ], [
+            'required' => ':attribute必须填写',
+        ], [
+            'href' => '地址',
+            'title' => '描述',
+        ]);
         $id = $request->id;
         $href = $request->href;
         $title = $request->title;
@@ -79,6 +98,30 @@ class AdsController extends Controller
         if ($edit){
             return redirect('/admin/ads/show');
         }else{
+            return redirect('/admin/ads/show');
+        }
+    }
+
+    public function stats(Request $request)
+    {
+        $id = $request->id;
+        $arr =DB::table('ads')
+            ->where('id', '=', $id)
+            ->first();
+
+        if ($arr->state == 1){
+            DB::table('ads')
+                ->where('id','=',$id)
+                ->update([
+                    'state'=> 0
+                ]);
+            return redirect('/admin/ads/show');
+        }else{
+            DB::table('ads')
+                ->where('id','=',$id)
+                ->update([
+                    'state'=> 1
+                ]);
             return redirect('/admin/ads/show');
         }
     }

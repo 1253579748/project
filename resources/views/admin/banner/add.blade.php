@@ -27,6 +27,16 @@
                     </div>
                 </div>
             </form>
+            <!-- 错误信息 -->
+            <div style="color:red;text-align:center">
+                @if(count($errors) > 0)
+                    <ul>
+                        @foreach($errors->all() as $err)
+                            <li>{{ $err }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+            </div>
         </div>
     </div>
 @endsection
