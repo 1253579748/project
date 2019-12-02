@@ -295,6 +295,7 @@ class Power extends Controller
     {
         $re = DB::table('user_has_roles')->where('role_id', '=', $id)->first();
         // dd($re);
+
         //判断用户是否有角色
         if ($re) {
             return response()->json([

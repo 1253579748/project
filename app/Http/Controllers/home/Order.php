@@ -18,7 +18,7 @@ class Order extends Controller
                     ->get()
                     ->groupBy('status');
 
-        dump($orders->toArray());
+ 
         $showStatus = [
             0 => '已作废',
             1 => '未付款',

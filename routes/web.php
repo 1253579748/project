@@ -228,7 +228,11 @@ Route::group(['prefix'=>'admin/ads', 'middleware' => ['user.login', 'user.power'
 
 /********************分割线*****************************/
 //个人中心订单路由
-Route::get('home/order/list','home\Order@list');
+Route::get('home/order/list','home\Order@list')->middleware('home.login');
+
+Route::get('home/search/{search}','home\Index@search');
+
+Route::get('home/find/{find}','home\Index@find');
 
 //前台首页
 Route::get('home/index', 'home\Index@index');
@@ -299,7 +303,7 @@ Route::group(['prefix'=>'goods'], function(){
 
 
 //前台订单路由
-Route::group(['prefix'=>'home/personal'], function(){
+Route::group(['prefix'=>'home/personal', 'middleware' => ['home.login']], function(){
 
     Route::get('order', 'home\Order@list');
 

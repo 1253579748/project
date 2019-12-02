@@ -44,7 +44,7 @@ class Comments extends Controller
     	//补全数据
     	$data['text'] = $text;
     	$data['pid'] = $id;
-    	$data['uid'] = session()->get('homeuserInfo.id');
+    	$data['uid'] = session()->get('userInfo.id');
     	$data['role'] = '1';
     	$data['created_at'] = date('Y-m-d H:i:s', time());
     	$res = DB::table('comments')->insert($data);
@@ -72,7 +72,7 @@ class Comments extends Controller
         foreach ($data as $k=>$v) {
             if (!is_numeric($v)) continue;
             $model = new Comment;
-            $model->uid = session()->get('homeuserInfo.id');
+            $model->uid = session()->get('userInfo.id');
             $model->gid = $v;
             $model->text = $request->text;
 

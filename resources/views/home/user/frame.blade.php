@@ -27,7 +27,7 @@
 				<a href="">帮助中心</a>
 			</div>
 			<div class="pull-right">
-				<a href="/home/index">首页</a>&nbsp;&nbsp;&nbsp;
+				<a href="/">首页</a>&nbsp;&nbsp;&nbsp;
 				@if(empty(session('homeuserInfo')))
 				<a href="/home/login"><span class="cr">亲，请登录</span></a>	
 				<a href="/home/login">立即注册</a>
@@ -45,7 +45,7 @@
 	<div class="bgf5 clearfix">
 		<div class="top-user">
 			<div class="inner">
-				<a class="logo" href="index.html"><img src="/home/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
+				<a class="logo" href="/"><img src="/home/images/icons/logo.jpg" alt="星心光" class="cover"></a>
 				<div class="title">个人中心</div>
 			</div>
 		</div>

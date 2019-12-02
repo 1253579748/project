@@ -11,7 +11,7 @@
     <div class="content inner">
         <section class="filter-section clearfix">
             <ol class="breadcrumb">
-                <li><a href="index.html">首页</a></li>
+                <li><a href="/">首页</a></li>
                 <li class="active">商品列表</li>
             </ol>
 
@@ -96,7 +96,7 @@
                     </div>
                     <div class="picked-box">
                         @foreach($push as $v)
-                        <a href="" class="picked-item"><img src="/storage/{{$v['goods_img_one']['url']}}" alt="" class="cover"><span class="look_price">¥{{$v['price']}}</span></a>
+                        <a href="/goods/detail/{{$v['id']}}" class="picked-item"><img src="/storage/{{$v['goods_img_one']['url']}}" alt="" class="cover"><span class="look_price">¥{{$v['price']}}</span></a>
                         @endforeach
                     </div>
                 </div>

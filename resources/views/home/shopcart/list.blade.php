@@ -6,6 +6,10 @@
 @section('cate')
 @endsection
 
+@php
+    dump($arr)
+@endphp
+
 @section('main')
     <div class="content clearfix bgf5">
         <section class="user-center inner clearfix">
@@ -45,7 +49,7 @@
                             @foreach($arr as $k=>$v)
                                 <input type="hidden" name="cartid[]" value="{{$v->id}}">
                                 <tr>
-                                    <th scope="row"><a href="item_show.html"><div  class="img"><img style="width: 100px; height: 100px" src="/storage/{{$v->img}}"  alt="" class="cover"></div></a></th>
+                                    <th scope="row"><a href="/goods/detail/{{$v->gid}}"><div  class="img"><img style="width: 100px; height: 100px" src="/storage/{{$v->img}}"  alt="" class="cover"></div></a></th>
                                 <td>
                                     <div class="name ep3">{{$v->name}}</div>
                                     <div class="type c9">型号：{{$v->bar_code}}</div>
