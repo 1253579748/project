@@ -139,6 +139,20 @@ class Goods extends Controller
             ]);
     }
 
+    public function editSuk($id)
+    {
+
+        $goods = GoodsModel::where('id', $id)
+                    ->with(['GoodsSpec', 'AttrItem', 'AttrItem.AttriBute'])
+                    ->first();
+
+        if (!$goods) return redirect('/admin/goods/list');
+
+        return view('admin.goods.editdev', [
+                'goods' => $goods->toArray()
+            ]);
+    }
+
     //检测修改是否可用
     public function editCheck(Request $request)
     {
@@ -186,6 +200,46 @@ class Goods extends Controller
             }            
         }
 
+    }
+
+    public function skuEdit(Request $request)
+    {
+        $this->validate($request, [
+            'goods_id' => 'required|numeric',
+            'spec' => 'required|array'
+
+        ]); 
+
+        dump($request->all());
+        $res = GoodsSpec::where('goods_id', $request->goods_id)
+            ->delete();
+        dump($res);
+
+        $goods = new GoodsModel;
+        $spec = [];
+        if (is_array($request->spec)) {
+            foreach ($request->spec as $k => $v) {
+                $arr = explode(',', $v);
+                $key = '';
+                foreach ($arr as $kk => $vv) {
+                    if ($kk >= count($arr)-3) break;
+                    $key = $key.'_'.$vv;
+                }
+                $key = trim($key, '_');
+                $spec[$k] = [
+                        'goods_id' => $request->goods_id,
+                        'key' => $key,
+                        'price' => $arr[count($arr)-3],
+                        'store_count' => $arr[count($arr)-2],
+                        'key_name' => trim($arr[count($arr)-1], '_')
+                    ];
+            }
+
+            $goods->find($request->goods_id) 
+                ->GoodsSpec()
+                ->createMany($spec);
+            
+        }    
     }
 
     //删除商品

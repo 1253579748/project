@@ -34,6 +34,7 @@
                     <ul class="dropdown-menu dropdown-menu-right">
                       <li><a href="/admin/goods/editImg/{{$v['id']}}">商品图片</a></li>
                       <li><a href="/admin/goods/editGoods/{{$v['id']}}">编辑商品</a></li>
+                      <li><a href="/admin/goods/editSuk/{{$v['id']}}">管理规格</a></li>
                       <li><a onclick="del({{$v['id']}})" href="javascript:;">删除商品</a></li>
                       <li><a href="/admin/goods/editDetail/{{$v['id']}}">详情管理</a></li>
                     </ul>
