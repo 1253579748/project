@@ -42,6 +42,9 @@
                             <i class="layui-icon x-show">{{$v->href}}</i>
                         </td>
                         <td class="td-manage">
+                            <button class="layui-btn layui-btn layui-btn-xs" onclick="stats({{$v->id}})"><i class="layui-icon">&#xe642;</i>
+                                    {{($v->state == 1) ?  ('启用') :  ('禁用')}}
+                            </button>
                             <button class="layui-btn layui-btn layui-btn-xs" onclick="edit({{$v->id}})"><i class="layui-icon">&#xe642;</i>编辑</button>
                             <button class="layui-btn-danger layui-btn layui-btn-xs"  onclick="del({{$v->id}})"><i class="layui-icon">&#xe640;</i>删除</button>
                         </td>
@@ -83,6 +86,10 @@
         }
         function list() {
             location.href="/admin/ads/show";
+        }
+        function stats(id) {
+            var url = "/admin/ads/stats?id="+id;
+            location.href=url;
         }
     </script>
 @stop

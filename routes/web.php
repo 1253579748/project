@@ -211,9 +211,20 @@ Route::group(['prefix'=>'admin/ads', 'middleware' => ['user.login', 'user.power'
     Route::get('del','admin\AdsController@del');
     Route::get('edit','admin\AdsController@edit');
     Route::post('edit','admin\AdsController@editData');
+    Route::get('stats','admin\AdsController@stats');
 });
 
+//后台轮播图路由
+Route::group(['prefix'=>'admin/banner', 'middleware' => ['user.login', 'user.power']],function(){
+    Route::get('show','admin\BannerController@show');
+    Route::get('add','admin\BannerController@add');
+    Route::post('add','admin\BannerController@addData');
+    Route::get('del','admin\BannerController@del');
+    Route::get('edit','admin\BannerController@edit');
+    Route::post('edit','admin\BannerController@editData');
+    Route::get('state','admin\BannerController@state');
 
+});
 
 /********************分割线*****************************/
 //个人中心订单路由
@@ -319,12 +330,15 @@ Route::group(['prefix'=>'home/shopcart', 'middleware' => ['home.login']], functi
     //减
     Route::get('jian', 'home\shopcart@jian');
 
+    //数量
+    Route::get('num', 'home\shopcart@num');
+
+
     //提交
     Route::get('sub', 'home\shopcart@sub');
 
     //复选框
     Route::get('checkbox', 'home\shopcart@checkbox');
-
 
     //确认购物车 提交到订单路由
     Route::post('data', 'home\Order@addOrder');

@@ -1,5 +1,5 @@
 @php
-        $banner= \DB::table('banner_item')->get();
+        $banner= DB::table('banner_item')->where('state', '=', 1)->get();
         //查询分类
 
         $data = \App\Type::where('pid', 0)->get();
@@ -334,7 +334,7 @@ var timer;
 		<div class="copy-box clearfix">
 			<ul class="copy-links">
 				@php
-					$arr =DB::table('ads')->get();
+					$arr =DB::table('ads')->where('state', '=', 1)->get();
 				@endphp
 				@foreach($arr as $k=>$v)
 				<a href="{{$v->href}}"><li>{{$v->title}}</li></a>

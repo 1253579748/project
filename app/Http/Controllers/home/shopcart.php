@@ -52,6 +52,32 @@ class shopcart extends Controller
             ->wherein('id', $id)
             ->delete();
 }
+    public function num(Request $request)
+    {
+        $num = $request->num;
+        $id = $request->id;
+        $arr1 =DB::table('shop_cart')
+            ->where('id', '=', $id)
+            ->first();
+        $key = $arr1->key;
+
+        $arr2 =DB::table('spec_goods_price')
+            ->where('id', '=', $key)
+            ->first();
+        $store_count =  $arr2->store_count;
+        dump($store_count);
+        if ($num >=$store_count){
+            $num =  $store_count;
+        }
+        DB::table('shop_cart')
+            ->where('id', '=', $id)
+            ->update([
+                'num'=>$num
+            ]);
+
+        return redirect('/home/shopcart/show');
+
+    }
 
 
     public function jia(Request $request)

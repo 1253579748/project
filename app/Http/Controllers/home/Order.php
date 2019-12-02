@@ -38,6 +38,14 @@ class Order extends Controller
     public function addOrder(Request $request)
     {
 
+        $this->validate($request, [
+
+            'addid' => 'required',
+        ], [
+            'required' => ':attribute未选择',
+        ], [
+            'addid' => '地址',
+        ]);
         //地址id
         $addid =$request->addid;
         //购物车id   数组

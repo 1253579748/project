@@ -44,7 +44,7 @@
                             <td>
                                 <div class="cart-num__box">
                                     <a href="/home/shopcart/jian?id={{$v->id}}&num={{$v->num}}">-</a>
-                                    <input disabled type="text" class="val" value="{{$v->num}}" maxlength="2">
+                                    <input  type="text" id="{{$v->id}}" onclick="asd('#{{$v->id}}')"  class="val" value="{{$v->num}}" maxlength="2">
                                     <a href="/home/shopcart/jia?id={{$v->id}}&num={{$v->num}}">+</a>
                                 </div>
                             </td>
@@ -67,8 +67,8 @@
                         </div>
                     </div>
                     <script>
-                        console.dir($("#price").attr('price'));
-                        console.dir($(".val").val());
+                        // console.dir($("#price").attr('price'));
+                        // console.dir($(".val").val());
                         var zz = $("#price").attr('price') * $(".val").val();
                         // $('.zzz').html(zz);
                         $(document).ready(function(){
@@ -112,19 +112,30 @@
                             });
 
                             $.ajax({
-                                    url: '/home/shopcart/dels',
-                                    method: 'post',
-                                    data: {
-                                        _token: '{{ csrf_token() }}' ,
-                                        id: id,
-                                    },
-                                    // 定义一个接受结果的函数
-                                    success: function(res){
+                                url: '/home/shopcart/dels',
+                                method: 'post',
+                                data: {
+                                    _token: '{{ csrf_token() }}' ,
+                                    id: id,
+                                },
+                                // 定义一个接受结果的函数
+                                success: function(res){
 
-                                    }
-                                })
+                                }
+                            })
                             window.location.reload();
                         });
+                        function asd(idd) {
+                            $(idd).blur(function () {
+                                var num = $(idd).val();
+                                var id = $(idd).attr('id');
+                                var url = "/home/shopcart/num?id=" + id + "&num=" + num;
+                                console.dir(url);
+                                console.dir(num);
+
+                                location.href = url;
+                            })
+                        }
                     </script>
                 </form>
             </div>
