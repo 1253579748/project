@@ -18,7 +18,7 @@
             <div class="form-group">
                 <label for="lastname" class="col-sm-2 control-label">密码：</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="password" value="<?php echo $re->password ?>" placeholder="密码">
+                    <input type="text" class="form-control" name="password" placeholder="密码">
                 </div>
             </div>
             <div class="form-group">

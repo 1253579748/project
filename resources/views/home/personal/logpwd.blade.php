@@ -13,7 +13,13 @@
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
             <input type="hidden" name="id" value="<?php echo $log->id ?>">
             <div class="form-group" style="margin-bottom: 30px;">
-                <label for="firstname" class="col-sm-2 control-label">修改登录密码：</label>
+                <label for="firstname" class="col-sm-2 control-label">旧密码：</label>
+                <div class="col-sm-5">
+                    <input type="password" class="form-control" name="pwd" placeholder="请输入旧密码" maxlength="12">
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 30px;">
+                <label for="firstname" class="col-sm-2 control-label">新密码：</label>
                 <div class="col-sm-5">
                     <input type="password" class="form-control" name="password" placeholder="请输入由字母或数字组成的6~12位密码" maxlength="12">
                 </div>

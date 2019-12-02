@@ -36,9 +36,7 @@
                     </td>
                     @endif
                     @if(empty($ar['id']))
-                    <td>
-                        <a href="/admin/power/ropo">添加权限</a>
-                    </td>
+                    <td></td>
                     @else
                     <td>
                       @foreach(($ar['id']) as $key=>$rp)
