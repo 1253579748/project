@@ -13,7 +13,7 @@ return
                 'notify_url' => "http://phpon.cn/admin/pay/payNotify",
                 
                 //同步跳转
-                'return_url' => "http://phpon.cn/home/index",
+                'return_url' => "http://phpon.cn/home/personal/order",
 
                 //编码格式
                 'charset' => "UTF-8",

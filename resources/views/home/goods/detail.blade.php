@@ -370,6 +370,7 @@ $('.item-action__basket').click(function(){
 
 	if (checked) {//判断通过提交数据
 		checked['buy_count'] = parseInt($('.amount-input').val());
+		checked['img'] = '11';
 
 		$.ajax({
 			type: 'post',

@@ -123,8 +123,10 @@ class Goods extends Controller
     { 
         $goods = GoodsModel::where('id', $id)
             ->with(['GoodsSpec', 'AttrItem', 'AttrItem.AttriBute', 'GoodsImg', 'Comment', 'Comment.User', 'ModelType', 'ModelType.Spec', 'ModelType.Spec.SpecItem', 'ModelType.AttriBute', 'GoodsDetail'])
-            ->first()
-            ->toArray();
+            ->first();
+
+        if (!$goods) return redirect('/');
+        $goods = $goods->toArray();
 
         // dump($goods);
         GoodsModel::where('id', $id)->increment('look_count');
@@ -143,7 +145,7 @@ class Goods extends Controller
     {
 
         $userId = session()->get('homeuserInfo.id'); //获取用户ID
-        if (!$userId) return [];
+        if (!$userId) return redirect('/');
 
         $result = Shopcart::where('key', $request->id)
             ->where('uid', $userId ?? 1)
@@ -158,8 +160,11 @@ class Goods extends Controller
 
         $info = GoodsSpec::where('id', $request->id) 
             ->with(['Goods', 'Goods.GoodsImgOne'])
-            ->first()
-            ->toArray();
+            ->first();
+
+        if (!$info) return redirect('/');
+
+        $info = $info->toArray();
 
 
         //判断购买量是否超出库存
@@ -177,6 +182,7 @@ class Goods extends Controller
         $shopcart->bar_code = $info['key_name'];//选择规格的名字
         $shopcart->price = $info['price'];
         $shopcart->num = $num;
+
         $shopcart->img = $info['goods']['goods_img_one']['url'];
 
         $shopcart->save();

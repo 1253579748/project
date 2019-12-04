@@ -39,9 +39,9 @@ Route::group(['prefix'=>'admin/goods', 'middleware' => ['user.login']], function
 });
 
 
-// 'middleware' =>['user.login', 'user.power']
+
 //商品模型规格
-Route::group(['prefix'=>'admin/model' ], function(){
+Route::group(['prefix'=>'admin/model' ,'middleware' =>['user.login']], function(){
 
     Route::get('list', 'admin\Model@list');
 
@@ -60,7 +60,7 @@ Route::group(['prefix'=>'admin/model' ], function(){
 });
 
 //订单
-Route::group(['prefix'=>'admin/order', 'middleware' => ['user.login', 'user.power']], function(){
+Route::group(['prefix'=>'admin/order', 'middleware' => ['user.login']], function(){
 
     Route::get('add', 'admin\Order@add');//添加订单，未完成功能
     
@@ -273,7 +273,7 @@ Route::get('/home/logout', 'home\Index@logout');
 Route::post('home/yan', 'home\Login@yan');
 Route::post('home/yanre', 'home\Login@yanre');
 Route::post('home/yanup', 'home\Login@yanup');
-
+ 
 //前台个人信息
 Route::group(['prefix'=>'home/personal', 'middleware' => ['home.login']], function(){
     //显示个人资料
